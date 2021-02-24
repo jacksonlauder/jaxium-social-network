@@ -8,7 +8,7 @@
           class="shrink mr-2"
           contain
           src="../assets/jaxium-social-network_200.png"
-          width="30"
+          width="40"
         />
       <v-toolbar-title>Jaxium</v-toolbar-title>
       <!-- <v-spacer></v-spacer> -->
