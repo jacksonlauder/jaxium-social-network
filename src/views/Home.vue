@@ -4,14 +4,6 @@
       <h2>Welcome to Jaxium!</h2>
     </v-card-title>
     <v-divider></v-divider>
-              <v-img
-            alt="Jaxium Logo"
-            class="shrink mr-2"
-            contain
-            src="../assets/jaxium-social-network.png"
-            max-height="40"
-            max-width="40"
-          ></v-img>
     <v-card-text>Lorem ipsum dolor sit amet.</v-card-text>
     <v-card-actions class="pt-4">
       <v-btn rounded depressed large color="primary" to="/register">Register</v-btn>
