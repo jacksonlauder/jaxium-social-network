@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Main from '../views/Main.vue'
+import SiteHome from '../views/SiteHome.vue'
 import Login from '../views/authentication/Login.vue'
 import Register from '../views/authentication/Register.vue'
 import Home from '../views/user/Home.vue'
@@ -14,8 +14,8 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'main',
-    component: Main
+    name: 'site-home',
+    component: SiteHome
   },
   {
     path: '/login',
@@ -28,27 +28,27 @@ const routes = [
     component: Register
   },
   {
-    path: '/:username/home',
+    path: '/username/home',
     name: 'home',
     component: Home
   },
   {
-    path: '/:username/profile',
+    path: '/username/profile',
     name: 'profile',
     component: Profile
   },
   {
-    path: '/:username/profile-edit',
+    path: '/username/profile-edit',
     name: 'profile-edit',
     component: ProfileEdit
   },
   {
-    path: '/:username/messages',
+    path: '/username/messages',
     name: 'messages',
     component: Messages
   },
   {
-    path: '/:username/notifications',
+    path: '/username/notifications',
     name: 'notifications',
     component: Notifications
   },
@@ -56,7 +56,7 @@ const routes = [
     path: '*',
     redirect: '/'
   }
-  
+
   // {
   //   path: '/about',
   //   name: 'About',

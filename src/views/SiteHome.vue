@@ -16,6 +16,6 @@
 <script>
 
 export default {
-  name: 'main'
+  name: 'site-home'
 }
 </script>
