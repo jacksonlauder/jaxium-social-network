@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <v-card width="800" class="mx-auto mt-5 pa-2">
+    <v-card max-width="800" class="mx-auto mt-5 pa-2">
       <v-card-title class="justify-center pb-3">
         <h2>Welcome to Jaxium!</h2>
       </v-card-title>
