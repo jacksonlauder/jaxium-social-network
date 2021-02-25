@@ -2,26 +2,27 @@
   <v-app id="app">
     <MainAppBar />
     <v-main>
-      <v-container fluid>
       <router-view></router-view>
-      </v-container>
     </v-main>
+    <Footer />
   </v-app>
 </template>
 
 <style>
   html, body, .v-application, .v-application--wrap {
-    min-height: -webkit-fill-available;
+    min-height: -webkit-fill-available !important;
   }
 </style>
 
 <script>
 import MainAppBar from './components/MainAppBar'
+import Footer from './components/Footer'
 
 export default {
   name: 'App',
   components: {
     MainAppBar,
+    Footer,
   }
 }
 </script>
