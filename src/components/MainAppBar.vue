@@ -30,11 +30,29 @@
     >
       <v-list nav>
         <v-list-item to="/">
-          <v-list-item-icon>
-            <v-icon>mdi-home</v-icon>
-          </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title text>
+            <v-list-item-title>
+              Site Home
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item to="/register">
+          <v-list-item-content>
+            <v-list-item-title class="mt-1">
+              Register
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item to="/login">
+          <v-list-item-content>
+            <v-list-item-title class="mt-1">
+              Login
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item to="/:username/home">
+          <v-list-item-content>
+            <v-list-item-title class="mt-1">
               Home
             </v-list-item-title>
           </v-list-item-content>

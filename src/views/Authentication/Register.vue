@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-card max-width="800" class="mx-auto mt-5 pa-2">
       <v-card-title class="justify-center pb-3">
-        <h1>Register</h1>
+        <h2>Register</h2>
       </v-card-title>
       <v-divider></v-divider>
       <v-form ref="regForm" v-on:submit.prevent="onSubmit">
