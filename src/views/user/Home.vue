@@ -57,5 +57,7 @@ import Post from '../../components/Post'
 </script>
 
 <style>
-
+  .v-btn:not(.v-btn--round).v-size--default {
+    padding: 0 30px !important;
+  }
 </style>

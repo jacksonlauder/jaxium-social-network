@@ -52,7 +52,7 @@
           mdi-heart
         </v-icon>
       </v-btn>
-      <span class="ml-2">15</span>
+      <span class="ml-2" style="color: gray">15</span>
       <v-btn
         icon
         class="ml-10"
