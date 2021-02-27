@@ -8,19 +8,16 @@
       tile
     >
       <v-app-bar-nav-icon @click="drawer = true" />
-      <router-link
-        style="text-decoration: none; color: black"
-        to="/"
-      >
-        <v-toolbar-title>Jaxium</v-toolbar-title>
+      <router-link to="/">
+        <!-- <v-toolbar-title>Jaxium</v-toolbar-title> -->
+        <v-img
+          alt="Jaxium Logo"
+          src="../assets/Jaxium_Logo_Title.png"
+          contain
+          height="40"
+          width="100"
+        />
       </router-link>
-      <v-img
-        alt="Jaxium Logo"
-        class="shrink mr-2"
-        src="../assets/Jaxium_Logo_Title.png"
-        contain
-        height="40"
-      />
     </v-app-bar>
     <v-navigation-drawer
       v-model="drawer"

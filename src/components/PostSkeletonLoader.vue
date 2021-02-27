@@ -9,6 +9,6 @@
 
 <style>
   .v-skeleton-loader__button {
-    right: 160px;
+    right: 164px;
   }
 </style>
