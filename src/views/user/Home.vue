@@ -5,9 +5,11 @@
     </h1>
 
     <Post />
+    <PostSkeleton />
 
     <v-bottom-navigation
       fixed
+      grow
       height="70px"
     >
       <v-btn to="/:username/profile">
@@ -46,18 +48,20 @@
 <script>
 import NewPostBtn from '../../components/NewPostBtn'
 import Post from '../../components/Post'
+import PostSkeleton from '../../components/PostSkeletonLoader'
 
   export default {
     name: 'Home',
     components: {
       NewPostBtn,
       Post,
+      PostSkeleton,
     }
   }
 </script>
 
 <style>
-  .v-btn:not(.v-btn--round).v-size--default {
+  /* .v-btn:not(.v-btn--round).v-size--default {
     padding: 0 30px !important;
-  }
+  } */
 </style>

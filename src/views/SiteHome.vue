@@ -37,6 +37,6 @@
 <script>
 
 export default {
-  name: 'SiteHome'
+  name: 'SiteHome',
 }
 </script>
