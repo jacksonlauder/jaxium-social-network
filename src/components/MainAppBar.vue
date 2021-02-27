@@ -9,7 +9,6 @@
     >
       <v-app-bar-nav-icon @click="drawer = true" />
       <router-link to="/">
-        <!-- <v-toolbar-title>Jaxium</v-toolbar-title> -->
         <v-img
           alt="Jaxium Logo"
           src="../assets/Jaxium_Logo_Title.png"
