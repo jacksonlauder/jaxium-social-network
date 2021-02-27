@@ -6,6 +6,8 @@
 
     <Post />
     <PostSkeleton />
+    <PostSkeleton />
+    <PostSkeleton />
 
     <v-bottom-navigation
       fixed
