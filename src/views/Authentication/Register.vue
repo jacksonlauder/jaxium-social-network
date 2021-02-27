@@ -1,11 +1,17 @@
 <template>
   <v-container fluid>
-    <v-card max-width="800" class="mx-auto mt-5 pa-2">
+    <v-card
+      max-width="800"
+      class="mx-auto mt-5 pa-2"
+    >
       <v-card-title class="justify-center pb-3">
         <h2>Register</h2>
       </v-card-title>
-      <v-divider></v-divider>
-      <v-form ref="regForm" v-on:submit.prevent="onSubmit">
+      <v-divider />
+      <v-form
+        ref="regForm"
+        @submit.prevent="onSubmit"
+      >
         <v-container fluid>
           <v-text-field
             v-model="first"
@@ -37,16 +43,32 @@
             label="Password"
             prepend-icon="mdi-lock"
             :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-            @click:append="showPassword = !showPassword"
             spellcheck="false"
             :rules="rules"
             required
+            @click:append="showPassword = !showPassword"
           />
         </v-container>
         <v-card-actions>
-          <v-btn rounded depressed large color="error" @click.prevent="reset">Cancel</v-btn>
-          <v-spacer></v-spacer>
-          <v-btn rounded depressed large color="success" type="submit">Register</v-btn>
+          <v-btn
+            rounded
+            depressed
+            large
+            color="error"
+            @click.prevent="reset"
+          >
+            Cancel
+          </v-btn>
+          <v-spacer />
+          <v-btn
+            rounded
+            depressed
+            large
+            color="success"
+            type="submit"
+          >
+            Register
+          </v-btn>
         </v-card-actions>
       </v-form>
     </v-card>
@@ -56,7 +78,7 @@
 <script>
 
 export default {
-  name: 'register',
+  name: 'Register',
   data: function () {
     return {
       rules: [

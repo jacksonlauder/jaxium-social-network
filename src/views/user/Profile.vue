@@ -7,9 +7,9 @@
       left
       icon
     >
-    <v-icon>
-      mdi-arrow-left
-    </v-icon>
+      <v-icon>
+        mdi-arrow-left
+      </v-icon>
     </v-btn>
     <h1>Profile Route</h1>
   </v-container>
