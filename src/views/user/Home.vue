@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container fluid class="background-blue-grey">
     <!-- <h1 class="mb-10">
       Today
     </h1> -->
@@ -77,7 +77,5 @@ import PostSkeleton from '../../components/PostSkeletonLoader'
 </script>
 
 <style>
-  /* .v-btn:not(.v-btn--round).v-size--default {
-    padding: 0 30px !important;
-  } */
+
 </style>

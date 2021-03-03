@@ -1,13 +1,13 @@
 <template>
   <v-card>
     <v-app-bar
-      color="white"
+      color="blue-grey lighten-5"
       app
       flat
       absolute
       tile
     >
-      <v-app-bar-nav-icon @click="drawer = true" />
+      <v-app-bar-nav-icon @click="drawer = true" color="black"/>
       <router-link to="/">
         <v-img
           alt="Jaxium Logo"
