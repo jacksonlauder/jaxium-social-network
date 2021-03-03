@@ -25,7 +25,7 @@
             />
           </v-avatar>
         </v-col>
-        <v-col>
+        <v-col cols="8">
           <v-card-title>Account Name</v-card-title>
           <v-card-subtitle>Minutes ago</v-card-subtitle>
         </v-col>
@@ -35,6 +35,7 @@
             top
             right
             icon
+            color="blue-grey darken-1"
           >
             <v-icon>mdi-dots-horizontal</v-icon>
           </v-btn>
@@ -48,19 +49,24 @@
     <v-card-actions>
       <v-spacer />
       <v-btn icon>
-        <v-icon size="30px">
+        <v-icon
+          size="30px"
+          color="blue-grey darken-1"
+        >
           mdi-heart
         </v-icon>
       </v-btn>
       <span
-        class="ml-2"
-        style="color: gray"
+        class="ml-2 blue-grey--text text--darken-1"
       >15</span>
       <v-btn
         icon
         class="ml-10"
       >
-        <v-icon size="30px">
+        <v-icon
+          size="30px"
+          color="blue-grey darken-1"
+        >
           mdi-forum
         </v-icon>
       </v-btn>

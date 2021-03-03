@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-app-bar
-      color="blue-grey lighten-3"
+      color="white"
       app
       flat
       absolute

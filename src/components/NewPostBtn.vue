@@ -6,7 +6,7 @@
     width="56px"
     min-height="56px"
     height="56px"
-    color="red darken-1"
+    color="amber darken-3"
     dark
     absolute
     top
@@ -25,6 +25,6 @@
     box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%) !important;
   }
   .v-btn--fab.v-size--default.v-btn--absolute.v-btn--top {
-    top: -15px !important;
+    top: -20px !important;
   }
 </style>

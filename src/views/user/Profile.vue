@@ -6,6 +6,7 @@
       top
       left
       icon
+      to="/:username/home"
     >
       <v-icon>
         mdi-arrow-left
