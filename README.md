@@ -3,6 +3,9 @@
 ## Flow Chart
 ![Jaxium Social Network Flowchart](https://user-images.githubusercontent.com/28573268/109909515-77e47700-7c63-11eb-8e14-1cfc2c9c74c8.png)
 
+## Style
+
+
 ## Project setup
 ```
 npm install

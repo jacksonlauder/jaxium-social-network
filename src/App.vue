@@ -11,6 +11,7 @@
 <style>
   html, body, .v-application, .v-application--wrap {
     min-height: -webkit-fill-available !important;
+    background-color: #eceff1;
   }
 </style>
 

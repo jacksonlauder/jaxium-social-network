@@ -9,8 +9,11 @@
         tile
         width="100%"
         class="text-center"
+        color="blue-grey lighten-4"
       >
-        <v-card-text>
+        <v-card-text
+          class="black--text"
+        >
           Jackson Lauder - {{ new Date().getFullYear() }}
         </v-card-text>
       </v-card>
