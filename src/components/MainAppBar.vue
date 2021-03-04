@@ -7,7 +7,10 @@
       absolute
       tile
     >
-      <v-app-bar-nav-icon @click="drawer = true" color="black"/>
+      <v-app-bar-nav-icon
+        color="black"
+        @click="drawer = true"
+      />
       <router-link to="/">
         <v-img
           alt="Jaxium Logo"
