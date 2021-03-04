@@ -4,25 +4,25 @@
     <v-main>
       <router-view />
     </v-main>
-    <Footer />
+    <!-- <Footer /> -->
   </v-app>
 </template>
 
 <style>
-  html, body, .v-application, .v-application--wrap {
+  /* html, body, .v-application, .v-application--wrap {
     min-height: -webkit-fill-available !important;
-  }
+  } */
 </style>
 
 <script>
 import MainAppBar from './components/MainAppBar'
-import Footer from './components/Footer'
+// import Footer from './components/Footer'
 
 export default {
   name: 'App',
   components: {
     MainAppBar,
-    Footer,
+    // Footer,
   }
 }
 </script>
