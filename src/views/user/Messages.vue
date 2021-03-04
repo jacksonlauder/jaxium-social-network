@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="background-blue-grey">
+  <v-container fluid>
     <v-btn
       elevation="2"
       fab

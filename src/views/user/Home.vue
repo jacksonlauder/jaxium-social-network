@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="background-blue-grey">
+  <v-container fluid>
     <!-- <h1 class="mb-10">
       Today
     </h1> -->

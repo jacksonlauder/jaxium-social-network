@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="background-blue-grey">
+  <v-container fluid>
     <v-card
       max-width="800"
       class="mx-auto mt-5 pa-2"
