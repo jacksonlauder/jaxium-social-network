@@ -1,4 +1,4 @@
-![Jaxium_Logo_Title](https://user-images.githubusercontent.com/28573268/109909755-df022b80-7c63-11eb-97a5-3331816b1bd7.png)
+![Jaxium_Title_500](https://user-images.githubusercontent.com/28573268/109910232-e4ac4100-7c64-11eb-9c33-2ac070d266f7.png)
 
 ## Flow Chart
 ![Jaxium Social Network Flowchart](https://user-images.githubusercontent.com/28573268/109909515-77e47700-7c63-11eb-8e14-1cfc2c9c74c8.png)
