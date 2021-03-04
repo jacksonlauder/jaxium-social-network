@@ -3,8 +3,15 @@
 ## Flow Chart
 ![Jaxium Social Network Flowchart](https://user-images.githubusercontent.com/28573268/109909515-77e47700-7c63-11eb-8e14-1cfc2c9c74c8.png)
 
-## Style
+## Styles
+- Primary Color: ![#546e7a](https://via.placeholder.com/15/546e7a/000000?text=+) `blue-grey darken-1` `#546e7a`
+- Secondary Color: ![#ff8f00](https://via.placeholder.com/15/ff8f00/000000?text=+) `amber darken-3` `#ff8f00`
+- Background Color: ![#eceff1](https://via.placeholder.com/15/eceff1/000000?text=+) `blue-grey lighten-5` `#eceff1`
 
+## Terminology
+Followers - Unfollow/Follow <br />
+Post - Create Post/Edit Post <br />
+Feed - ("Home")
 
 ## Project setup
 ```
