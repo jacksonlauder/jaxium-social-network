@@ -16,4 +16,7 @@
   .v-skeleton-loader__actions {
     text-align: center !important;
   }
+  .v-application--is-ltr .v-skeleton-loader__actions .v-skeleton-loader__button:first-child {
+    margin-right: 30px;
+  }
 </style>
