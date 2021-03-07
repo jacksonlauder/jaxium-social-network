@@ -57,6 +57,12 @@
             color="error"
             @click.prevent="reset"
           >
+            <v-icon
+              left
+              dark
+            >
+              mdi-account-cancel
+            </v-icon>
             Cancel
           </v-btn>
           <v-spacer />
@@ -67,6 +73,12 @@
             color="success"
             type="submit"
           >
+            <v-icon
+              left
+              dark
+            >
+              mdi-account-plus
+            </v-icon>
             Register
           </v-btn>
         </v-card-actions>
@@ -95,6 +107,7 @@ export default {
   methods: {
     reset () {
       this.$refs.regForm.reset()
+      this.$router.push({ name: 'SiteHome' })
     },
   }
 }

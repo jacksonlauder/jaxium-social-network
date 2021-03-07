@@ -10,3 +10,7 @@
 /* .background-blue-grey {
   background-color: #ECEFF1;
 } */
+
+.v-card__actions > .v-btn.v-btn {
+  border-radius: 10px;
+}

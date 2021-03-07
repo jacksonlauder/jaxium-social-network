@@ -43,6 +43,12 @@
             color="primary"
             to="/register"
           >
+            <v-icon
+              left
+              dark
+            >
+              mdi-account-plus
+            </v-icon>
             Register
           </v-btn>
           <v-spacer />
@@ -53,6 +59,12 @@
             color="success"
             type="submit"
           >
+            <v-icon
+              left
+              dark
+            >
+              mdi-login
+            </v-icon>
             Login
           </v-btn>
         </v-card-actions>

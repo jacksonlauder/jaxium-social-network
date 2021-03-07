@@ -9,7 +9,7 @@
         tile
         width="100%"
         class="text-center"
-        color="blue-grey lighten-4"
+        color="blue-grey lighten-5"
       >
         <v-card-text
           class="black--text"
