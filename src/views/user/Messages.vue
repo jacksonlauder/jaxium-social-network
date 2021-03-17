@@ -1,17 +1,34 @@
 <template>
   <v-container fluid>
     <v-btn
-      elevation="2"
       fab
       top
       left
       icon
       to="/:username/home"
+      color="blue-grey darken-3"
     >
-      <v-icon>
-        mdi-arrow-left
+      <v-icon large>
+        mdi-arrow-left-circle
       </v-icon>
     </v-btn>
-    <h1>Messages Route</h1>
+    <v-row>
+      <h1 class="mx-auto mb-10">
+        Messages
+      </h1>
+    </v-row>
+    <Message />
   </v-container>
 </template>
+
+<script>
+import Message from '../../components/Message'
+
+  export default {
+    name: 'Messages',
+    components: {
+      Message,
+    }
+  }
+</script>
+

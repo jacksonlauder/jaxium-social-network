@@ -56,6 +56,13 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item to="/">
+          <v-list-item-content>
+            <v-list-item-title class="mt-1">
+              Logout
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
   </v-card>
