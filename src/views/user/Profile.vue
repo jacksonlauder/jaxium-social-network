@@ -40,12 +40,14 @@
       >
         <v-card-title><h2>Full Name</h2></v-card-title>
       </v-row>
+
       <v-row
         justify="space-around"
         class="mt-0"
       >
         <v-card-subtitle><h2>accountname</h2></v-card-subtitle>
       </v-row>
+
       <v-row
         justify="space-around"
       >
@@ -53,6 +55,21 @@
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae excepturi expedita asperiores maxime similique aut!
         </v-card-text>
       </v-row>
+
+      <v-row
+        align="center"
+        justify="center"
+        class="my-7"
+      >
+        <v-icon
+          color="blue-grey darken-3"
+        >
+          mdi-account-group
+        </v-icon>
+        <span class="mx-3"><strong>8</strong> Followers</span>
+        <span><strong>8</strong> Following</span>
+      </v-row>
+
       <v-row
         justify="space-around"
         class="px-10 pb-5"
