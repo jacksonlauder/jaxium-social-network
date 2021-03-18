@@ -9,7 +9,7 @@
       left
       icon
       to="/:username/home"
-      color="blue-grey darken-3"
+      color="blue-grey-darken-3"
       absolute
       elevation="3"
     >
