@@ -20,7 +20,5 @@
 </template>
 
 <style>
-  footer {
-    display: none !important;
-  }
+
 </style>
