@@ -8,6 +8,7 @@
       icon
       to="/:username/home"
       color="blue-grey darken-3"
+      elevation="3"
     >
       <v-icon large>
         mdi-arrow-left-bold
@@ -21,6 +22,7 @@
       icon
       to=""
       color="blue-grey darken-3"
+      elevation="3"
     >
       <v-icon large>
         mdi-close-circle-outline
@@ -48,7 +50,7 @@ export default {
 </script>
 
 <style scoped>
-.v-btn--fab.v-size--default.v-btn--absolute.v-btn--top {
-    top: 30px !important;
-}
+  .v-btn--fab.v-size--default.v-btn--absolute.v-btn--top {
+    top: 5px !important;
+  }
 </style>

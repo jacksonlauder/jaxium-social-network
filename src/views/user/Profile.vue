@@ -1,7 +1,7 @@
 <template>
   <v-container
     fluid
-    class="mt-6"
+    class="mt-10"
   >
     <v-btn
       fab
@@ -11,6 +11,7 @@
       to="/:username/home"
       color="blue-grey darken-3"
       absolute
+      elevation="3"
     >
       <v-icon large>
         mdi-arrow-left-bold
@@ -120,7 +121,7 @@
 
 <style scoped>
   .v-btn--fab.v-size--default.v-btn--absolute.v-btn--top {
-      top: 30px !important;
+    top: 5px !important;
   }
   .v-application a {
     color: #37474F !important;
