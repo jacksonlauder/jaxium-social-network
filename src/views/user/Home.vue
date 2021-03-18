@@ -1,6 +1,9 @@
 <template>
-  <v-container fluid class="mt-6">
-    <SearchDialog v-model="showSearchDialog"/>
+  <v-container
+    fluid
+    class="mt-6"
+  >
+    <SearchDialog v-model="showSearchDialog" />
 
     <Post />
     <PostSkeleton />
@@ -38,22 +41,34 @@
 
       <v-btn to="/:username/messages">
         <span class="hidden-sm-and-down">Messages</span>
-        <v-icon
-          size="35px"
-          color="white"
+        <v-badge
+          color="red"
+          dot
+          overlap
         >
-          mdi-message
-        </v-icon>
+          <v-icon
+            size="35px"
+            color="white"
+          >
+            mdi-message
+          </v-icon>
+        </v-badge>
       </v-btn>
 
       <v-btn to="/:username/notifications">
         <span class="hidden-sm-and-down">Notifications</span>
-        <v-icon
-          size="35px"
-          color="white"
+        <v-badge
+          color="red"
+          dot
+          overlap
         >
-          mdi-bell
-        </v-icon>
+          <v-icon
+            size="35px"
+            color="white"
+          >
+            mdi-bell
+          </v-icon>
+        </v-badge>
       </v-btn>
     </v-bottom-navigation>
   </v-container>
@@ -67,16 +82,16 @@ import SearchDialog from '../../components/Search-Dialog'
 
   export default {
     name: 'Home',
-    data () {
-      return {
-        showSearchDialog: false
-      }
-    },
     components: {
       NewPostBtn,
       Post,
       PostSkeleton,
       SearchDialog,
+    },
+    data () {
+      return {
+        showSearchDialog: false
+      }
     }
   }
 </script>
