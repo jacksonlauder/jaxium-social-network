@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container fluid class="mt-6">
     <SearchDialog v-model="showSearchDialog"/>
 
     <Post />

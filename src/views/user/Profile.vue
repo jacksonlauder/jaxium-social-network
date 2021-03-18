@@ -1,6 +1,7 @@
 <template>
   <v-container
     fluid
+    class="mt-6"
   >
     <v-btn
       fab
@@ -9,6 +10,7 @@
       icon
       to="/:username/home"
       color="blue-grey darken-3"
+      absolute
     >
       <v-icon large>
         mdi-arrow-left-bold

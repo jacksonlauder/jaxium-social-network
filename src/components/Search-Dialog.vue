@@ -11,6 +11,7 @@
           <v-toolbar
             flat
             color="blue-grey lighten-5"
+            class="pt-3"
           >
               <v-text-field
                 solo
