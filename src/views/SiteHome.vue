@@ -53,7 +53,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .theme--light.v-card {
     background: rgba( 255, 255, 255, 0.25 );
     
