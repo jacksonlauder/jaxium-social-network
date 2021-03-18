@@ -15,14 +15,11 @@
           cols="2"
           class="ml-5"
         >
-          <v-avatar
-            color="grey darken-3"
-            class=""
-          >
+          <v-avatar>
             <v-img
               class="elevation-6"
               alt=""
-              src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"
+              src="https://cdn.vuetifyjs.com/images/lists/1.jpg"
             />
           </v-avatar>
         </v-col>
@@ -43,7 +40,7 @@
         </v-col>
       </v-row>
 
-      <v-card-text class="headline">
+      <v-card-text>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio sint perspiciatis inventore repellat fugiat corrupti!
       </v-card-text>
     </v-container>

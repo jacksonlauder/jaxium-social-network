@@ -1,8 +1,6 @@
 <template>
   <v-container fluid>
-    <!-- <h1 class="mb-10">
-      Today
-    </h1> -->
+    <SearchDialog v-model="showSearchDialog"/>
 
     <Post />
     <PostSkeleton />
@@ -26,7 +24,7 @@
         </v-icon>
       </v-btn>
       
-      <v-btn>
+      <v-btn @click.stop="showSearchDialog=true">
         <span class="hidden-sm-and-down">Search</span>
         <v-icon
           size="35px"
@@ -65,13 +63,20 @@
 import NewPostBtn from '../../components/NewPostBtn'
 import Post from '../../components/Post'
 import PostSkeleton from '../../components/PostSkeletonLoader'
+import SearchDialog from '../../components/Search-Dialog'
 
   export default {
     name: 'Home',
+    data () {
+      return {
+        showSearchDialog: false
+      }
+    },
     components: {
       NewPostBtn,
       Post,
       PostSkeleton,
+      SearchDialog,
     }
   }
 </script>
