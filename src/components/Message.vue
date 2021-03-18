@@ -5,7 +5,7 @@
     class="mx-auto"
     max-width="500"
   >
-    <v-list two-line>
+    <v-list three-line>
       <template v-for="(item, index) in items">
         <v-divider
           v-if="item.divider"
