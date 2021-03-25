@@ -49,37 +49,40 @@
             @click:append="showPassword = !showPassword"
           />
         </v-container>
-        <v-card-actions>
+        
+        <v-card-actions class="d-flex flex-column">
           <v-btn
+            block
             rounded
             depressed
             large
-            color="error"
+            color="blue-grey darken-1"
+            type="submit"
+            dark
+          >
+            <v-icon
+              left
+            >
+              mdi-account-plus
+            </v-icon>
+            Create Account
+          </v-btn>
+
+          <v-btn
+            rounded
+            outlined
+            depressed
+            large
+            color="blue-grey darken-2"
+            class="mt-10"
             @click.prevent="reset"
           >
             <v-icon
               left
-              dark
             >
               mdi-account-cancel
             </v-icon>
             Cancel
-          </v-btn>
-          <v-spacer />
-          <v-btn
-            rounded
-            depressed
-            large
-            color="success"
-            type="submit"
-          >
-            <v-icon
-              left
-              dark
-            >
-              mdi-account-plus
-            </v-icon>
-            Register
           </v-btn>
         </v-card-actions>
       </v-form>

@@ -44,7 +44,6 @@ export default {
   name: 'Notifications',
   components: {
     Notification
-
   }
 }
 </script>

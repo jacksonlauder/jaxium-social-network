@@ -35,37 +35,54 @@
             @click:append="showPassword = !showPassword"
           />
         </v-container>
-        <v-card-actions>
+        
+        <v-card-actions class="d-flex flex-column">
           <v-btn
+            block
             rounded
             depressed
             large
-            color="primary"
-            to="/register"
-          >
-            <v-icon
-              left
-              dark
-            >
-              mdi-account-plus
-            </v-icon>
-            Register
-          </v-btn>
-          <v-spacer />
-          <v-btn
-            rounded
-            depressed
-            large
-            color="success"
+            color="blue-grey darken-1"
             type="submit"
+            dark
           >
             <v-icon
               left
-              dark
             >
               mdi-login
             </v-icon>
             Login
+          </v-btn>
+          
+          <v-btn
+            text
+            block
+            rounded
+            depressed
+            large
+            color="blue-grey darken-2"
+            class="mt-5 mx-0"
+          >
+            Forgot Password?
+          </v-btn>
+
+          <v-divider class="ma-4"></v-divider>
+
+          <v-btn
+            rounded
+            depressed
+            large
+            color="blue-grey darken-2"
+            to="/register"
+            block
+            outlined
+          >
+            <v-icon
+              left
+            >
+              mdi-account-plus
+            </v-icon>
+            Create New Account
           </v-btn>
         </v-card-actions>
       </v-form>

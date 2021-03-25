@@ -11,12 +11,34 @@
         <h2>Welcome to the<br><strong>Jaxium</strong><br>Social Network!</h2>
       </v-card-title>
       <!-- <v-card-text>Lorem ipsum dolor sit amet.</v-card-text> -->
-      <v-card-actions class="pt-4">
+
+      <v-card-actions class="d-flex flex-column mt-5">
         <v-btn
+          block
+          rounded
           depressed
           large
-          color="primary"
+          dark
+          color="blue-grey darken-1"
+          to="/login"
+        >
+          <v-icon
+            left
+          >
+            mdi-login
+          </v-icon>
+          Login
+        </v-btn>
+
+        <v-btn
+          block
+          outlined
+          rounded
+          depressed
+          large
+          color="blue-grey darken-2"
           to="/register"
+          class="mt-5 mx-0"
         >
           <v-icon
             left
@@ -24,22 +46,7 @@
           >
             mdi-account-plus
           </v-icon>
-          Register
-        </v-btn>
-        <v-spacer />
-        <v-btn
-          depressed
-          large
-          color="success"
-          to="/login"
-        >
-          <v-icon
-            left
-            dark
-          >
-            mdi-login
-          </v-icon>
-          Login
+          Create New Account
         </v-btn>
       </v-card-actions>
     </v-card>
