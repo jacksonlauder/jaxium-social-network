@@ -102,12 +102,14 @@
       
       <v-card-actions class="d-flex flex-column mb-5">
         <v-btn
+          dark
+          outlined
           block
           rounded
           depressed
           large
-          color="blue-grey darken-1"
-          dark
+          color="blue-grey darken-2"
+          to="profile-edit"
         >
           <v-icon
             class="mr-1"
