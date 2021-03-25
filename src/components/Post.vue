@@ -49,13 +49,13 @@
       <v-btn icon>
         <v-icon
           size="30px"
-          color="blue-grey darken-1"
+          color="blue-grey darken-2"
         >
           mdi-heart
         </v-icon>
       </v-btn>
       <span
-        class="ml-2 blue-grey--text text--darken-1"
+        class="ml-2 blue-grey--text text--darken-2"
       >15</span>
       <v-btn
         icon
@@ -63,7 +63,7 @@
       >
         <v-icon
           size="30px"
-          color="blue-grey darken-1"
+          color="blue-grey darken-2"
         >
           mdi-forum
         </v-icon>

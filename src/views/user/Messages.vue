@@ -14,13 +14,14 @@
         mdi-arrow-left-bold
       </v-icon>
     </v-btn>
+    
     <v-btn
       absolute
       fab
       top
       right
       icon
-      to=""
+      to="message-edit"
       color="blue-grey darken-3"
       elevation="3"
     >
@@ -28,6 +29,7 @@
         mdi-square-edit-outline
       </v-icon>
     </v-btn>
+
     <v-row class="mt-5">
       <h1 class="mx-auto mb-10">
         Messages
