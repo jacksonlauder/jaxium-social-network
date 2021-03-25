@@ -66,7 +66,7 @@
             Forgot Password?
           </v-btn>
 
-          <v-divider class="ma-4"></v-divider>
+          <v-divider class="ma-4" />
 
           <v-btn
             rounded

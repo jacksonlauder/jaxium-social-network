@@ -99,12 +99,15 @@
           >https://jaxium.com</a>
         </v-card-text>
       </v-row>
-      <v-card-actions class="mb-5">
-        <v-spacer />
+      
+      <v-card-actions class="d-flex flex-column mb-5">
         <v-btn
+          block
+          rounded
           depressed
           large
-          color="blue-grey lighten-3"
+          color="blue-grey darken-1"
+          dark
         >
           <v-icon
             class="mr-1"
@@ -113,7 +116,6 @@
           </v-icon>
           Edit Profile
         </v-btn>
-        <v-spacer />
       </v-card-actions>
     </v-card>
   </v-container>
