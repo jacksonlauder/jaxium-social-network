@@ -49,7 +49,7 @@
                   />
                 </v-avatar>
         
-                <span class="pt-1">{{user.fullName}}         
+                <span class="pt-1">{{ user.fullName }}         
                   <v-icon
                     color="blue-grey darken-3"
                   >
@@ -86,7 +86,10 @@
       </v-row>
     </v-app-bar>
 
-    <v-footer absolute color="blue-grey lighten-4">
+    <v-footer
+      absolute
+      color="blue-grey lighten-4"
+    >
       <v-text-field
         solo
         label="Message..."
@@ -99,6 +102,7 @@
 </template>
 
 <script>
+
   export default {
     data: () => ({
       user: {
@@ -109,3 +113,7 @@
     }),
   }
 </script>
+
+<style>
+
+</style>

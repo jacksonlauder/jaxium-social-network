@@ -91,6 +91,7 @@
         </v-badge>
       </v-btn>
     </v-bottom-navigation>
+    <v-footer height="70px" color="blue-grey lighten-5"/>
   </v-container>
 </template>
 
