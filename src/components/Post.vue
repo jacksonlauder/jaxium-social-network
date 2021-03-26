@@ -31,9 +31,9 @@
 
         <v-col>
           <v-menu
-            bottom
+            left
             rounded
-            offset-y
+            offset-x
             class="d-flex justify-center"
           >
             <template v-slot:activator="{ on }">
