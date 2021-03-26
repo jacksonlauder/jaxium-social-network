@@ -23,20 +23,60 @@
             />
           </v-avatar>
         </v-col>
+        
         <v-col cols="8">
           <v-card-title>Account Name</v-card-title>
           <v-card-subtitle>Minutes ago</v-card-subtitle>
         </v-col>
+
         <v-col>
-          <v-btn
-            absolute
-            top
-            right
-            icon
-            color="blue-grey darken-1"
+          <v-menu
+            bottom
+            rounded
+            offset-y
+            class="d-flex justify-center"
           >
-            <v-icon>mdi-dots-horizontal</v-icon>
-          </v-btn>
+            <template v-slot:activator="{ on }">
+              <v-btn
+                absolute
+                top
+                right
+                icon
+                color="blue-grey darken-1"
+                v-on="on"
+              >
+                <v-icon>mdi-dots-horizontal</v-icon>
+              </v-btn>
+            </template>
+            <v-card>
+              <v-list-item-content>
+                <v-btn
+                  depressed
+                  rounded
+                  text
+                  class="pa-0"
+                >
+                  Edit Post
+                </v-btn>
+                <v-btn
+                  depressed
+                  rounded
+                  text
+                  class="pa-0"
+                >
+                  Report Post
+                </v-btn>
+                <v-btn
+                  depressed
+                  rounded
+                  text
+                  class="pa-0"
+                >
+                  Share Post
+                </v-btn>
+              </v-list-item-content>
+            </v-card>
+          </v-menu>
         </v-col>
       </v-row>
 
@@ -46,6 +86,7 @@
     </v-container>
     <v-card-actions>
       <v-spacer />
+
       <v-btn icon>
         <v-icon
           size="30px"
