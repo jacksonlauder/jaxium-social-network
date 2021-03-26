@@ -1,35 +1,60 @@
 <template>
   <v-container fluid>
-    <v-row>
-      <v-dialog
-        v-model="show"
-        transition="dialog-bottom-transition"
-        scrollable
-        fullscreen
-      >
-        <v-card height="800px">
-          <v-toolbar
-            flat
-            color="blue-grey lighten-5"
-            class="pt-3"
+    <v-dialog
+      v-model="show"
+      transition="fade-transition"
+      scrollable
+    >
+      <v-card height="500px">
+        <v-container fluid>
+          <v-row
+            dense
           >
-              <v-text-field
-                solo
-                label="Search"
-                rounded
-                prepend-inner-icon="mdi-magnify"
-                hide-details="auto"
-              />
-              <v-btn
-                icon
-                @click="show = false"
-              >
-                <v-icon>mdi-close</v-icon>
-              </v-btn>
-          </v-toolbar>
-        </v-card>
-      </v-dialog>
-    </v-row>
+            <v-btn
+              absolute
+              large
+              icon
+              color="blue-grey darken-2"
+              @click="show = false"
+            >
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+            <v-card-title
+              class="pa-0 mx-auto mt-1"
+              color="blue-grey darken-2"
+            >
+              <h3>New Post</h3>
+            </v-card-title>
+          </v-row>
+
+          <v-divider class="my-8" />
+
+          <!-- TODO: Write code so that it clears input on close -->
+
+          <v-textarea
+            outlined
+            auto-grow
+            label="Write something..."
+            counter
+            hide-details="auto"
+          />
+
+          <v-card-actions class="d-flex flex-column mb-5">
+            <v-btn
+              dark
+              block
+              rounded
+              depressed
+              large
+              color="blue-grey darken-1"
+              @click="show = false"
+            >
+              Post
+            </v-btn>
+          </v-card-actions>
+        </v-container>
+      </v-card>
+    </v-dialog>
   </v-container>
 </template>
 
