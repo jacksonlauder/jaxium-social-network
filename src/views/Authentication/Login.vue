@@ -105,3 +105,18 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+  .theme--light.v-card {
+    background: rgba( 255, 255, 255, 0.25 );
+  }
+  .v-sheet.v-card:not(.v-sheet--outlined) {
+    box-shadow: 0 8px 32px 0 #546e7a8f;
+  }
+  .v-sheet.v-card {
+    border-radius: 10px;
+  }
+  .v-card > *:first-child:not(.v-btn):not(.v-chip), .v-card > .v-card__progress + *:not(.v-btn):not(.v-chip) {
+    border-radius: 10px;
+  }
+</style>
