@@ -33,31 +33,29 @@ const routes = [
     name: 'home',
     component: Home
   },
+
   {
     path: '/:username/profile',
     name: 'profile',
-    component: Profile,
-    children: [
-        {
-    path: '/:username/profile-edit',
+    component: Profile
+  },
+
+  {
+    path: '/:username/profile/profile-edit',
     name: 'profile-edit',
     component: ProfileEdit
   },
-    ]
-  },
-
 
   {
     path: '/:username/messages',
     name: 'messages',
-    component: Messages,
-    children: [
-      {
-        path: ':id',
-        name: "message-edit",
-        component: MessageEdit,
-      },
-    ],
+    component: Messages
+  },
+
+  {
+    path: '/:username/messages/:id',
+    name: "message-edit",
+    component: MessageEdit,
   },
 
   {
@@ -65,6 +63,7 @@ const routes = [
     name: "notifications",
     component: Notifications,
   },
+
   {
     path: "*",
     redirect: "/",

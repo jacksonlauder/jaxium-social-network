@@ -31,7 +31,7 @@
             left
             icon
             color="blue-grey darken-3"
-            to=""
+            to="/:username/messages/:id"
           >
             <v-icon large>
               mdi-chevron-right

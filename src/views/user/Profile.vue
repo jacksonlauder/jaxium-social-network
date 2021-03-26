@@ -109,7 +109,7 @@
           depressed
           large
           color="blue-grey darken-2"
-          to="profile-edit"
+          to="/:username/profile/profile-edit"
         >
           <v-icon
             class="mr-1"

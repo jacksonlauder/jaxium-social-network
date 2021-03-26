@@ -21,7 +21,7 @@
       top
       right
       icon
-      to="message-edit"
+      to="/:username/messages/:id"
       color="blue-grey darken-3"
       elevation="3"
     >
