@@ -91,12 +91,35 @@
       color="blue-grey lighten-4"
     >
       <v-text-field
+        v-model="message"
+        type="text"
         solo
         label="Message..."
         rounded
         hide-details="auto"
+        clear-icon="mdi-close-circle"
         clearable
+        :append-outer-icon="'mdi-send'"
+        @click:clear="clearMessage"
+        @click:append-outer="sendMessage"
+      >
+        <template v-slot:append-outer-icon>
+          <v-icon>mdi-send</v-icon>
+        </template>
+      </v-text-field>
+      <v-card
+        flat
+        tile
+        color="blue-grey lighten-4 mt-5"
+        width="100%"
+        height="20px"
+        class="d-none d-md-block"
       />
+      <!-- <div
+        class="d-none d-md-block ma-5"
+        width="100%"
+      >
+      </div> -->
     </v-footer>
   </v-container>
 </template>
@@ -105,15 +128,26 @@
 
   export default {
     data: () => ({
+      message: '',
       user: {
         fullName: 'John Doe',
         accountName: '@johndoe',
         picture: 'https://cdn.vuetifyjs.com/images/lists/1.jpg'
       },
     }),
+    methods: {
+      sendMessage () {
+        this.clearMessage()
+      },
+      clearMessage () {
+        this.message = ''
+      },
+    }
   }
 </script>
 
 <style>
-
+  .v-input__append-outer .v-icon {
+    color: #37474f;
+  }
 </style>
