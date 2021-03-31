@@ -58,7 +58,7 @@
 export default {
   name: 'SiteHome',
   beforeCreate: function() {
-    fetch(this.$store.state.apiUrl + '/api/user', {
+    fetch(this.$store.state.apiUrl + '/user', {
       method: 'GET'
     })
     // .then(res => res.json())

@@ -56,7 +56,10 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item to="/">
+        <v-list-item
+          v-if="$store.state.isLoggedIn"
+          @click.prevent="logout()"
+        >
           <v-list-item-content>
             <v-list-item-title class="mt-1">
               Logout
@@ -69,7 +72,15 @@
 </template>
 
 <script>
+import * as auth from '../services/AuthService'
+
 export default {
   data: () => ({ drawer: false }),
+    methods: {
+    logout: function () {
+      auth.logout()
+      this.$router.push({ name: 'SiteHome' })
+    }
+  }
 };
 </script>
