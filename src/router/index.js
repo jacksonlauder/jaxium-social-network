@@ -61,7 +61,7 @@ const routes = [
       if (auth.isLoggedIn()) {
         next()
       } else {
-        next('/login')
+        next('/')
       }
     }
   },
@@ -74,7 +74,7 @@ const routes = [
       if (auth.isLoggedIn()) {
         next()
       } else {
-        next('/login')
+        next('/')
       }
     }
   },
@@ -87,7 +87,7 @@ const routes = [
       if (auth.isLoggedIn()) {
         next()
       } else {
-        next('/login')
+        next('/')
       }
     }
   },
@@ -100,7 +100,7 @@ const routes = [
       if (auth.isLoggedIn()) {
         next()
       } else {
-        next('/login')
+        next('/')
       }
     }
   },
@@ -113,7 +113,7 @@ const routes = [
       if (auth.isLoggedIn()) {
         next()
       } else {
-        next('/login')
+        next('/')
       }
     }
   },
@@ -126,7 +126,7 @@ const routes = [
       if (auth.isLoggedIn()) {
         next()
       } else {
-        next('/login')
+        next('/')
       }
     }
   },
