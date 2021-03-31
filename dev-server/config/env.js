@@ -14,6 +14,7 @@ export function setEnvironment (app) {
 function setDevEnv (app) {
   process.env.NODE_ENV = 'development'
   process.env.DB_URL = 'mongodb://localhost:27017/jaxium-db'
+  process.env.TOKEN_SECRET = '10596874-jaxium-social-network-development-secret'
   app.use(bodyParser.json())
   app.use(morgan('dev'))
   app.use(cors())
@@ -21,6 +22,7 @@ function setDevEnv (app) {
 
 function setProdEnv (app) {
   process.env.DB_URL = 'mongodb://localhost:27017/jaxium-prod-db'
+  process.env.TOKEN_SECRET = '10596874-jaxium-social-network-production-secret'
   app.use(bodyParser.json())
   app.use(express.static(__dirname + '/../../dist'))
 }
