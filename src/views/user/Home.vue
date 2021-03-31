@@ -91,7 +91,10 @@
         </v-badge>
       </v-btn>
     </v-bottom-navigation>
-    <v-footer height="70px" color="blue-grey lighten-5"/>
+    <v-footer
+      height="70px"
+      color="blue-grey lighten-5"
+    />
   </v-container>
 </template>
 
@@ -102,19 +105,20 @@ import SearchDialog from '../../components/Search-Dialog'
 import NewPostDialog from '../../components/NewPost-Dialog'
 
   export default {
-    name: 'Home',
+    name: 'UserHome',
     components: {
       Post,
       PostSkeleton,
       SearchDialog,
       NewPostDialog,
     },
+
     data () {
       return {
         showSearchDialog: false,
         showNewPostDialog: false
       }
-    }
+    },
   }
 </script>
 

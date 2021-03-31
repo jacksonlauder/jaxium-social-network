@@ -91,8 +91,10 @@
 </template>
 
 <script>
+import * as auth from '../../services/AuthService'
+
 export default {
-    name: 'Login',
+  name: 'Login',
   data: function () {
     return {
       rules: [
@@ -103,6 +105,13 @@ export default {
       password: ''
     }
   },
+  methods: {
+    onSubmit: function() {
+      auth.login()
+      this.$router.push({ name: 'UserHome', params: { username: this.$store.state.username }})
+      // this.$router.push({ name: 'SiteHome' })
+    }
+  }
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <v-footer
-    padless
     v-show="displayFooter"
+    padless
   >
     <v-card
       flat
