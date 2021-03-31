@@ -12,6 +12,8 @@ var _routes = require('./routes');
 
 var _env = require('./config/env');
 
+var _db = require('./config/db');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* eslint-disable no-path-concat */
@@ -29,6 +31,7 @@ app.get('/', function (req, res) {
 });
 
 (0, _env.setEnvironment)(app);
+(0, _db.connectToDB)();
 
 app.listen(3000, function () {
   console.log('Jaxium Social Network Application listening on port 3000 in ' + process.env.NODE_ENV);

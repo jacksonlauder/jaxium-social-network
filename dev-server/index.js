@@ -6,6 +6,7 @@ var app = express()
 
 import { registerRoutes } from './routes'
 import { setEnvironment } from './config/env'
+import { connectToDB } from './config/db'
 
 registerRoutes(app)
 
@@ -18,6 +19,7 @@ app.get('/', (req, res) => {
 })
 
 setEnvironment(app)
+connectToDB()
 
 app.listen(3000, () => {
   console.log('Jaxium Social Network Application listening on port 3000 in ' + process.env.NODE_ENV)

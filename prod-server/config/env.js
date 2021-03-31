@@ -33,12 +33,14 @@ function setEnvironment(app) {
 
 function setDevEnv(app) {
   process.env.NODE_ENV = 'development';
+  process.env.DB_URL = 'mongodb://localhost:27017/jaxium-db';
   app.use(_bodyParser2.default.json());
   app.use((0, _morgan2.default)('dev'));
   app.use((0, _cors2.default)());
 }
 
 function setProdEnv(app) {
+  process.env.DB_URL = 'mongodb://localhost:27017/jaxium-prod-db';
   app.use(_bodyParser2.default.json());
   app.use(_express2.default.static(__dirname + '/../../dist'));
 }
