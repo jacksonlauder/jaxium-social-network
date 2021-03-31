@@ -20,6 +20,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // eslint-disable-next-line no-unused-vars
 var app = (0, _express2.default)();
 
+(0, _env.setEnvironment)(app);
+(0, _db.connectToDB)();
 (0, _routes.registerRoutes)(app);
 
 app.get('/', function (req, res) {
@@ -29,9 +31,6 @@ app.get('/', function (req, res) {
     return res.sendFile('index.html', { root: __dirname + '/../dist/' });
   }
 });
-
-(0, _env.setEnvironment)(app);
-(0, _db.connectToDB)();
 
 app.listen(3000, function () {
   console.log('Jaxium Social Network Application listening on port 3000 in ' + process.env.NODE_ENV);

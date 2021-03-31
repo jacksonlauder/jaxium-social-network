@@ -8,6 +8,8 @@ import { registerRoutes } from './routes'
 import { setEnvironment } from './config/env'
 import { connectToDB } from './config/db'
 
+setEnvironment(app)
+connectToDB()
 registerRoutes(app)
 
 app.get('/', (req, res) => {
@@ -17,9 +19,6 @@ app.get('/', (req, res) => {
     return res.sendFile('index.html', { root: __dirname + '/../dist/' })
   }
 })
-
-setEnvironment(app)
-connectToDB()
 
 app.listen(3000, () => {
   console.log('Jaxium Social Network Application listening on port 3000 in ' + process.env.NODE_ENV)

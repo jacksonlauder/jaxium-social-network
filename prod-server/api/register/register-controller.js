@@ -7,36 +7,33 @@ exports.index = index;
 
 var _stringUtil = require('../../utilities/string-util');
 
+var _userModel = require('../../model/user-model');
+
+var _userModel2 = _interopRequireDefault(_userModel);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function index(req, res) {
   var validation = validateIndex(req.body);
   if (!validation.isValid) {
     return res.status(400).json({ message: validation.message });
   }
 
-  var user = {
-    username: req.body.username.toLowerCase(),
+  var user = new _userModel2.default({
+    username: req.body.username,
     password: req.body.password,
     first: req.body.first,
     last: req.body.last
-  };
-  console.log(user);
-  return res.status(201).json();
-
-  // const user = new User({
-  //   username: req.body.username,
-  //   password: req.body.password,
-  //   first: req.body.first,
-  //   last: req.body.last
-  // })
-  // user.save(error => {
-  //   if (error) {
-  //     if (error.code === 11000) {
-  //       return res.status(403).json({ message: 'Username is already taken' })
-  //     }
-  //     return res.status(500).json()
-  //   }
-  //   return res.status(201).json()
-  // })
+  });
+  user.save(function (error) {
+    if (error) {
+      if (error.code === 11000) {
+        return res.status(403).json({ message: 'Username is already taken' });
+      }
+      return res.status(500).json();
+    }
+    return res.status(201).json();
+  });
 }
 
 function validateIndex(body) {

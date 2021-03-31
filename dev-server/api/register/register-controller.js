@@ -1,4 +1,5 @@
 import { StringUtil } from '../../utilities/string-util'
+import User from '../../model/user-model'
 
 export function index (req, res) {
   const validation = validateIndex(req.body)
@@ -6,30 +7,21 @@ export function index (req, res) {
     return res.status(400).json({ message: validation.message })
   }
 
-  const user = {
-    username: req.body.username.toLowerCase(),
+  const user = new User({
+    username: req.body.username,
     password: req.body.password,
     first: req.body.first,
     last: req.body.last
-  }
-  console.log(user)
-  return res.status(201).json()
-
-  // const user = new User({
-  //   username: req.body.username,
-  //   password: req.body.password,
-  //   first: req.body.first,
-  //   last: req.body.last
-  // })
-  // user.save(error => {
-  //   if (error) {
-  //     if (error.code === 11000) {
-  //       return res.status(403).json({ message: 'Username is already taken' })
-  //     }
-  //     return res.status(500).json()
-  //   }
-  //   return res.status(201).json()
-  // })
+  })
+  user.save(error => {
+    if (error) {
+      if (error.code === 11000) {
+        return res.status(403).json({ message: 'Username is already taken' })
+      }
+      return res.status(500).json()
+    }
+    return res.status(201).json()
+  })
 }
 
 function validateIndex (body) {
