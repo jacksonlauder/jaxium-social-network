@@ -31,10 +31,9 @@
 
         <v-col>
           <v-menu
-            left
+            right
             rounded
             offset-x
-            class="d-flex justify-center"
           >
             <template v-slot:activator="{ on }">
               <v-btn
@@ -48,34 +47,23 @@
                 <v-icon>mdi-dots-horizontal</v-icon>
               </v-btn>
             </template>
-            <v-card>
-              <v-list-item-content>
-                <v-btn
-                  depressed
-                  rounded
-                  text
-                  class="pa-0"
-                >
-                  Edit Post
-                </v-btn>
-                <v-btn
-                  depressed
-                  rounded
-                  text
-                  class="pa-0"
-                >
-                  Report Post
-                </v-btn>
-                <v-btn
-                  depressed
-                  rounded
-                  text
-                  class="pa-0"
-                >
-                  Share Post
-                </v-btn>
-              </v-list-item-content>
-            </v-card>
+            <v-list>
+              <v-list-item
+                link
+              >
+                Edit Post
+              </v-list-item>
+              <v-list-item
+                link
+              >
+                Report Post
+              </v-list-item>
+              <v-list-item
+                link
+              >
+                Share Post
+              </v-list-item>
+            </v-list>
           </v-menu>
         </v-col>
       </v-row>

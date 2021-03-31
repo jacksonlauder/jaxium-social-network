@@ -25,18 +25,41 @@
             <v-list-item-subtitle v-html="item.subtitle" />
           </v-list-item-content>
 
-          <v-btn
-            fab
-            top
-            left
-            icon
-            color="blue-grey darken-3"
-            to=""
+          <v-menu
+            right
+            rounded
+            offset-x
           >
-            <v-icon large>
-              mdi-dots-horizontal
-            </v-icon>
-          </v-btn>
+            <template v-slot:activator="{ on }">
+              <v-btn
+                absolute
+                top
+                right
+                icon
+                color="blue-grey darken-1"
+                v-on="on"
+              >
+                <v-icon>mdi-dots-horizontal</v-icon>
+              </v-btn>
+            </template>
+            <v-list>
+              <v-list-item
+                link
+              >
+                Clear Notification
+              </v-list-item>
+              <v-list-item
+                link
+              >
+                View Post
+              </v-list-item>
+              <v-list-item
+                link
+              >
+                View Profile
+              </v-list-item>
+            </v-list>
+          </v-menu>
         </v-list-item>
       </template>
     </v-list>
