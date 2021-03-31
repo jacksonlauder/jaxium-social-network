@@ -9,24 +9,22 @@ import ProfileEdit from '../views/user/ProfileEdit.vue'
 import Messages from '../views/user/Messages.vue'
 import MessageEdit from '../views/user/MessageEdit'
 import Notifications from '../views/user/Notifications.vue'
-// import * as auth from '../services/AuthService'
+import * as auth from '../services/AuthService'
 
 Vue.use(VueRouter)
-
-const isLoggedIn = false;
 
 const routes = [
   {
     path: '/',
     name: 'SiteHome',
     component: SiteHome,
-    // beforeEnter: (to, from, next) => {
-    //   if (!isLoggedIn) {
-    //     next()
-    //   } else {
-    //     next('/:username')
-    //   }
-    // }
+    beforeEnter: (to, from, next) => {
+      if (!auth.isLoggedIn()) {
+        next()
+      } else {
+        next('/:username')
+      }
+    }
   },
 
   {
@@ -34,7 +32,7 @@ const routes = [
     name: 'Login',
     component: Login,
     beforeEnter: (to, from, next) => {
-      if (!isLoggedIn) {
+      if (!auth.isLoggedIn()) {
         next()
       } else {
         next('/:username')
@@ -47,10 +45,10 @@ const routes = [
     name: 'Register',
     component: Register,
     beforeEnter: (to, from, next) => {
-      if (!isLoggedIn) {
+      if (!auth.isLoggedIn()) {
         next()
       } else {
-        next('/')
+        next('/:username')
       }
     }
   },
@@ -60,7 +58,7 @@ const routes = [
     name: 'UserHome',
     component: UserHome,
     beforeEnter: (to, from, next) => {
-      if (isLoggedIn) {
+      if (auth.isLoggedIn()) {
         next()
       } else {
         next('/login')
@@ -73,7 +71,7 @@ const routes = [
     name: 'profile',
     component: Profile,
     beforeEnter: (to, from, next) => {
-      if (isLoggedIn) {
+      if (auth.isLoggedIn()) {
         next()
       } else {
         next('/login')
@@ -86,7 +84,7 @@ const routes = [
     name: 'profile-edit',
     component: ProfileEdit,
     beforeEnter: (toolbar, from, next) => {
-      if (isLoggedIn) {
+      if (auth.isLoggedIn()) {
         next()
       } else {
         next('/login')
@@ -99,7 +97,7 @@ const routes = [
     name: 'messages',
     component: Messages,
     beforeEnter: (to, from, next) => {
-      if (isLoggedIn) {
+      if (auth.isLoggedIn()) {
         next()
       } else {
         next('/login')
@@ -112,7 +110,7 @@ const routes = [
     name: "message-edit",
     component: MessageEdit,
     beforeEnter: (to, from, next) => {
-      if (isLoggedIn) {
+      if (auth.isLoggedIn()) {
         next()
       } else {
         next('/login')
@@ -125,7 +123,7 @@ const routes = [
     name: "notifications",
     component: Notifications,
     beforeEnter: (to, from, next) => {
-      if (isLoggedIn) {
+      if (auth.isLoggedIn()) {
         next()
       } else {
         next('/login')

@@ -91,6 +91,7 @@
 </template>
 
 <script>
+import * as auth from '../../services/AuthService'
 
 export default {
   name: 'Register',
@@ -112,6 +113,19 @@ export default {
       this.$refs.regForm.reset()
       this.$router.push({ name: 'SiteHome' })
     },
+    onSubmit: async function () {
+      const user = {
+        username: this.username,
+        password: this.password,
+        first: this.first,
+        last: this.last,
+        is_admin: this.is_admin
+      }
+        const registerPromise = auth.registerUser(user)
+        const loginPromise = auth.login(user)
+        await Promise.all([registerPromise, loginPromise])
+        this.$router.push({ name: 'UserHome', params: { username: this.$store.state.username }})
+    }
   }
 }
 </script>

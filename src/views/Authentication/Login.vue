@@ -106,10 +106,13 @@ export default {
     }
   },
   methods: {
-    onSubmit: function() {
-      auth.login()
+    onSubmit: async function() {
+      const user = {
+        username: this.username,
+        password: this.password
+      }
+      await auth.login(user)
       this.$router.push({ name: 'UserHome', params: { username: this.$store.state.username }})
-      // this.$router.push({ name: 'SiteHome' })
     }
   }
 }
