@@ -2,7 +2,12 @@
   <v-app id="app">
     <MainAppBar />
     <v-main>
-      <router-view />
+      <transition
+        name="fade"
+        mode="out-in"
+      >
+        <router-view />
+      </transition>
     </v-main>
     <Footer />
   </v-app>
@@ -12,6 +17,12 @@
   html, body, .v-application, .v-application--wrap {
     /* min-height: -webkit-fill-available !important; */
     background-color: #eceff1;
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .2s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
   }
 </style>
 

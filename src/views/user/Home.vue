@@ -18,7 +18,7 @@
       background-color="blue-grey darken-1"
       dark
     >
-      <v-btn @click.prevent="toProfile">
+      <v-btn @click.prevent="toProfile" transition="fade-transition">
         <span class="hidden-sm-and-down">Profile</span>
         <v-icon
           size="35px"
@@ -65,6 +65,7 @@
           color="red"
           dot
           overlap
+          v-model="showMessagesBadge"
         >
           <v-icon
             size="35px"
@@ -81,6 +82,7 @@
           color="red"
           dot
           overlap
+          v-model="showNotificationsBadge"
         >
           <v-icon
             size="35px"
@@ -116,7 +118,9 @@ import NewPostDialog from '../../components/NewPost-Dialog'
     data () {
       return {
         showSearchDialog: false,
-        showNewPostDialog: false
+        showNewPostDialog: false,
+        showMessagesBadge: false,
+        showNotificationsBadge: false
       }
     },
     methods: {
