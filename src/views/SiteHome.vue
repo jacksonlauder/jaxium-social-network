@@ -61,7 +61,7 @@ export default {
     fetch(this.$store.state.apiUrl + '/api/user', {
       method: 'GET'
     })
-    .then(res => res.json())
+    // .then(res => res.json())
     .then(res => console.log(res))
   }
 }

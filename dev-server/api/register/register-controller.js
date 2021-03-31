@@ -13,7 +13,7 @@ export function index (req, res) {
     last: req.body.last
   }
   console.log(user)
-  return res.json()
+  return res.status(201).json()
 
   // const user = new User({
   //   username: req.body.username,
