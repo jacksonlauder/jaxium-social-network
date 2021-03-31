@@ -30,7 +30,7 @@ export function getToken () {
 }
 
 export function getUsername () {
-    const token = decodeToken()
+  const token = decodeToken()
   if (!token) {
     return null
   }
@@ -38,7 +38,11 @@ export function getUsername () {
 }
 
 export function getUserId () {
-  return 1;
+  const token = decodeToken()
+  if (!token) {
+    return null
+  }
+  return token.user.id
 }
 
 export function registerUser (user) {
