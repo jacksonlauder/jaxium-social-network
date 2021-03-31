@@ -6,9 +6,9 @@
       top
       left
       icon
-      to="/:username/home"
       color="blue-grey darken-3"
       elevation="3"
+      @click.prevent="toHome"
     >
       <v-icon large>
         mdi-arrow-left-bold
@@ -21,9 +21,9 @@
       top
       right
       icon
-      to="/:username/messages/:id"
       color="blue-grey darken-3"
       elevation="3"
+      @click.prevent="toMessageEdit"
     >
       <v-icon large>
         mdi-square-edit-outline
@@ -46,6 +46,14 @@ import Message from '../../components/Message'
     name: 'Messages',
     components: {
       Message,
+    },
+    methods: {
+      toHome: function() {
+        this.$router.push({ name: 'UserHome', params: { username: this.$store.state.username }})
+      },
+      toMessageEdit: function() {
+        this.$router.push({ name: 'message-edit', params: { username: this.$store.state.username }})
+      }
     }
   }
 </script>

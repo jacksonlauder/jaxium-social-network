@@ -31,7 +31,7 @@
             left
             icon
             color="blue-grey darken-3"
-            to="/:username/messages/:id"
+            @click.prevent="toMessageEdit"
           >
             <v-icon large>
               mdi-chevron-right
@@ -77,6 +77,11 @@ export default {
         subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, incidunt!'
       },
     ]
-  })
+  }),
+  methods: {
+    toMessageEdit: function() {
+      this.$router.push({ name: 'message-edit', params: { username: this.$store.state.username }})
+    }
+  }
 }
 </script>

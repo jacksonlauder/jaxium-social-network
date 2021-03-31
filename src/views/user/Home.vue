@@ -18,7 +18,7 @@
       background-color="blue-grey darken-1"
       dark
     >
-      <v-btn to="/:username/profile">
+      <v-btn @click.prevent="toProfile">
         <span class="hidden-sm-and-down">Profile</span>
         <v-icon
           size="35px"
@@ -59,7 +59,7 @@
         </v-icon>
       </v-btn>
 
-      <v-btn to="/:username/messages">
+      <v-btn @click.prevent="toMessages">
         <span class="hidden-sm-and-down">Messages</span>
         <v-badge
           color="red"
@@ -75,7 +75,7 @@
         </v-badge>
       </v-btn>
 
-      <v-btn to="/:username/notifications">
+      <v-btn @click.prevent="toNotifications">
         <span class="hidden-sm-and-down">Notifications</span>
         <v-badge
           color="red"
@@ -117,6 +117,17 @@ import NewPostDialog from '../../components/NewPost-Dialog'
       return {
         showSearchDialog: false,
         showNewPostDialog: false
+      }
+    },
+    methods: {
+      toProfile: function() {
+        this.$router.push({ name: 'profile', params: { username: this.$store.state.username }})
+      },
+      toMessages: function() {
+        this.$router.push({ name: 'messages', params: { username: this.$store.state.username }})
+      },
+      toNotifications: function() {
+        this.$router.push({ name: 'notifications', params: { username: this.$store.state.username }})
       }
     }
   }

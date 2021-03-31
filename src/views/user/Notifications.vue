@@ -6,9 +6,9 @@
       top
       left
       icon
-      to="/:username/home"
       color="blue-grey darken-3"
       elevation="3"
+      @click.prevent="toHome"
     >
       <v-icon large>
         mdi-arrow-left-bold
@@ -44,6 +44,11 @@ export default {
   name: 'Notifications',
   components: {
     Notification
+  },
+  methods: {
+    toHome: function() {
+      this.$router.push({ name: 'UserHome', params: { username: this.$store.state.username }})
+    }
   }
 }
 </script>

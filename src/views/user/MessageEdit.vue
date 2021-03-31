@@ -14,7 +14,7 @@
           <v-btn
             icon
             color="blue-grey lighten-4"
-            to="/:username/messages"
+            @click.prevent="toMessages"
           >
             <v-icon
               large
@@ -115,11 +115,6 @@
         height="20px"
         class="d-none d-md-block"
       />
-      <!-- <div
-        class="d-none d-md-block ma-5"
-        width="100%"
-      >
-      </div> -->
     </v-footer>
   </v-container>
 </template>
@@ -141,6 +136,9 @@
       },
       clearMessage () {
         this.message = ''
+      },
+      toMessages: function() {
+        this.$router.push({ name: 'messages', params: { username: this.$store.state.username }})
       },
     }
   }

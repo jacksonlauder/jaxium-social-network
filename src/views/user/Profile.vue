@@ -8,10 +8,10 @@
       top
       left
       icon
-      to="/:username/home"
       color="blue-grey-darken-3"
       absolute
       elevation="3"
+      @click.prevent="toHome"
     >
       <v-icon large>
         mdi-arrow-left-bold
@@ -48,7 +48,7 @@
         justify="space-around"
         class="mt-0"
       >
-        <v-card-subtitle><h2>accountname</h2></v-card-subtitle>
+        <v-card-subtitle><h2>{{ $store.state.username }}</h2></v-card-subtitle>
       </v-row>
 
       <v-row
@@ -109,7 +109,7 @@
           depressed
           large
           color="blue-grey darken-2"
-          to="/:username/profile/profile-edit"
+          @click.prevent="toProfileEdit"
         >
           <v-icon
             class="mr-1"
@@ -122,6 +122,20 @@
     </v-card>
   </v-container>
 </template>
+
+<script>
+export default {
+  name: 'Profile',
+  methods: {
+    toHome: function() {
+      this.$router.push({ name: 'UserHome', params: { username: this.$store.state.username }})
+    },
+    toProfileEdit: function() {
+      this.$router.push({ name: 'profile-edit', params: { username: this.$store.state.username }})
+    }
+  }
+}
+</script>
 
 <style scoped>
   .v-btn--fab.v-size--default.v-btn--absolute.v-btn--top {
