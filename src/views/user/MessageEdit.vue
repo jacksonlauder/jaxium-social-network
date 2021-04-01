@@ -78,7 +78,6 @@
           </v-card>
         </v-menu>
       </div>
-      <!-- </v-row> -->
     </v-app-bar>
 
     <v-footer
