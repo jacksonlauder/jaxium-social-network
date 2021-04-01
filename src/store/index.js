@@ -11,7 +11,6 @@ export default new Vuex.Store({
     apiUrl: `${window.location.protocol}//${window.location.hostname}:3000/api`,
     username: null,
     userId: null,
-    userData: null,
     userFirstName: null,
     userLastName: null,
     userEmail: null,
