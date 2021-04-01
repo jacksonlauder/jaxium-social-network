@@ -47,7 +47,7 @@
           to="/register"
         >
           <v-list-item-icon>
-            <v-icon>mdi-home</v-icon>
+            <v-icon>mdi-account-plus</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title class="mt-1">
