@@ -6,84 +6,79 @@
       color="blue-grey lighten-4"
       height="100px"
     >
-      <v-row>
-        <div
-          style="position: absolute;"
-          class="mt-4"
+      <v-btn
+        absolute
+        icon
+        color="blue-grey lighten-4"
+        @click.prevent="toMessages"
+      >
+        <v-icon
+          large
+          color="blue-grey darken-3"
         >
-          <v-btn
-            icon
-            color="blue-grey lighten-4"
-            @click.prevent="toMessages"
-          >
-            <v-icon
-              large
-              color="blue-grey darken-3"
-            >
-              mdi-chevron-left
-            </v-icon>
-          </v-btn>
-        </div>
+          mdi-chevron-left
+        </v-icon>
+      </v-btn>
 
-        <div class="d-flex justify-center ma-auto">
-          <v-menu
-            bottom
-            min-width="200px"
-            rounded
-            offset-y
-            class="d-flex justify-center"
-          >
-            <template v-slot:activator="{ on }">
-              <div
-                class="d-flex flex-column justify-center align-center button"
-                role="button"
-                v-on="on"
+      <div class="d-flex justify-center ma-auto">
+        <v-menu
+          bottom
+          min-width="200px"
+          rounded
+          offset-y
+          class="d-flex justify-center"
+        >
+          <template v-slot:activator="{ on }">
+            <div
+              class="d-flex flex-column justify-center align-center button"
+              role="button"
+              v-on="on"
+            >
+              <v-avatar
+                height="50"
+                width="50"
+                class=""
               >
-                <v-avatar
-                  height="50"
-                  width="50"
-                  class=""
+                <v-img
+                  :src="user.picture"
+                />
+              </v-avatar>
+        
+              <span class="pt-1">{{ user.fullName }}         
+                <v-icon
+                  color="blue-grey darken-3"
                 >
+                  mdi-chevron-right
+                </v-icon>
+              </span>
+            </div>
+          </template>
+          <v-card>
+            <v-list-item-content class="justify-center">
+              <div class="mx-auto text-center">
+                <v-avatar>
                   <v-img
                     :src="user.picture"
                   />
                 </v-avatar>
-        
-                <span class="pt-1">{{ user.fullName }}         
-                  <v-icon
-                    color="blue-grey darken-3"
-                  >
-                    mdi-chevron-right
-                  </v-icon>
-                </span>
+                <h3>{{ user.fullName }}</h3>
+                <p class="caption mt-1">
+                  {{ user.accountName }}
+                </p>
+                <v-divider class="my-3" />
+                <v-btn
+                  depressed
+                  rounded
+                  text
+                >
+                  View Account
+                </v-btn>
               </div>
-            </template>
-            <v-card>
-              <v-list-item-content class="justify-center">
-                <div class="mx-auto text-center">
-                  <v-avatar>
-                    <v-img
-                      :src="user.picture"
-                    />
-                  </v-avatar>
-                  <h3>{{ user.fullName }}</h3>
-                  <p class="caption mt-1">
-                    {{ user.accountName }}
-                  </p>
-                  <v-divider class="my-3" />
-                  <v-btn
-                    depressed
-                    rounded
-                    text
-                  >
-                    View Account
-                  </v-btn>
-                </div>
-              </v-list-item-content>
-            </v-card>
-          </v-menu>
-        </div>
-      </v-row>
+            </v-list-item-content>
+          </v-card>
+        </v-menu>
+      </div>
+      <!-- </v-row> -->
     </v-app-bar>
 
     <v-footer
