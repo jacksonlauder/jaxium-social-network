@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import * as auth from '../services/AuthService'
-// import * as user from '../services/UserService'
+import * as user from '../services/UserService'
 
 Vue.use(Vuex)
 
@@ -25,6 +25,7 @@ export default new Vuex.Store({
       if (state.isLoggedIn) {
         state.username = auth.getUsername()
         state.userId = auth.getUserId()
+        user.getUserData(state.userId)
       } else {
         state.userId = null
         state.username = null

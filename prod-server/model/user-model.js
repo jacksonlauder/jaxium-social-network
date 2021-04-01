@@ -20,7 +20,8 @@ var userSchema = new _mongoose2.default.Schema({
   username: String,
   first: String,
   last: String,
-  password: String
+  password: String,
+  email: String
 });
 userSchema.set('timestamps', true);
 userSchema.virtual('fullName').get(function () {
@@ -37,6 +38,7 @@ userSchema.pre('save', function (next) {
   this.last = this.last.toLowerCase();
   var unsafePassword = this.password;
   this.password = _bcryptNodejs2.default.hashSync(unsafePassword);
+  this.email = this.email.toLowerCase();
   next();
 });
 

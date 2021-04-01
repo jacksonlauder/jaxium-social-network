@@ -23,7 +23,8 @@ function index(req, res) {
     username: req.body.username,
     password: req.body.password,
     first: req.body.first,
-    last: req.body.last
+    last: req.body.last,
+    email: req.body.email
   });
   user.save(function (error) {
     if (error) {
@@ -49,6 +50,9 @@ function validateIndex(body) {
   }
   if (_stringUtil.StringUtil.isEmpty(body.last)) {
     errors += 'Last Name is required. ';
+  }
+  if (_stringUtil.StringUtil.isEmpty(body.email)) {
+    errors += 'Email is required. ';
   }
 
   return {

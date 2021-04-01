@@ -11,7 +11,8 @@ export function index (req, res) {
     username: req.body.username,
     password: req.body.password,
     first: req.body.first,
-    last: req.body.last
+    last: req.body.last,
+    email: req.body.email
   })
   user.save(error => {
     if (error) {
@@ -37,6 +38,9 @@ function validateIndex (body) {
   }
   if (StringUtil.isEmpty(body.last)) {
     errors += 'Last Name is required. '
+  }
+  if (StringUtil.isEmpty(body.email)) {
+    errors += 'Email is required. '
   }
 
   return {

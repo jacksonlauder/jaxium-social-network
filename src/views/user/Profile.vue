@@ -41,7 +41,7 @@
         justify="space-around"
         class="pt-5"
       >
-        <v-card-title><h2>Full Name</h2></v-card-title>
+        <v-card-title><h2>{{ $store.state.userFirstName | capitalize }} {{ $store.state.userLastName | capitalize }}</h2></v-card-title>
       </v-row>
 
       <v-row
@@ -124,8 +124,16 @@
 </template>
 
 <script>
+// import * as UserService from '../../services/UserService'
+
 export default {
   name: 'Profile',
+    data: function () {
+    return {
+      userData: null
+    }
+  },
+
   methods: {
     toHome: function() {
       this.$router.push({ name: 'UserHome', params: { username: this.$store.state.username }})

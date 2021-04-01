@@ -6,7 +6,8 @@ const userSchema = new mongoose.Schema({
   username: String,
   first: String,
   last: String,
-  password: String
+  password: String,
+  email: String,
 })
 userSchema.set('timestamps', true)
 userSchema.virtual('fullName').get(function () {
@@ -23,6 +24,7 @@ userSchema.pre('save', function (next) {
   this.last = this.last.toLowerCase()
   const unsafePassword = this.password
   this.password = bcrypt.hashSync(unsafePassword)
+  this.email = this.email.toLowerCase()
   next()
 })
 

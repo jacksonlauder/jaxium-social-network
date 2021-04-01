@@ -21,12 +21,15 @@
             :rules="rules"
             required
           />
+
           <v-text-field
             v-model="last"
             label="Last Name"
             prepend-icon="mdi-account"
             spellcheck="false"
+            required
           />
+
           <v-text-field
             v-model="username"
             label="Username"
@@ -36,6 +39,17 @@
             :rules="rules"
             required
           />
+
+          <v-text-field
+            v-model="email"
+            label="Email"
+            prepend-icon="mdi-account-circle"
+            autocapitalize="off"
+            spellcheck="false"
+            :rules="rules"
+            required
+          />
+
           <v-text-field
             v-model="password"
             autocapitalize="off"
@@ -105,7 +119,8 @@ export default {
       password: '',
       first: '',
       last: '',
-      is_admin: ''
+      is_admin: '',
+      email: ''
     }
   },  
   methods: {
