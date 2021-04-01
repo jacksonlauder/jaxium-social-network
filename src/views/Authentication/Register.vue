@@ -5,7 +5,7 @@
       class="mx-auto mt-5 pa-2"
     >
       <v-card-title class="justify-center pb-3">
-        <h2>Register</h2>
+        <h2>Create a New Account</h2>
       </v-card-title>
       <v-divider />
       <v-form
@@ -43,7 +43,7 @@
           <v-text-field
             v-model="email"
             label="Email"
-            prepend-icon="mdi-account-circle"
+            prepend-icon="mdi-email"
             autocapitalize="off"
             spellcheck="false"
             :rules="rules"
@@ -119,7 +119,6 @@ export default {
       password: '',
       first: '',
       last: '',
-      is_admin: '',
       email: ''
     }
   },  
@@ -134,7 +133,7 @@ export default {
         password: this.password,
         first: this.first,
         last: this.last,
-        is_admin: this.is_admin
+        email: this.email
       }
         const registerPromise = auth.registerUser(user)
         const loginPromise = auth.login(user)
