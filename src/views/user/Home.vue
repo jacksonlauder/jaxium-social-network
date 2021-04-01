@@ -1,8 +1,5 @@
 <template>
-  <v-container
-    fluid
-    class="mt-6"
-  >
+  <v-container fluid>
     <SearchDialog v-model="showSearchDialog" />
     <NewPostDialog v-model="showNewPostDialog" />
 
@@ -18,7 +15,10 @@
       background-color="blue-grey darken-1"
       dark
     >
-      <v-btn @click.prevent="toProfile" transition="fade-transition">
+      <v-btn
+        transition="fade-transition"
+        @click.prevent="toProfile"
+      >
         <span class="hidden-sm-and-down">Profile</span>
         <v-icon
           size="35px"
@@ -62,10 +62,10 @@
       <v-btn @click.prevent="toMessages">
         <span class="hidden-sm-and-down">Messages</span>
         <v-badge
+          v-model="showMessagesBadge"
           color="red"
           dot
           overlap
-          v-model="showMessagesBadge"
         >
           <v-icon
             size="35px"
@@ -79,10 +79,10 @@
       <v-btn @click.prevent="toNotifications">
         <span class="hidden-sm-and-down">Notifications</span>
         <v-badge
+          v-model="showNotificationsBadge"
           color="red"
           dot
           overlap
-          v-model="showNotificationsBadge"
         >
           <v-icon
             size="35px"
