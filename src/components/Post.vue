@@ -3,6 +3,7 @@
     <v-card
       v-for="post of posts"
       :key="post._id"
+      :id="`posts-${post._id}`"
       class="mx-auto mb-5"
       max-width="500"
       elevation="4"
@@ -55,11 +56,10 @@
                 <v-list-item
                   v-if="$store.state.username === post.author.username"
                   link
-                  disabled
-                  @click.prevent="editPost(post._id)"
+                  @click.prevent="editing = true"
                 >
                   <v-list-item-icon>
-                    <v-icon disabled>
+                    <v-icon>
                       mdi-square-edit-outline
                     </v-icon>
                   </v-list-item-icon>
@@ -167,10 +167,11 @@
           </v-col>
         </v-row>
 
-        <v-card-text>
+        <v-card-text :contenteditable="editing">
           {{ post.postContent }}
         </v-card-text>
       </v-container>
+
       <v-card-actions>
         <v-spacer />
 
@@ -215,6 +216,7 @@ export default {
   data: function () {
     return {
       dialog: false,
+      editing: false
     }
   },
 
