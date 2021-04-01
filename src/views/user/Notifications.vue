@@ -26,7 +26,6 @@
           top
           right
           icon
-          to=""
           color="blue-grey darken-3"
           elevation="3"
           v-bind="attrs"

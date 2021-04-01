@@ -14,3 +14,7 @@
 .v-card__actions > .v-btn.v-btn {
   border-radius: 10px;
 }
+
+.v-application--is-ltr .v-list-item__icon:first-child {
+    margin-right: 15px;
+}

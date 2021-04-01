@@ -58,15 +58,92 @@
                   disabled
                   @click.prevent="editPost(post._id)"
                 >
-                  Edit Post
+                  <v-list-item-icon>
+                    <v-icon disabled>
+                      mdi-square-edit-outline
+                    </v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      Edit Post
+                    </v-list-item-title>
+                  </v-list-item-content>
                 </v-list-item>
 
-                <v-list-item
-                  v-if="$store.state.username === post.author.username"
-                  link
-                  @click.prevent="deletePost(post._id)"
+                <v-dialog
+                  v-model="dialog"
+                  width="500"
                 >
-                  Delete Post
+                  <template v-slot:activator="{ on, attrs}">
+                    <v-list-item
+                      v-if="$store.state.username === post.author.username"
+                      link
+                      v-bind="attrs"
+                      v-on="on"
+                    >
+                      <v-list-item-icon><v-icon>mdi-delete</v-icon></v-list-item-icon>
+                      <v-list-item-content>
+                        <v-list-item-title>
+                          Delete Post
+                        </v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </template>
+
+                  <v-card>
+                    <v-card-title class="headline">
+                      Delete Post?
+                    </v-card-title>
+
+                    <v-divider />
+
+                    <v-card-text class="mt-4">
+                      This action may not be undone.
+                    </v-card-text>
+
+                    <v-divider />
+
+                    <v-card-actions>
+                      <v-btn
+                        rounded
+                        outlined
+                        depressed
+                        large
+                        color="blue-grey darken-2"
+                        @click="dialog = false"
+                      >
+                        Cancel
+                      </v-btn>
+                      <v-spacer />
+                      <v-btn
+                        rounded
+                        depressed
+                        large
+                        color="blue-grey darken-1"
+                        dark
+                        @click.prevent="deletePost(post._id)"
+                      >
+                        Clear
+                      </v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-dialog>
+
+                <v-list-item
+                  v-if="$store.state.username !== post.author.username"
+                  link
+                  disabled
+                >
+                  <v-list-item-icon>
+                    <v-icon disabled>
+                      mdi-alert
+                    </v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      Report Post
+                    </v-list-item-title>
+                  </v-list-item-content>
                 </v-list-item>
 
                 <v-list-item
@@ -74,15 +151,16 @@
                   link
                   disabled
                 >
-                  Report Post
-                </v-list-item>
-
-                <v-list-item
-                  v-if="$store.state.username !== post.author.username"
-                  link
-                  disabled
-                >
-                  Share Post
+                  <v-list-item-icon>
+                    <v-icon disabled>
+                      mdi-share-variant
+                    </v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      Share Post
+                    </v-list-item-title>
+                  </v-list-item-content>
                 </v-list-item>
               </v-list>
             </v-menu>
@@ -134,6 +212,12 @@ export default {
     posts: {}
   },
 
+  data: function () {
+    return {
+      dialog: false,
+    }
+  },
+
   methods: {
     time: function (timeRaw) {
       var timeParsed = moment(timeRaw).fromNow()
@@ -144,6 +228,7 @@ export default {
     },
     deletePost: async function (id) {
       await PostService.deletePost(id)
+      this.dialog = false
     }
   }
 }

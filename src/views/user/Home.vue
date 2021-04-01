@@ -4,9 +4,6 @@
     <NewPostDialog v-model="showNewPostDialog" />
 
     <Post :posts="posts" />
-    <PostSkeleton />
-    <PostSkeleton />
-    <PostSkeleton />
 
     <v-bottom-navigation
       fixed
@@ -102,7 +99,6 @@
 
 <script>
 import Post from '../../components/Post'
-import PostSkeleton from '../../components/PostSkeletonLoader'
 import SearchDialog from '../../components/Search-Dialog'
 import NewPostDialog from '../../components/NewPost-Dialog'
 import * as PostService from '../../services/PostService'
@@ -111,7 +107,6 @@ import * as PostService from '../../services/PostService'
     name: 'UserHome',
     components: {
       Post,
-      PostSkeleton,
       SearchDialog,
       NewPostDialog,
     },
