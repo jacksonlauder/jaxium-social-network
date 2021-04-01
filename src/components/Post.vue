@@ -55,6 +55,8 @@
                 <v-list-item
                   v-if="$store.state.username === post.author.username"
                   link
+                  disabled
+                  @click.prevent="editPost(post._id)"
                 >
                   Edit Post
                 </v-list-item>
@@ -62,6 +64,7 @@
                 <v-list-item
                   v-if="$store.state.username === post.author.username"
                   link
+                  @click.prevent="deletePost(post._id)"
                 >
                   Delete Post
                 </v-list-item>
@@ -69,6 +72,7 @@
                 <v-list-item
                   v-if="$store.state.username !== post.author.username"
                   link
+                  disabled
                 >
                   Report Post
                 </v-list-item>
@@ -76,6 +80,7 @@
                 <v-list-item
                   v-if="$store.state.username !== post.author.username"
                   link
+                  disabled
                 >
                   Share Post
                 </v-list-item>
@@ -120,6 +125,7 @@
 </template>
 
 <script>
+import * as PostService from '../services/PostService'
 import moment from 'moment'
 
 export default {
@@ -127,10 +133,17 @@ export default {
   props: {
     posts: {}
   },
+
   methods: {
     time: function (timeRaw) {
       var timeParsed = moment(timeRaw).fromNow()
       return timeParsed
+    },
+    editPost: async function (id) {
+      return id
+    },
+    deletePost: async function (id) {
+      await PostService.deletePost(id)
     }
   }
 }

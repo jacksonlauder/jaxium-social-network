@@ -30,28 +30,36 @@
           <v-divider class="my-8" />
 
           <!-- TODO: Write code so that it clears input on close -->
+          <v-form
+            ref="newPostForm"
+            @submit.prevent="onSubmit"
+          >
+            <v-container fluid>
+              <v-textarea
+                v-model="postContent"
+                outlined
+                auto-grow
+                label="Write something..."
+                counter
+                hide-details="auto"
+              />
 
-          <v-textarea
-            outlined
-            auto-grow
-            label="Write something..."
-            counter
-            hide-details="auto"
-          />
-
-          <v-card-actions class="d-flex flex-column mb-5">
-            <v-btn
-              dark
-              block
-              rounded
-              depressed
-              large
-              color="blue-grey darken-1"
-              @click="show = false"
-            >
-              Post
-            </v-btn>
-          </v-card-actions>
+              <v-card-actions class="d-flex flex-column mb-5">
+                <v-btn
+                  dark
+                  block
+                  rounded
+                  depressed
+                  large
+                  color="blue-grey darken-1"
+                  type="submit"
+                  @click="show = false"
+                >
+                  Post
+                </v-btn>
+              </v-card-actions>
+            </v-container>
+          </v-form>
         </v-container>
       </v-card>
     </v-dialog>
@@ -59,10 +67,21 @@
 </template>
 
 <script>
+import * as PostService from '../services/PostService'
+
   export default {
+    name: 'NewPost',
+
     props: {
-      value: Boolean
+      value: Boolean,
     },
+
+    data: function () {
+      return {
+        postContent: '',
+      }
+    },
+
     computed: {
       show: {
         get () {
@@ -71,6 +90,15 @@
         set (value) {
           this.$emit('input', value)
         }
+      }
+    },
+
+    methods: {
+      onSubmit: async function () {
+        const post = {
+          postContent: this.postContent
+        }
+        await PostService.createPost(post)
       }
     }
   }
