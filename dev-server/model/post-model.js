@@ -2,10 +2,12 @@ import mongoose from 'mongoose'
 
 const postSchema = new mongoose.Schema ({
   author: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
-  body: String,
+  postContent: String
+
   // TODO:
   // Likes
   // Comments, needs separate model?
+  // Pictures
 })
 postSchema.set('timestamps', true);
 

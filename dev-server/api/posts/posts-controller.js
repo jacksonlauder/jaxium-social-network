@@ -20,7 +20,9 @@ export function create(req, res) {
     if (error && !user) {
       return res.status(500).json();
     }
-    const post = new Post(req.body.post);
+    const post = new Post({
+      postContent: req.body.postContent
+    });
     post.author = user._id;
 
     post.save(error => {

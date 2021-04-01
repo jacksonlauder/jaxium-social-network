@@ -12,10 +12,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var postSchema = new _mongoose2.default.Schema({
   author: { type: _mongoose2.default.Schema.Types.ObjectId, ref: 'user' },
-  body: String
+  postContent: String
+
   // TODO:
   // Likes
   // Comments, needs separate model?
+  // Pictures
 });
 postSchema.set('timestamps', true);
 

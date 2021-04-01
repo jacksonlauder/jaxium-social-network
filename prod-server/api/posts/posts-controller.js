@@ -43,7 +43,9 @@ function create(req, res) {
     if (error && !user) {
       return res.status(500).json();
     }
-    var post = new _postModel2.default(req.body.post);
+    var post = new _postModel2.default({
+      postContent: req.body.postContent
+    });
     post.author = user._id;
 
     post.save(function (error) {
