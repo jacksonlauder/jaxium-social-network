@@ -13,5 +13,8 @@ export function getUserById (id) {
      store.state.userFirstName = res.data.user.first
      store.state.userLastName = res.data.user.last
      store.state.userEmail = res.data.user.email
+     store.state.userLocation = res.data.user.userLocation
+     store.state.userWebsite = res.data.user.userWebsite
+     store.state.userDescription = res.data.user.userDescription
     })
  }

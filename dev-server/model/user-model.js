@@ -8,6 +8,9 @@ const userSchema = new mongoose.Schema({
   last: String,
   password: String,
   email: String,
+  userLocation: String,
+  userWebsite: String,
+  userDescription: String,
 })
 userSchema.set('timestamps', true)
 userSchema.virtual('fullName').get(function () {

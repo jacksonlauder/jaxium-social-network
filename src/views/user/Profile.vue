@@ -55,7 +55,7 @@
         justify="space-around"
       >
         <v-card-text class="text-center px-10">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae excepturi expedita asperiores maxime similique aut!
+          {{ $store.state.userDescription }}
         </v-card-text>
       </v-row>
 
@@ -83,8 +83,18 @@
             class="mr-1"
           >
             mdi-map-marker-outline
-          </v-icon>location
+          </v-icon>{{ $store.state.userLocation }}
         </v-card-text>
+
+        <v-card-text class="text-center px-10 pt-0">
+          <v-icon
+            color="blue-grey darken-3"
+            class="mr-1"
+          >
+            mdi-email
+          </v-icon>{{ $store.state.userEmail }}
+        </v-card-text>
+
         <v-card-text class="text-center px-10 pt-0">
           <v-icon
             color="blue-grey darken-3"
@@ -96,7 +106,7 @@
             href="https://jaxium.com"
             target="_blank"
             class="vertical-align-middle"
-          >https://jaxium.com</a>
+          >{{ $store.state.userWebsite }}</a>
         </v-card-text>
       </v-row>
       

@@ -12,7 +12,10 @@ export function index (req, res) {
     password: req.body.password,
     first: req.body.first,
     last: req.body.last,
-    email: req.body.email
+    email: req.body.email,
+    userLocation: req.body.userLocation,
+    userWebsite: req.body.userWebsite,
+    userDescription: req.body.userDescription,
   })
   user.save(error => {
     if (error) {

@@ -21,7 +21,10 @@ var userSchema = new _mongoose2.default.Schema({
   first: String,
   last: String,
   password: String,
-  email: String
+  email: String,
+  userLocation: String,
+  userWebsite: String,
+  userDescription: String
 });
 userSchema.set('timestamps', true);
 userSchema.virtual('fullName').get(function () {
