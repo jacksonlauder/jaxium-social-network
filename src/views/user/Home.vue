@@ -3,7 +3,7 @@
     <SearchDialog v-model="showSearchDialog" />
     <NewPostDialog v-model="showNewPostDialog" />
 
-    <Post />
+    <Post :posts="posts" />
     <PostSkeleton />
     <PostSkeleton />
     <PostSkeleton />
@@ -105,6 +105,7 @@ import Post from '../../components/Post'
 import PostSkeleton from '../../components/PostSkeletonLoader'
 import SearchDialog from '../../components/Search-Dialog'
 import NewPostDialog from '../../components/NewPost-Dialog'
+import * as PostService from '../../services/PostService'
 
   export default {
     name: 'UserHome',
@@ -115,14 +116,24 @@ import NewPostDialog from '../../components/NewPost-Dialog'
       NewPostDialog,
     },
 
-    data () {
+    data: function () {
       return {
         showSearchDialog: false,
         showNewPostDialog: false,
         showMessagesBadge: false,
-        showNotificationsBadge: false
+        showNotificationsBadge: false,
+        posts: null,
       }
     },
+
+    beforeRouteEnter (to, from, next) {
+      PostService.getAllPosts().then(res => {
+        next(vm => {
+          vm.posts = res.data.posts
+        })
+      })
+    },
+
     methods: {
       toProfile: function() {
         this.$router.push({ name: 'profile', params: { username: this.$store.state.username }})

@@ -32,7 +32,7 @@ function index(req, res) {
       return res.status(500).json();
     }
     return res.status(200).json({ posts: posts });
-  }).populate("author", "username", "user");
+  }).populate("author", "username", "user").sort({ createdAt: 'desc' });
 }
 
 function create(req, res) {
