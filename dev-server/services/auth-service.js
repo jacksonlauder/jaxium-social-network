@@ -14,7 +14,7 @@ export function requireLogin (req, res, next) {
 }
 
 export function decodeToken (req) {
-  const token = req.headers.authorization || req.headers.authorization
+  const token = req.headers.authorization || req.headers['authorization']
 
   if (!token) {
     return null

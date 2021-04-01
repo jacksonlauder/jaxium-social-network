@@ -29,7 +29,7 @@ function requireLogin(req, res, next) {
 }
 
 function decodeToken(req) {
-  var token = req.headers.authorization || req.headers.authorization;
+  var token = req.headers.authorization || req.headers['authorization'];
 
   if (!token) {
     return null;
