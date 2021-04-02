@@ -4,7 +4,6 @@
       color="blue-grey lighten-5"
       app
       flat
-      absolute
       tile
     >
       <v-app-bar-nav-icon
