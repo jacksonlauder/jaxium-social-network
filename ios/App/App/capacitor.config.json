@@ -1,0 +1,13 @@
+{
+  "appId": "com.jaxium.app",
+  "appName": "jaxium-social-network",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}
