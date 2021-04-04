@@ -11,6 +11,7 @@
       height="70px"
       background-color="blue-grey darken-1"
       dark
+      class="btm-nav"
     >
       <v-btn
         transition="fade-transition"
@@ -49,7 +50,7 @@
         @click.stop="showNewPostDialog=true"
       >
         <v-icon
-          size="35px"
+          size="40px"
           color="white"
         >
           mdi-plus
@@ -145,10 +146,13 @@ import * as PostService from '../../services/PostService'
 
 <style scoped>
   .v-btn--is-elevated.v-btn--fab {
-    /* box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%) !important; */
-    box-shadow: 0px 0px 0px 7px #eceff1 !important;
+    box-shadow: 0px 5px 5px 3px #afafaf, 0px 0px 0px 10px #eceff1 !important;
   }
   .v-btn--fab.v-size--default.v-btn--absolute.v-btn--top {
     top: -20px !important;
+  }
+  .btm-nav {
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
   }
 </style>
