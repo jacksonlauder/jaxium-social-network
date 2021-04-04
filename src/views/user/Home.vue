@@ -16,8 +16,9 @@
       <v-btn
         transition="fade-transition"
         @click.prevent="toProfile"
+        active-class="no-active"
       >
-        <span class="hidden-sm-and-down">Profile</span>
+        <span class="hidden-sm-and-down white--text">Profile</span>
         <v-icon
           size="35px"
           color="white"
@@ -26,8 +27,8 @@
         </v-icon>
       </v-btn>
       
-      <v-btn @click.stop="showSearchDialog=true">
-        <span class="hidden-sm-and-down">Search</span>
+      <v-btn @click.stop="showSearchDialog=true" active-class="no-active">
+        <span class="hidden-sm-and-down white--text">Search</span>
         <v-icon
           size="35px"
           color="white"
@@ -47,6 +48,7 @@
         dark
         absolute
         top
+        active-class="no-active"
         @click.stop="showNewPostDialog=true"
       >
         <v-icon
@@ -57,8 +59,8 @@
         </v-icon>
       </v-btn>
 
-      <v-btn @click.prevent="toMessages">
-        <span class="hidden-sm-and-down">Messages</span>
+      <v-btn @click.prevent="toMessages" active-class="no-active">
+        <span class="hidden-sm-and-down white--text">Messages</span>
         <v-badge
           v-model="showMessagesBadge"
           color="red"
@@ -74,8 +76,8 @@
         </v-badge>
       </v-btn>
 
-      <v-btn @click.prevent="toNotifications">
-        <span class="hidden-sm-and-down">Notifications</span>
+      <v-btn @click.prevent="toNotifications" active-class="no-active">
+        <span class="hidden-sm-and-down white--text">Notifications</span>
         <v-badge
           v-model="showNotificationsBadge"
           color="red"
