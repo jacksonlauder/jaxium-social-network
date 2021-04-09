@@ -99,6 +99,8 @@ import * as PostService from '../services/PostService'
           postContent: this.postContent
         }
         await PostService.createPost(post)
+        this.postContent = ''
+        this.$parent.getPosts()
       }
     }
   }

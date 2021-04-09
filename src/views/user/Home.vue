@@ -141,6 +141,11 @@ import * as PostService from '../../services/PostService'
       },
       toNotifications: function() {
         this.$router.push({ name: 'notifications', params: { username: this.$store.state.username }})
+      },
+      getPosts: async function() {
+        await PostService.getAllPosts().then(res => {
+          this.posts = res.data.posts
+        })
       }
     }
   }

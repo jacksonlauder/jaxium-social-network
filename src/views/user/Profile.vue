@@ -110,6 +110,7 @@
         </v-card-text>
       </v-row>
       
+      <!-- TODO: v-if="$store.state.username === something.username" -->
       <v-card-actions class="d-flex flex-column mb-5">
         <v-btn
           dark

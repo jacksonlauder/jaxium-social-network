@@ -2,8 +2,8 @@
   <v-col>
     <v-card
       v-for="post of posts"
-      :key="post._id"
       :id="`posts-${post._id}`"
+      :key="post._id"
       class="mx-auto mb-5"
       max-width="500"
       elevation="4"
@@ -38,6 +38,7 @@
               right
               rounded
               offset-x
+              :close-on-click="true"
             >
               <template v-slot:activator="{ on }">
                 <v-btn
@@ -53,10 +54,10 @@
               </template>
               <v-list>
                 <!-- TODO: Logic e.g. Rest API -->
-                <v-list-item
+                <!-- <v-list-item
                   v-if="$store.state.username === post.author.username"
                   link
-                  @click.prevent="editing = true"
+                  @click.prevent="editPostContent(`posts-${post._id}-postContent`)"
                 >
                   <v-list-item-icon>
                     <v-icon>
@@ -68,10 +69,81 @@
                       Edit Post
                     </v-list-item-title>
                   </v-list-item-content>
-                </v-list-item>
+                </v-list-item> -->
 
                 <v-dialog
-                  v-model="dialog"
+                  v-model="editDialog"
+                  width="500"
+                >
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-list-item
+                      v-if="$store.state.username === post.author.username"
+                      link
+                      v-bind="attrs"
+                      v-on="on"
+                    >
+                      <v-list-item-icon>
+                        <v-icon>
+                          mdi-square-edit-outline
+                        </v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-content>
+                        <v-list-item-title>
+                          Edit Post
+                        </v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </template>
+
+                  <v-card>
+                    <v-card-title class="headline">
+                      Edit Post?
+                    </v-card-title>
+
+                    <v-divider />
+
+                    <v-card-text class="mt-4">
+                      <v-textarea
+                        outlined
+                        auto-grow
+                        counter
+                        hide-details="auto"
+                        :value.sync="post.postContent"
+                      />
+                    </v-card-text>
+
+                    <v-divider />
+
+                    <v-card-actions>
+                      <v-btn
+                        rounded
+                        outlined
+                        depressed
+                        large
+                        color="blue-grey darken-2"
+                        @click="editDialog = false"
+                      >
+                        Cancel
+                      </v-btn>
+
+                      <v-spacer />
+
+                      <v-btn
+                        rounded
+                        depressed
+                        large
+                        color="blue-grey darken-1"
+                        dark
+                        @click.prevent="editPost(post._id)"
+                      >
+                        Save
+                      </v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-dialog>
+
+                <v-dialog
+                  v-model="deleteDialog"
                   width="500"
                 >
                   <template v-slot:activator="{ on, attrs}">
@@ -110,7 +182,7 @@
                         depressed
                         large
                         color="blue-grey darken-2"
-                        @click="dialog = false"
+                        @click="deleteDialog = false"
                       >
                         Cancel
                       </v-btn>
@@ -123,7 +195,7 @@
                         dark
                         @click.prevent="deletePost(post._id)"
                       >
-                        Clear
+                        Delete
                       </v-btn>
                     </v-card-actions>
                   </v-card>
@@ -167,8 +239,15 @@
           </v-col>
         </v-row>
 
-        <v-card-text :contenteditable="editing">
-          {{ post.postContent }}
+        <v-card-text>
+          <v-textarea
+            auto-grow
+            solo
+            flat
+            rows="2"
+            :value.sync="post.postContent"
+            :readonly="readonly"
+          />
         </v-card-text>
       </v-container>
 
@@ -209,15 +288,20 @@ import moment from 'moment'
 
 export default {
   name: "Post",
-  props: {
-    posts: {}
-  },
+  props: [ 'posts' ],
 
   data: function () {
     return {
-      dialog: false,
-      editing: false
+      editDialog: false,
+      deleteDialog: false,
+      readonly: true,
+      editedContent: '',
+      defaultContent: '',
     }
+  },
+
+  mounted () {
+    console.log(this.posts)
   },
 
   methods: {
@@ -225,12 +309,19 @@ export default {
       var timeParsed = moment(timeRaw).fromNow()
       return timeParsed
     },
+    // editPostContent: function (postContentID) {
+    //   var content = this.$refs[postContentID][0]
+    //   content.readonly = false
+
+    //   console.log(content)
+    // },
     editPost: async function (id) {
-      return id
+      console.log(id)
     },
     deletePost: async function (id) {
       await PostService.deletePost(id)
-      this.dialog = false
+      this.deleteDialog = false
+      this.$parent.getPosts()
     }
   }
 }
