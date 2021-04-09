@@ -9,7 +9,9 @@ export function index(req, res) {
       return res.status(500).json();
     }
     return res.status(200).json({ posts: posts });
-  }).populate("author", "username", "user").sort({ createdAt: 'desc'});
+  })
+    .populate("author", "username", "user")
+    .sort({ createdAt: "desc" });
 }
 
 export function create(req, res) {
@@ -42,17 +44,24 @@ export function update(req, res) {
     if (error) {
       return res.status(500).json();
     }
+    
     if (!user) {
       return remove.status(404).json();
     }
-    if (post.author._id.toString() !== id) {
-      return res
-        .status(403)
-        .json({ message: "Not allowed to edit another user's post" });
-    }
 
-    const post = new Post(req.body.post);
+    const post = new Post({
+      postContent: req.body.postContent
+    });
     post.author = user._id;
+
+    console.log(post)
+
+    Post.findByIdAndUpdate({ _id: post._id }, post , error => {
+      if (error) {
+        return res.status(500).json();
+      }
+      return res.status(204).json();
+    });
   });
 }
 

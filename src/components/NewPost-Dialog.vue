@@ -98,6 +98,7 @@ import * as PostService from '../services/PostService'
         const post = {
           postContent: this.postContent
         }
+        console.log(post)
         await PostService.createPost(post)
         this.postContent = ''
         this.$parent.getPosts()

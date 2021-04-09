@@ -81,6 +81,7 @@
                       link
                       v-bind="attrs"
                       v-on="on"
+                      @click.prevent="editPostContent(post.postContent)"
                     >
                       <v-list-item-icon>
                         <v-icon>
@@ -102,43 +103,49 @@
 
                     <v-divider />
 
-                    <v-card-text class="mt-4">
-                      <v-textarea
-                        outlined
-                        auto-grow
-                        counter
-                        hide-details="auto"
-                        :value.sync="post.postContent"
-                      />
-                    </v-card-text>
+                    <v-form 
+                      ref="editContentForm"
+                      @submit.prevent="onSubmit"
+                    >
+                      <v-card-text class="mt-4">
+                        <v-textarea
+                          v-model="postContent"
+                          outlined
+                          auto-grow
+                          counter
+                          hide-details="auto"
+                          :value="postContent"
+                        />
+                      </v-card-text>
 
-                    <v-divider />
+                      <v-divider />
 
-                    <v-card-actions>
-                      <v-btn
-                        rounded
-                        outlined
-                        depressed
-                        large
-                        color="blue-grey darken-2"
-                        @click="editDialog = false"
-                      >
-                        Cancel
-                      </v-btn>
+                      <v-card-actions>
+                        <v-btn
+                          rounded
+                          outlined
+                          depressed
+                          large
+                          color="blue-grey darken-2"
+                          @click.prevent="cancel"
+                        >
+                          Cancel
+                        </v-btn>
 
-                      <v-spacer />
+                        <v-spacer />
 
-                      <v-btn
-                        rounded
-                        depressed
-                        large
-                        color="blue-grey darken-1"
-                        dark
-                        @click.prevent="editPost(post._id)"
-                      >
-                        Save
-                      </v-btn>
-                    </v-card-actions>
+                        <v-btn
+                          rounded
+                          depressed
+                          large
+                          color="blue-grey darken-1"
+                          dark
+                          type="submit"
+                        >
+                          Save
+                        </v-btn>
+                      </v-card-actions>
+                    </v-form>
                   </v-card>
                 </v-dialog>
 
@@ -245,7 +252,7 @@
             solo
             flat
             rows="2"
-            :value.sync="post.postContent"
+            :value="post.postContent"
             :readonly="readonly"
           />
         </v-card-text>
@@ -295,13 +302,8 @@ export default {
       editDialog: false,
       deleteDialog: false,
       readonly: true,
-      editedContent: '',
-      defaultContent: '',
+      postContent: '',
     }
-  },
-
-  mounted () {
-    console.log(this.posts)
   },
 
   methods: {
@@ -309,14 +311,21 @@ export default {
       var timeParsed = moment(timeRaw).fromNow()
       return timeParsed
     },
-    // editPostContent: function (postContentID) {
-    //   var content = this.$refs[postContentID][0]
-    //   content.readonly = false
 
-    //   console.log(content)
-    // },
-    editPost: async function (id) {
-      console.log(id)
+    editPostContent: function (content) {
+      this.postContent = content
+    },
+    cancel () {
+      this.editDialog = false
+    },
+    onSubmit: async function () {
+      const post = {
+        postContent: this.postContent
+      }
+      console.log(post)
+      await PostService.updatePost(post)
+      this.editDialog = false
+      this.$parent.getPosts()
     },
     deletePost: async function (id) {
       await PostService.deletePost(id)

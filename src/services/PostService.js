@@ -1,21 +1,21 @@
-import { http } from './HttpService'
+import { http } from "./HttpService";
 
 export function getAllPosts() {
-    return http().get('/post');
+  return http().get("/post");
 }
 
 export function getPostById(id) {
-    return http().get(`/post/${id}`);
+  return http().get(`/post/${id}`);
 }
 
 export function createPost(post) {
-    return http().post('/post', post);
+  return http().post("/post", post);
 }
 
 export function deletePost(id) {
-    return http().delete(`/post/${id}`);
+  return http().delete(`/post/${id}`);
 }
 
 export function updatePost(post) {
-    return http().put('/post', post);
+  return http().put("/post", post);
 }

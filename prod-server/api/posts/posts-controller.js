@@ -32,7 +32,7 @@ function index(req, res) {
       return res.status(500).json();
     }
     return res.status(200).json({ posts: posts });
-  }).populate("author", "username", "user").sort({ createdAt: 'desc' });
+  }).populate("author", "username", "user").sort({ createdAt: "desc" });
 }
 
 function create(req, res) {
@@ -65,15 +65,24 @@ function update(req, res) {
     if (error) {
       return res.status(500).json();
     }
+
     if (!user) {
       return remove.status(404).json();
     }
-    if (post.author._id.toString() !== id) {
-      return res.status(403).json({ message: "Not allowed to edit another user's post" });
-    }
 
-    var post = new _postModel2.default(req.body.post);
+    var post = new _postModel2.default({
+      postContent: req.body.postContent
+    });
     post.author = user._id;
+
+    console.log(post);
+
+    _postModel2.default.findByIdAndUpdate({ _id: post._id }, post, function (error) {
+      if (error) {
+        return res.status(500).json();
+      }
+      return res.status(204).json();
+    });
   });
 }
 
