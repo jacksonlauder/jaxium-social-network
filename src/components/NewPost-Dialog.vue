@@ -15,7 +15,7 @@
               large
               icon
               color="blue-grey darken-2"
-              @click="show = false"
+              @click.prevent="cancel"
             >
               <v-icon>mdi-close</v-icon>
             </v-btn>
@@ -29,7 +29,6 @@
 
           <v-divider class="my-8" />
 
-          <!-- TODO: Write code so that it clears input on close -->
           <v-form
             ref="newPostForm"
             @submit.prevent="onSubmit"
@@ -98,10 +97,14 @@ import * as PostService from '../services/PostService'
         const post = {
           postContent: this.postContent
         }
-        console.log(post)
         await PostService.createPost(post)
         this.postContent = ''
         this.$parent.getPosts()
+      },
+
+      cancel: function () {
+        this.postContent = ''
+        this.show = false
       }
     }
   }
