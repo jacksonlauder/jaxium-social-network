@@ -24,7 +24,7 @@
                 icon
                 @click="show = false"
               >
-                <v-icon color="blue-grey darken-2">mdi-close</v-icon>
+                <v-icon large color="blue-grey darken-2">mdi-close</v-icon>
               </v-btn>
           </v-toolbar>
         </v-card>

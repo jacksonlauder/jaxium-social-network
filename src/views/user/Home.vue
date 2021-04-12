@@ -13,11 +13,11 @@
       bottom
       right
       elevation="3"
-      icon
-      color="blue-grey-darken-5"
+      icon      
+      color="blue-grey darken-2"
       @click="toTop"
     >
-      <v-icon>mdi-chevron-up</v-icon>
+      <v-icon large>mdi-chevron-up</v-icon>
     </v-btn>
 
     <v-bottom-navigation
