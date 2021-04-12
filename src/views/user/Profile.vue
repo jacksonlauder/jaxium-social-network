@@ -9,6 +9,7 @@
       left
       icon
       absolute
+      class="top-fab-btn"
       elevation="3"
       @click.prevent="toHome"
     >
@@ -16,6 +17,7 @@
         mdi-arrow-left-bold
       </v-icon>
     </v-btn>
+
     <v-card
       max-width="800"
       class="mx-auto mt-5 pa-2"
@@ -156,9 +158,6 @@ export default {
 </script>
 
 <style scoped>
-  .v-btn--fab.v-size--default.v-btn--absolute.v-btn--top {
-    top: 5px !important;
-  }
   .v-application a {
     color: #37474F !important;
     text-decoration: none !important;

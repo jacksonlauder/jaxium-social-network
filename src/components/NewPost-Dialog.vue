@@ -5,7 +5,7 @@
       transition="fade-transition"
       scrollable
     >
-      <v-card height="500px">
+      <v-card height="25rem">
         <v-container fluid>
           <v-row
             dense

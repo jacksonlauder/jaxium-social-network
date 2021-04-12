@@ -18,3 +18,7 @@
 .v-application--is-ltr .v-list-item__icon:first-child {
     margin-right: 15px;
 }
+
+  .v-btn--fab.v-size--default.v-btn--absolute.v-btn--top.top-fab-btn {
+    top: 5px !important;
+  }

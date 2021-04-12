@@ -6,6 +6,7 @@
       top
       left
       icon
+      class="top-fab-btn"
       color="blue-grey darken-2"
       elevation="3"
       @click.prevent="toHome"
@@ -26,6 +27,7 @@
           top
           right
           icon
+          class="top-fab-btn"
           color="blue-grey darken-2"
           elevation="3"
           v-bind="attrs"
@@ -102,7 +104,5 @@ export default {
 </script>
 
 <style scoped>
-  .v-btn--fab.v-size--default.v-btn--absolute.v-btn--top {
-    top: 5px !important;
-  }
+
 </style>

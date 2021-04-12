@@ -6,6 +6,7 @@
       top
       left
       icon
+      class="top-fab-btn"
       elevation="3"
       @click.prevent="toHome"
     >
@@ -20,6 +21,7 @@
       top
       right
       icon
+      class="top-fab-btn"
       elevation="3"
       @click.prevent="toMessageEdit"
     >
@@ -57,8 +59,6 @@ import Message from '../../components/Message'
 </script>
 
 <style scoped>
-  .v-btn--fab.v-size--default.v-btn--absolute.v-btn--top {
-    top: 5px !important;
-  }
+
 </style>
 

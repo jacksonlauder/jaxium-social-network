@@ -3,9 +3,28 @@
     <SearchDialog v-model="showSearchDialog" />
     <NewPostDialog v-model="showNewPostDialog" />
 
+    <v-btn
+      fab
+      top
+      right
+      icon
+      absolute
+      class="top-fab-btn"
+      elevation="3"
+      @click.prevent="getPosts"
+    >
+      <v-icon
+        large
+        color="blue-grey darken-2"
+      >
+        mdi-refresh
+      </v-icon>
+    </v-btn>
+
     <Post :posts="posts" />
 
-    <v-btn
+    <!-- TODO: Make this uniquely mine -->
+    <!-- <v-btn
       v-show="fab"
       v-scroll="onScroll"
       fab
@@ -17,8 +36,10 @@
       color="blue-grey darken-2"
       @click="toTop"
     >
-      <v-icon large>mdi-chevron-up</v-icon>
-    </v-btn>
+      <v-icon large>
+        mdi-chevron-up
+      </v-icon>
+    </v-btn> -->
 
     <v-bottom-navigation
       fixed
