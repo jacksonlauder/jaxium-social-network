@@ -5,6 +5,21 @@
 
     <Post :posts="posts" />
 
+    <v-btn
+      v-show="fab"
+      v-scroll="onScroll"
+      fab
+      fixed
+      bottom
+      right
+      elevation="3"
+      icon
+      color="blue-grey-darken-5"
+      @click="toTop"
+    >
+      <v-icon>mdi-chevron-up</v-icon>
+    </v-btn>
+
     <v-bottom-navigation
       fixed
       grow
@@ -15,8 +30,8 @@
     >
       <v-btn
         transition="fade-transition"
-        @click.prevent="toProfile"
         active-class="no-active"
+        @click.prevent="toProfile"
       >
         <span class="hidden-sm-and-down white--text">Profile</span>
         <v-icon
@@ -27,7 +42,10 @@
         </v-icon>
       </v-btn>
       
-      <v-btn @click.stop="showSearchDialog=true" active-class="no-active">
+      <v-btn
+        active-class="no-active"
+        @click.stop="showSearchDialog=true"
+      >
         <span class="hidden-sm-and-down white--text">Search</span>
         <v-icon
           size="35px"
@@ -59,7 +77,10 @@
         </v-icon>
       </v-btn>
 
-      <v-btn @click.prevent="toMessages" active-class="no-active">
+      <v-btn
+        active-class="no-active"
+        @click.prevent="toMessages"
+      >
         <span class="hidden-sm-and-down white--text">Messages</span>
         <v-badge
           v-model="showMessagesBadge"
@@ -76,7 +97,10 @@
         </v-badge>
       </v-btn>
 
-      <v-btn @click.prevent="toNotifications" active-class="no-active">
+      <v-btn
+        active-class="no-active"
+        @click.prevent="toNotifications"
+      >
         <span class="hidden-sm-and-down white--text">Notifications</span>
         <v-badge
           v-model="showNotificationsBadge"
@@ -121,6 +145,7 @@ import * as PostService from '../../services/PostService'
         showMessagesBadge: false,
         showNotificationsBadge: false,
         posts: null,
+        fab: false,
       }
     },
 
@@ -136,16 +161,29 @@ import * as PostService from '../../services/PostService'
       toProfile: function() {
         this.$router.push({ name: 'profile', params: { username: this.$store.state.username }})
       },
+
       toMessages: function() {
         this.$router.push({ name: 'messages', params: { username: this.$store.state.username }})
       },
+
       toNotifications: function() {
         this.$router.push({ name: 'notifications', params: { username: this.$store.state.username }})
       },
+
       getPosts: async function() {
         await PostService.getAllPosts().then(res => {
           this.posts = res.data.posts
         })
+      },
+
+      onScroll (e) {
+        if (typeof window === 'undefined') return
+        const top = window.pageYOffset ||   e.target.scrollTop || 0
+        this.fab = top > 20
+      },
+
+      toTop () {
+        this.$vuetify.goTo(0)
       }
     }
   }
@@ -161,5 +199,8 @@ import * as PostService from '../../services/PostService'
   .btm-nav {
     border-top-left-radius: 15px !important;
     border-top-right-radius: 15px !important;
+  }
+  .v-btn--absolute.v-btn--bottom, .v-btn--fixed.v-btn--bottom {
+    bottom: 6rem !important;
   }
 </style>

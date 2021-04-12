@@ -36,7 +36,7 @@
                 top
                 right
                 icon
-                color="blue-grey darken-1"
+                color="blue-grey darken-2"
                 v-on="on"
               >
                 <v-icon>mdi-dots-horizontal</v-icon>

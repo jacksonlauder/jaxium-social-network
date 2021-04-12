@@ -8,12 +8,11 @@
       top
       left
       icon
-      color="blue-grey-darken-3"
       absolute
       elevation="3"
       @click.prevent="toHome"
     >
-      <v-icon large>
+      <v-icon large color="blue-grey darken-2">
         mdi-arrow-left-bold
       </v-icon>
     </v-btn>

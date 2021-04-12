@@ -30,10 +30,9 @@
             top
             left
             icon
-            color="blue-grey darken-3"
             @click.prevent="toMessageEdit"
           >
-            <v-icon large>
+            <v-icon large color="blue-grey darken-2">
               mdi-chevron-right
             </v-icon>
           </v-btn>

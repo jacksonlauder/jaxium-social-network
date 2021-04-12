@@ -6,7 +6,7 @@
       top
       left
       icon
-      color="blue-grey darken-3"
+      color="blue-grey darken-2"
       elevation="3"
       @click.prevent="toHome"
     >
@@ -26,7 +26,7 @@
           top
           right
           icon
-          color="blue-grey darken-3"
+          color="blue-grey darken-2"
           elevation="3"
           v-bind="attrs"
           v-on="on"

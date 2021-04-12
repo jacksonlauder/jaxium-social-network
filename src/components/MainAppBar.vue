@@ -7,7 +7,7 @@
       tile
     >
       <v-app-bar-nav-icon
-        color="blue-grey darken-3"
+        color="blue-grey darken-2"
         @click="drawer = true"
       />
       <router-link to="/">
