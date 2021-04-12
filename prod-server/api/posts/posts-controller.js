@@ -65,14 +65,11 @@ function update(req, res) {
     if (error) {
       return res.status(500).json();
     }
-
     if (!user) {
       return remove.status(404).json();
     }
 
-    var post = new _postModel2.default({
-      postContent: req.body.postContent
-    });
+    var post = new _postModel2.default(req.body.post);
     post.author = user._id;
 
     console.log(post);
@@ -80,8 +77,9 @@ function update(req, res) {
     _postModel2.default.findByIdAndUpdate({ _id: post._id }, post, function (error) {
       if (error) {
         return res.status(500).json();
+      } else {
+        return res.status(204).json();
       }
-      return res.status(204).json();
     });
   });
 }

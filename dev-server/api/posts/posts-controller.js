@@ -44,23 +44,21 @@ export function update(req, res) {
     if (error) {
       return res.status(500).json();
     }
-    
     if (!user) {
       return remove.status(404).json();
     }
 
-    const post = new Post({
-      postContent: req.body.postContent
-    });
+    const post = new Post(req.body.post);
     post.author = user._id;
 
     console.log(post)
 
-    Post.findByIdAndUpdate({ _id: post._id }, post , error => {
+    Post.findByIdAndUpdate({ _id: post._id }, post, error => {
       if (error) {
         return res.status(500).json();
+      } else {
+        return res.status(204).json();
       }
-      return res.status(204).json();
     });
   });
 }

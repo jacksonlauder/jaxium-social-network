@@ -81,7 +81,7 @@
                       link
                       v-bind="attrs"
                       v-on="on"
-                      @click.prevent="editPostContent(post.postContent)"
+                      @click.prevent="editPostContent(post._id)"
                     >
                       <v-list-item-icon>
                         <v-icon>
@@ -109,12 +109,11 @@
                     >
                       <v-card-text class="mt-4">
                         <v-textarea
-                          v-model="postContent"
+                          v-model="editedPost.postContent"
                           outlined
                           auto-grow
                           counter
                           hide-details="auto"
-                          :value="postContent"
                         />
                       </v-card-text>
 
@@ -295,14 +294,16 @@ import moment from 'moment'
 
 export default {
   name: "Post",
-  props: [ 'posts' ],
+  props: ['posts'],
 
   data: function () {
     return {
       editDialog: false,
       deleteDialog: false,
       readonly: true,
-      postContent: '',
+      editedPost: {
+        postContent: ""
+      },
     }
   },
 
@@ -312,21 +313,26 @@ export default {
       return timeParsed
     },
 
-    editPostContent: function (content) {
-      this.postContent = content
+    editPostContent: async function (id) {
+      await PostService.getPostById(id).then(res => {
+        this.editedPost = res.data.post
+      })
     },
+
     cancel () {
       this.editDialog = false
     },
+
     onSubmit: async function () {
       const post = {
-        postContent: this.postContent
+        post: this.editedPost
       }
       console.log(post)
       await PostService.updatePost(post)
       this.editDialog = false
       this.$parent.getPosts()
     },
+
     deletePost: async function (id) {
       await PostService.deletePost(id)
       this.deleteDialog = false
