@@ -52,25 +52,8 @@
                   <v-icon>mdi-dots-horizontal</v-icon>
                 </v-btn>
               </template>
-              <v-list>
-                <!-- TODO: Logic e.g. Rest API -->
-                <!-- <v-list-item
-                  v-if="$store.state.username === post.author.username"
-                  link
-                  @click.prevent="editPostContent(`posts-${post._id}-postContent`)"
-                >
-                  <v-list-item-icon>
-                    <v-icon>
-                      mdi-square-edit-outline
-                    </v-icon>
-                  </v-list-item-icon>
-                  <v-list-item-content>
-                    <v-list-item-title>
-                      Edit Post
-                    </v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item> -->
 
+              <v-list>
                 <v-dialog
                   v-model="editDialog"
                   width="500"
@@ -327,7 +310,6 @@ export default {
       const post = {
         post: this.editedPost
       }
-      console.log(post)
       await PostService.updatePost(post)
       this.editDialog = false
       this.$parent.getPosts()
