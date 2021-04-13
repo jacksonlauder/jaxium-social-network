@@ -24,22 +24,24 @@
     <Post :posts="posts" />
 
     <!-- TODO: Make this uniquely mine -->
-    <!-- <v-btn
-      v-show="fab"
+    <v-btn
+      v-show="scrollToTop"
       v-scroll="onScroll"
       fab
       fixed
       bottom
       right
       elevation="3"
-      icon      
-      color="blue-grey darken-2"
+      color="blue-grey darken-1"
       @click="toTop"
     >
-      <v-icon large>
+      <v-icon
+        large
+        color="white"
+      >
         mdi-chevron-up
       </v-icon>
-    </v-btn> -->
+    </v-btn>
 
     <v-bottom-navigation
       fixed
@@ -78,6 +80,7 @@
 
       <v-btn
         style="border-radius: 50%"
+        class="new-post-btn"
         fab
         min-width="56px"
         width="56px"
@@ -166,7 +169,7 @@ import * as PostService from '../../services/PostService'
         showMessagesBadge: false,
         showNotificationsBadge: false,
         posts: null,
-        fab: false,
+        scrollToTop: false,
       }
     },
 
@@ -200,7 +203,7 @@ import * as PostService from '../../services/PostService'
       onScroll (e) {
         if (typeof window === 'undefined') return
         const top = window.pageYOffset ||   e.target.scrollTop || 0
-        this.fab = top > 20
+        this.scrollToTop = top > 20
       },
 
       toTop () {
@@ -211,16 +214,6 @@ import * as PostService from '../../services/PostService'
 </script>
 
 <style scoped>
-  .v-btn--is-elevated.v-btn--fab {
-    box-shadow: 0px 5px 5px 3px #afafaf, 0px 0px 0px 10px #eceff1 !important;
-  }
-  .v-btn--fab.v-size--default.v-btn--absolute.v-btn--top {
-    top: -20px !important;
-  }
-  .btm-nav {
-    border-top-left-radius: 15px !important;
-    border-top-right-radius: 15px !important;
-  }
   .v-btn--absolute.v-btn--bottom, .v-btn--fixed.v-btn--bottom {
     bottom: 6rem !important;
   }

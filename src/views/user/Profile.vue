@@ -140,6 +140,7 @@
 </template>
 
 <script>
+// import _ from 'lodash'
 import Post from '../../components/Post'
 import * as PostService from '../../services/PostService'
 import store from '../../store'
