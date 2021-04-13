@@ -41,6 +41,7 @@
                 label="Write something..."
                 counter
                 hide-details="auto"
+                @keydown.enter.prevent="onSubmit"
               />
 
               <v-card-actions class="d-flex flex-column mb-5">
@@ -52,7 +53,6 @@
                   large
                   color="blue-grey darken-1"
                   type="submit"
-                  @click="show = false"
                 >
                   Post
                 </v-btn>
@@ -99,6 +99,7 @@ import * as PostService from '../services/PostService'
         }
         await PostService.createPost(post)
         this.postContent = ''
+        this.show = false
         this.$parent.getPosts()
       },
 

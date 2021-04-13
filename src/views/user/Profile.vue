@@ -22,7 +22,7 @@
     </v-btn>
 
     <v-card
-      max-width="500"
+      max-width="35rem"
       class="mx-auto mt-5 pa-2"
     >
       <v-row

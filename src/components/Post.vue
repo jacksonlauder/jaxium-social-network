@@ -1,11 +1,11 @@
 <template>
-  <v-col>
+  <v-col class="px-0">
     <v-card
       v-for="post of posts"
       :id="`posts-${post._id}`"
       :key="post._id"
       class="mx-auto mb-5"
-      max-width="500"
+      max-width="35rem"
       elevation="4"
     >
       <v-container
