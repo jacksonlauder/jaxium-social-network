@@ -48,31 +48,31 @@ export default {
     items: [
       {
         avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-        title: 'Account Name',
+        title: 'wanderingbiscuits',
         subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, incidunt!'
       },
       { divider: true, inset: true },
       {
         avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-        title: 'Account Name',
+        title: 'giletcomposter',
         subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, incidunt!'
       },
       { divider: true, inset: true },
       {
         avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-        title: 'Account Name',
+        title: 'bouquetcoral',
         subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, incidunt!'
       },
       { divider: true, inset: true },
       {
         avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
-        title: 'Account Name',
+        title: 'inborngroovy',
         subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, incidunt!'
       },
             { divider: true, inset: true },
       {
         avatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-        title: 'Account Name',
+        title: 'attentionchapter',
         subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, incidunt!'
       },
     ]

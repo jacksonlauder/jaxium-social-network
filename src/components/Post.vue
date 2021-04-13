@@ -228,7 +228,7 @@
           </v-col>
         </v-row>
 
-        <v-card-text>
+        <v-card-text class="pb-0">
           <v-textarea
             auto-grow
             solo
@@ -251,12 +251,34 @@
             mdi-heart
           </v-icon>
         </v-btn>
-        <span
-          class="ml-2 blue-grey--text text--darken-2"
-        >15</span>
+
+        <v-menu
+          open-on-hover
+          bottom
+          offset-y
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <span
+              class="ml-2 pr-10 blue-grey--text text--darken-2"
+              v-bind="attrs"
+              v-on="on"
+            >{{ items.length }}</span>
+          </template>
+
+          <v-list>
+            <v-list-item
+              v-for="(item, index) in items"
+              :key="index"
+            >
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+
         <v-btn
           icon
-          class="ml-10"
+          class="ml-5"
+          @click.prevent="showComments = !showComments"
         >
           <v-icon
             size="30px"
@@ -267,6 +289,55 @@
         </v-btn>
         <v-spacer />
       </v-card-actions>
+
+      <v-expand-transition>
+        <div v-show="showComments">
+          <v-divider />
+
+          <v-list two-line>
+            <template v-for="(commenter, index) in commenters">
+              <v-divider
+                v-if="commenter.divider"
+                :key="index"
+                :inset="commenter.inset"
+              />
+              <v-list-item
+                v-else
+                :key="commenter.title"
+              >
+                <v-list-item-content>
+                  <v-list-item-title v-html="commenter.title" />
+                  <v-list-item-subtitle v-html="commenter.subtitle" />
+                </v-list-item-content>
+              </v-list-item>
+            </template>
+          </v-list>
+
+          <v-divider />
+
+          <v-container fluid>
+            <v-text-field
+              v-model="comment"
+              type="text"
+              solo
+              label="Add Comment..."
+              rounded
+              hide-details="auto"
+              clear-icon="mdi-close-circle"
+              clearable
+              :append-outer-icon="'mdi-message-reply'"
+              @click:clear="clearComment"
+              @click:append-outer="sendComment"
+            >
+              <template v-slot:append-outer-icon>
+                <v-icon color="blue-grey darken-2">
+                  mdi-send
+                </v-icon>
+              </template>
+            </v-text-field>
+          </v-container>
+        </div>
+      </v-expand-transition>
     </v-card>
   </v-col>
 </template>
@@ -287,6 +358,40 @@ export default {
       editedPost: {
         postContent: ""
       },
+      items: [
+        { title: 'bouquetcoral' },
+        { title: 'wanderingbiscuits' },
+        { title: 'giletcomposter' },
+        { title: 'inborngroovy' },
+      ],
+      showComments: false,
+      commenters: [
+        {
+          title: 'wanderingbiscuits',
+          subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, incidunt!'
+        },
+        { divider: true, inset: false },
+        {
+          title: 'giletcomposter',
+          subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, incidunt!'
+        },
+        { divider: true, inset: false },
+        {
+          title: 'bouquetcoral',
+          subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, incidunt!'
+        },
+        { divider: true, inset: false },
+        {
+          title: 'inborngroovy',
+          subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, incidunt!'
+        },
+        { divider: true, inset: false },
+        {
+          title: 'attentionchapter',
+          subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, incidunt!'
+        },
+      ],
+      comment: ''
     }
   },
 
@@ -319,11 +424,20 @@ export default {
       await PostService.deletePost(id)
       this.deleteDialog = false
       this.$parent.getPosts()
-    }
+    },
+    sendComment () {
+      this.clearComment()
+    },
+    
+    clearComment () {
+      this.message = ''
+    },
   }
 }
 </script>
 
 <style>
-
+  .v-input__append-outer .v-icon {
+    color: #37474f;
+  }
 </style>

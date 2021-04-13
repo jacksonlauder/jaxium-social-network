@@ -72,31 +72,31 @@ export default {
     items: [
       {
         avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-        title: 'Account Name',
+        title: 'bouquetcoral',
         subtitle: 'Accepted follow request.'
       },
       { divider: true, inset: true },
       {
         avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-        title: 'Account Name',
+        title: 'wanderingbiscuits',
         subtitle: 'Asked to follow you.'
       },
       { divider: true, inset: true },
       {
         avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-        title: 'Account Name',
+        title: 'giletcomposter',
         subtitle: 'Commented on your post.'
       },
       { divider: true, inset: true },
       {
         avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
-        title: 'Account Name',
+        title: 'inborngroovy',
         subtitle: 'Liked your post.'
       },
             { divider: true, inset: true },
       {
         avatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-        title: 'Account Name',
+        title: 'attentionchapter',
         subtitle: 'Accepted follow request.'
       },
     ]
