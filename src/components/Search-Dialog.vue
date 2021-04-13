@@ -13,19 +13,24 @@
             color="blue-grey lighten-5"
             class="pt-3"
           >
-              <v-text-field
-                solo
-                label="Search"
-                rounded
-                prepend-inner-icon="mdi-magnify"
-                hide-details="auto"
-              />
-              <v-btn
-                icon
-                @click="show = false"
+            <v-text-field
+              solo
+              label="Search"
+              rounded
+              prepend-inner-icon="mdi-magnify"
+              hide-details="auto"
+            />
+            <v-btn
+              icon
+              @click="show = false"
+            >
+              <v-icon
+                large
+                color="blue-grey darken-2"
               >
-                <v-icon large color="blue-grey darken-2">mdi-close</v-icon>
-              </v-btn>
+                mdi-close
+              </v-icon>
+            </v-btn>
           </v-toolbar>
         </v-card>
       </v-dialog>

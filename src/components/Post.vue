@@ -356,7 +356,7 @@ export default {
       deleteDialog: false,
       readonly: true,
       editedPost: {
-        postContent: ""
+        postContent: "",
       },
       items: [
         { title: 'bouquetcoral' },
@@ -391,7 +391,7 @@ export default {
           subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, incidunt!'
         },
       ],
-      comment: ''
+      comment: '',
     }
   },
 
@@ -403,7 +403,8 @@ export default {
 
     editPostContent: async function (id) {
       await PostService.getPostById(id).then(res => {
-        this.editedPost = res.data.post
+        console.log(res.data.posts.post)
+        this.editedPost = res.data.posts.post
       })
     },
 

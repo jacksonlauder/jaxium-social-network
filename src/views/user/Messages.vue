@@ -10,7 +10,10 @@
       elevation="3"
       @click.prevent="toHome"
     >
-      <v-icon large color="blue-grey darken-2">
+      <v-icon
+        large
+        color="blue-grey darken-2"
+      >
         mdi-arrow-left-bold
       </v-icon>
     </v-btn>
@@ -25,7 +28,10 @@
       elevation="3"
       @click.prevent="toMessageEdit"
     >
-      <v-icon large color="blue-grey darken-2">
+      <v-icon
+        large
+        color="blue-grey darken-2"
+      >
         mdi-square-edit-outline
       </v-icon>
     </v-btn>
