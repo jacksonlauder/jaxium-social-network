@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.index = index;
+exports.indexByUserId = indexByUserId;
 exports.create = create;
 exports.update = update;
 exports.remove = remove;
@@ -33,6 +34,27 @@ function index(req, res) {
     }
     return res.status(200).json({ posts: posts });
   }).populate("author", "username", "user").sort({ createdAt: "desc" });
+}
+
+function indexByUserId(req, res) {
+  // FIND ALL POSTS FOR CERTAIN USER
+  var id = auth.getUserId(req);
+
+  _userModel2.default.findOne({ _id: id }, function (error, user) {
+    if (error) {
+      return res.status(500).json();
+    }
+    if (!user) {
+      return remove.status(404).json();
+    }
+
+    _postModel2.default.find({ author: id }, function (error, posts) {
+      if (error) {
+        return res.status(500).json();
+      }
+      return res.status(200).json({ posts: posts });
+    }).populate("author", "username", "user").sort({ createdAt: "desc" });
+  });
 }
 
 function create(req, res) {

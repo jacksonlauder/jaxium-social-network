@@ -14,6 +14,29 @@ export function index(req, res) {
     .sort({ createdAt: "desc" });
 }
 
+export function indexByUserId(req, res) {
+  // FIND ALL POSTS FOR CERTAIN USER
+  const id = auth.getUserId(req);
+
+  User.findOne({ _id: id }, (error, user) => {
+    if (error) {
+      return res.status(500).json();
+    }
+    if (!user) {
+      return remove.status(404).json();
+    }
+
+    Post.find({ author: id }, (error, posts) => {
+      if (error) {
+        return res.status(500).json();
+      }
+      return res.status(200).json({ posts: posts });
+    })
+      .populate("author", "username", "user")
+      .sort({ createdAt: "desc" });
+  })
+}
+
 export function create(req, res) {
   // CREATE POST
   const id = auth.getUserId(req);

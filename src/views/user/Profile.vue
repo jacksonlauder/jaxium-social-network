@@ -13,13 +13,16 @@
       elevation="3"
       @click.prevent="toHome"
     >
-      <v-icon large color="blue-grey darken-2">
+      <v-icon
+        large
+        color="blue-grey darken-2"
+      >
         mdi-arrow-left-bold
       </v-icon>
     </v-btn>
 
     <v-card
-      max-width="800"
+      max-width="500"
       class="mx-auto mt-5 pa-2"
     >
       <v-row
@@ -132,18 +135,36 @@
         </v-btn>
       </v-card-actions>
     </v-card>
+    <Post :posts="posts" />
   </v-container>
 </template>
 
 <script>
+import Post from '../../components/Post'
+import * as PostService from '../../services/PostService'
+import store from '../../store'
 // import * as UserService from '../../services/UserService'
 
 export default {
   name: 'Profile',
-    data: function () {
+
+  components: {
+    Post
+  },
+
+  data: function () {
     return {
-      userData: null
+      userData: null,
+      posts: null,
     }
+  },
+
+  beforeRouteEnter (to, from, next) {
+    PostService.getAllPostsByUserId(store.state.userId).then(res => {
+      next(vm => {
+        vm.posts = res.data.posts
+      })
+    })
   },
 
   methods: {

@@ -4,6 +4,10 @@ export function getAllPosts() {
   return http().get("/post");
 }
 
+export function getAllPostsByUserId(id) {
+  return http().get(`/post/${id}`);
+}
+
 export function getPostById(id) {
   return http().get(`/post/${id}`);
 }
