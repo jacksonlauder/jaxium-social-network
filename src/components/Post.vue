@@ -403,8 +403,7 @@ export default {
 
     editPostContent: async function (id) {
       await PostService.getPostById(id).then(res => {
-        console.log(res.data.posts.post)
-        this.editedPost = res.data.posts.post
+        this.editedPost = res.data.post
       })
     },
 

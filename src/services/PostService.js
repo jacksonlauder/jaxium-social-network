@@ -5,7 +5,7 @@ export function getAllPosts() {
 }
 
 export function getAllPostsByUserId(id) {
-  return http().get(`/post/${id}`);
+  return http().get(`/post/user${id}`);
 }
 
 export function getPostById(id) {

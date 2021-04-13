@@ -135,45 +135,52 @@
         </v-btn>
       </v-card-actions>
     </v-card>
-    <!-- <Post :posts="posts" /> -->
+    <Post :posts="posts" />
   </v-container>
 </template>
 
 <script>
-// import Post from '../../components/Post'
-// import * as PostService from '../../services/PostService'
-// import store from '../../store'
+import Post from '../../components/Post'
+import * as PostService from '../../services/PostService'
+import store from '../../store'
 // import * as UserService from '../../services/UserService'
 
 export default {
   name: 'Profile',
 
   components: {
-    // Post
+    Post
   },
 
   data: function () {
     return {
       userData: null,
-      // posts: null,
+      posts: null,
     }
   },
 
-  // beforeRouteEnter (to, from, next) {
-  //   PostService.getAllPostsByUserId(store.state.userId).then(res => {
-  //     next(vm => {
-  //       vm.posts = res.data.posts
-  //     })
-  //   })
-  // },
+  beforeRouteEnter (to, from, next) {
+    PostService.getAllPostsByUserId(store.state.userId).then(res => {
+      next(vm => {
+        vm.posts = res.data.posts
+      })
+    })
+  },
 
   methods: {
     toHome: function() {
       this.$router.push({ name: 'UserHome', params: { username: this.$store.state.username }})
     },
+
     toProfileEdit: function() {
       this.$router.push({ name: 'profile-edit', params: { username: this.$store.state.username }})
-    }
+    },
+
+    getPosts: async function() {
+      await PostService.getAllPostsByUserId(this.$store.state.userId).then(res => {
+        this.posts = res.data.posts
+      })
+    },
   }
 }
 </script>
