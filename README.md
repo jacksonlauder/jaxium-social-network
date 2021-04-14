@@ -6,6 +6,7 @@
 ## Styles
 - Primary Color: ![#546e7a](https://via.placeholder.com/15/546e7a/000000?text=+) `blue-grey darken-1` `#546e7a`
 - Secondary Color: ![#ff8f00](https://via.placeholder.com/15/ff8f00/000000?text=+) `amber darken-3` `#ff8f00`
+- Icon Color: ![#455A64](https://via.placeholder.com/15/455A64/000000?text=+) `blue-grey darken-2` `#455A64`
 - Background Color: ![#eceff1](https://via.placeholder.com/15/eceff1/000000?text=+) `blue-grey lighten-5` `#eceff1`
 
 ## Terminology
