@@ -41,7 +41,7 @@ function setDevEnv(app) {
 }
 
 function setProdEnv(app) {
-  process.env.DB_URL = 'mongodb://localhost:27017/jaxium-prod-db';
+  process.env.DB_URL = 'mongodb+srv://jacksonlauder:10596874@jaxium-db.4yzkv.mongodb.net/jaxium-db?retryWrites=true&w=majority';
   process.env.TOKEN_SECRET = '10596874-jaxium-social-network-production-secret';
   app.use(_bodyParser2.default.json());
   app.use(_express2.default.static(__dirname + '/../../dist'));
