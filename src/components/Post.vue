@@ -275,7 +275,7 @@
               v-for="(item, index) of post.likes"
               :key="index"
             >
-              <v-list-item-title>{{ item.by }}</v-list-item-title>
+              <v-list-item-title>{{ item.by.username }}</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>

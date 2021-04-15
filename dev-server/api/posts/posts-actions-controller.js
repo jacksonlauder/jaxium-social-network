@@ -12,11 +12,6 @@ export function indexByPostId(req, res) {
   }).populate("likes");
 }
 
-export function liked(req, res) {
-  // GET BOOL REPRESENTING LIKED OR NOT
-  // const id = auth.getUserId(req);
-}
-
 export function like(req, res) {
   // POST LIKE ON POST
   const id = auth.getUserId(req);
@@ -30,23 +25,49 @@ export function like(req, res) {
       return remove.status(404).json();
     }
 
-    Post.findByIdAndUpdate(
-      { _id: req.params.id },
-      { $push: { likes: { by: username } } },
-      { timestamps: false },
-      error => {
-        if (error) {
-          return res.status(500).json();
-        } else {
-          return res.status(204).json();
-        }
+    var query = { _id: req.params.id },
+      update = {
+        $addToSet: { likes: { by: { userId: user._id, username: username } } }
+      },
+      options = { timestamps: false };
+
+    Post.findByIdAndUpdate(query, update, options, error => {
+      if (error) {
+        return res.status(500).json();
+      } else {
+        return res.status(204).json();
       }
-    );
+    });
   });
 }
 
 export function unlike(req, res) {
   // DELETE LIKE ON POST
+  const id = auth.getUserId(req);
+  const username = auth.getUsername(req);
+
+  User.findOne({ _id: id }, (error, user) => {
+    if (error) {
+      return res.status(500).json();
+    }
+    if (!user) {
+      return remove.status(404).json();
+    }
+
+    var query = { _id: req.params.id },
+      update = {
+        $pull: { likes: { by: { userId: user._id, username: username } } }
+      },
+      options = { timestamps: false };
+
+    Post.findByIdAndUpdate(query, update, options, error => {
+      if (error) {
+        return res.status(500).json();
+      } else {
+        return res.status(204).json();
+      }
+    });
+  });
 }
 
 export function comment(req, res) {

@@ -22,7 +22,10 @@ commentSchema.set('timestamps', true);
 
 var likeSchema = new _mongoose2.default.Schema({
   // by: { type: mongoose.Schema.Types.ObjectId, ref: 'user' }
-  by: String
+  by: {
+    userId: { type: _mongoose2.default.Schema.Types.ObjectId, ref: 'user' },
+    username: String
+  }
 }, { _id: false });
 likeSchema.set('timestamps', true);
 

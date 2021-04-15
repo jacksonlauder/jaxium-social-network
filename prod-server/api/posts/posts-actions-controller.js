@@ -4,7 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.indexByPostId = indexByPostId;
-exports.liked = liked;
 exports.like = like;
 exports.unlike = unlike;
 exports.comment = comment;
@@ -37,11 +36,6 @@ function indexByPostId(req, res) {
   }).populate("likes");
 }
 
-function liked(req, res) {
-  // GET BOOL REPRESENTING LIKED OR NOT
-  // const id = auth.getUserId(req);
-}
-
 function like(req, res) {
   // POST LIKE ON POST
   var id = auth.getUserId(req);
@@ -55,7 +49,13 @@ function like(req, res) {
       return remove.status(404).json();
     }
 
-    _postModel2.default.findByIdAndUpdate({ _id: req.params.id }, { $push: { likes: { by: username } } }, { timestamps: false }, function (error) {
+    var query = { _id: req.params.id },
+        update = {
+      $addToSet: { likes: { by: { userId: user._id, username: username } } }
+    },
+        options = { timestamps: false };
+
+    _postModel2.default.findByIdAndUpdate(query, update, options, function (error) {
       if (error) {
         return res.status(500).json();
       } else {
@@ -67,6 +67,31 @@ function like(req, res) {
 
 function unlike(req, res) {
   // DELETE LIKE ON POST
+  var id = auth.getUserId(req);
+  var username = auth.getUsername(req);
+
+  _userModel2.default.findOne({ _id: id }, function (error, user) {
+    if (error) {
+      return res.status(500).json();
+    }
+    if (!user) {
+      return remove.status(404).json();
+    }
+
+    var query = { _id: req.params.id },
+        update = {
+      $pull: { likes: { by: { userId: user._id, username: username } } }
+    },
+        options = { timestamps: false };
+
+    _postModel2.default.findByIdAndUpdate(query, update, options, function (error) {
+      if (error) {
+        return res.status(500).json();
+      } else {
+        return res.status(204).json();
+      }
+    });
+  });
 }
 
 function comment(req, res) {

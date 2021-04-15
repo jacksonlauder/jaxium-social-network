@@ -24,9 +24,8 @@ var router = _express2.default.Router();
 
 
 router.get('/likes/:id', auth.requireLogin, controller.indexByPostId);
-// router.get('/liked-or-not', auth.requireLogin, controller.liked);
 router.put('/like/:id', auth.requireLogin, controller.like);
-// router.delete('/unlike/:id', auth.requireLogin, controller.unlike);
+router.put('/unlike/:id', auth.requireLogin, controller.unlike);
 
 // router.get('/comment/:id', auth.requireLogin, controller.show);
 // router.post('/comment', auth.requireLogin, controller.comment);
