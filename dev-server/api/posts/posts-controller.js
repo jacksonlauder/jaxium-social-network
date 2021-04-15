@@ -4,7 +4,6 @@ import * as auth from "../../services/auth-service";
 
 export function index(req, res) {
   // FIND ALL POSTS
-  console.log(auth.getUsername(req))
   Post.find({}, (error, posts) => {
     if (error) {
       return res.status(500).json();

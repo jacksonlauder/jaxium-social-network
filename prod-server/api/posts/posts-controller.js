@@ -28,7 +28,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function index(req, res) {
   // FIND ALL POSTS
-  console.log(auth.getUsername(req));
   _postModel2.default.find({}, function (error, posts) {
     if (error) {
       return res.status(500).json();

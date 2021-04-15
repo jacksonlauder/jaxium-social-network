@@ -2,7 +2,7 @@
   <v-col class="px-0">
     <v-card
       v-for="post of posts"
-      :id="`posts-${post._id}`"
+      :id="`${post._id}`"
       :key="post._id"
       class="mx-auto mb-5"
       max-width="35rem"
@@ -243,7 +243,10 @@
       <v-card-actions>
         <v-spacer />
 
-        <v-btn icon>
+        <v-btn
+          icon
+          @click.prevent="likePost(post._id)"
+        >
           <v-icon
             size="30px"
             color="blue-grey darken-2"
@@ -432,6 +435,11 @@ export default {
     clearComment () {
       this.message = ''
     },
+
+    likePost: async function (id) {
+      await PostService.likePost(id)
+      this.$parent.getPosts()
+    }
   }
 }
 </script>
