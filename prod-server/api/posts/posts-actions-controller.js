@@ -6,9 +6,9 @@ Object.defineProperty(exports, "__esModule", {
 exports.indexByPostId = indexByPostId;
 exports.like = like;
 exports.unlike = unlike;
-exports.comment = comment;
-exports.update = update;
-exports.remove = remove;
+exports.postComment = postComment;
+exports.updateComment = updateComment;
+exports.removeComment = removeComment;
 
 var _userModel = require("../../model/user-model");
 
@@ -82,7 +82,7 @@ function unlike(req, res) {
         update = {
       $pull: { likes: { by: { userId: user._id, username: username } } }
     },
-        options = { timestamps: false };
+        options = { timestamps: false, upsert: false };
 
     _postModel2.default.findByIdAndUpdate(query, update, options, function (error) {
       if (error) {
@@ -94,14 +94,14 @@ function unlike(req, res) {
   });
 }
 
-function comment(req, res) {
+function postComment(req, res) {
   // POST COMMENT ON POST
 }
 
-function update(req, res) {
+function updateComment(req, res) {
   // UPDATE COMMENT ON POST
 }
 
-function remove(req, res) {
+function removeComment(req, res) {
   // REMOVE COMMENT ON POST
 }

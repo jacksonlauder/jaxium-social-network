@@ -27,3 +27,7 @@ export function updatePost(post) {
 export function likePost(id) {
   return http().put(`/like/${id}`);
 }
+
+export function unlikePost(id) {
+  return http().put(`/unlike/${id}`);
+}

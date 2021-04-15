@@ -58,7 +58,7 @@ export function unlike(req, res) {
       update = {
         $pull: { likes: { by: { userId: user._id, username: username } } }
       },
-      options = { timestamps: false };
+      options = { timestamps: false, upsert: false };
 
     Post.findByIdAndUpdate(query, update, options, error => {
       if (error) {
@@ -70,14 +70,14 @@ export function unlike(req, res) {
   });
 }
 
-export function comment(req, res) {
+export function postComment(req, res) {
   // POST COMMENT ON POST
 }
 
-export function update(req, res) {
+export function updateComment(req, res) {
   // UPDATE COMMENT ON POST
 }
 
-export function remove(req, res) {
+export function removeComment(req, res) {
   // REMOVE COMMENT ON POST
 }
