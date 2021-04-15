@@ -11,6 +11,7 @@ export function index(req, res) {
     return res.status(200).json({ posts: posts });
   })
     .populate("author", "username", "user")
+    .populate({path: "likes", populate: { path: 'username user'}})
     .sort({ createdAt: "desc" });
 }
 
@@ -33,6 +34,7 @@ export function indexByUserId(req, res) {
       return res.status(200).json({ posts: posts });
     })
       .populate("author", "username", "user")
+      .populate("likes.like", "username", "user")
       .sort({ createdAt: "desc" });
   })
 }

@@ -2,6 +2,18 @@ import mongoose from 'mongoose'
 import { StringUtil } from '../utilities/string-util'
 import bcrypt from 'bcrypt-nodejs'
 
+const followersSchema = new mongoose.Schema({
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' }
+})
+
+const followeringSchema = new mongoose.Schema({
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' }
+})
+
+const blockedSchema = new mongoose.Schema({
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' }
+})
+
 const userSchema = new mongoose.Schema({
   username: String,
   first: String,
@@ -11,7 +23,11 @@ const userSchema = new mongoose.Schema({
   userLocation: String,
   userWebsite: String,
   userDescription: String,
+  followers: [followersSchema],
+  following: [followeringSchema],
+  blocked: [blockedSchema],
 })
+
 userSchema.set('timestamps', true)
 userSchema.virtual('fullName').get(function () {
   const first = StringUtil.capitalize(this.first.toLowerCase())

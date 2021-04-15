@@ -14,13 +14,25 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _mongoose2.default.set('useFindAndModify', false);
 
+var commentSchema = new _mongoose2.default.Schema({
+  by: { type: _mongoose2.default.Schema.Types.ObjectId, ref: 'user' },
+  commentContent: String
+}, { _id: false });
+commentSchema.set('timestamps', true);
+
+var likeSchema = new _mongoose2.default.Schema({
+  by: { type: _mongoose2.default.Schema.Types.ObjectId, ref: 'user' }
+}, { _id: false });
+likeSchema.set('timestamps', true);
+
 var postSchema = new _mongoose2.default.Schema({
   postContent: String,
-  author: { type: _mongoose2.default.Schema.Types.ObjectId, ref: 'user' }
+  author: { type: _mongoose2.default.Schema.Types.ObjectId, ref: 'user' },
   // TODO:
+  // Comments
+  comments: [commentSchema],
   // Likes
-  // Comments, needs separate model?
-  // Pictures
+  likes: [{ like: likeSchema }]
 });
 postSchema.set('timestamps', true);
 

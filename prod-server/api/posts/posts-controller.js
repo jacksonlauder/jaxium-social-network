@@ -33,7 +33,7 @@ function index(req, res) {
       return res.status(500).json();
     }
     return res.status(200).json({ posts: posts });
-  }).populate("author", "username", "user").sort({ createdAt: "desc" });
+  }).populate("author", "username", "user").populate({ path: "likes", populate: { path: 'username user' } }).sort({ createdAt: "desc" });
 }
 
 function indexByUserId(req, res) {
@@ -53,7 +53,7 @@ function indexByUserId(req, res) {
         return res.status(500).json();
       }
       return res.status(200).json({ posts: posts });
-    }).populate("author", "username", "user").sort({ createdAt: "desc" });
+    }).populate("author", "username", "user").populate("likes.like", "username", "user").sort({ createdAt: "desc" });
   });
 }
 

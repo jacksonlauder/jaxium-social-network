@@ -21,6 +21,10 @@ var _postsRoutes = require('./api/posts/posts-routes');
 
 var _postsRoutes2 = _interopRequireDefault(_postsRoutes);
 
+var _postsActionsRoutes = require('./api/posts/posts-actions-routes');
+
+var _postsActionsRoutes2 = _interopRequireDefault(_postsActionsRoutes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function registerRoutes(app) {
@@ -28,4 +32,5 @@ function registerRoutes(app) {
   app.use('/api', _userRoutes2.default);
   app.use('/api', _authRoutes2.default);
   app.use('/api', _postsRoutes2.default);
+  app.use('/api', _postsActionsRoutes2.default);
 }

@@ -16,6 +16,18 @@ var _bcryptNodejs2 = _interopRequireDefault(_bcryptNodejs);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var followersSchema = new _mongoose2.default.Schema({
+  user: { type: _mongoose2.default.Schema.Types.ObjectId, ref: 'user' }
+});
+
+var followeringSchema = new _mongoose2.default.Schema({
+  user: { type: _mongoose2.default.Schema.Types.ObjectId, ref: 'user' }
+});
+
+var blockedSchema = new _mongoose2.default.Schema({
+  user: { type: _mongoose2.default.Schema.Types.ObjectId, ref: 'user' }
+});
+
 var userSchema = new _mongoose2.default.Schema({
   username: String,
   first: String,
@@ -24,8 +36,12 @@ var userSchema = new _mongoose2.default.Schema({
   email: String,
   userLocation: String,
   userWebsite: String,
-  userDescription: String
+  userDescription: String,
+  followers: [followersSchema],
+  following: [followeringSchema],
+  blocked: [blockedSchema]
 });
+
 userSchema.set('timestamps', true);
 userSchema.virtual('fullName').get(function () {
   var first = _stringUtil.StringUtil.capitalize(this.first.toLowerCase());
