@@ -13,7 +13,7 @@ export function indexByPostId(req, res) {
 }
 
 export function like(req, res) {
-  // POST LIKE ON POST
+  // UPDATE TO LIKE POST
   const id = auth.getUserId(req);
   const username = auth.getUsername(req);
 
@@ -42,7 +42,7 @@ export function like(req, res) {
 }
 
 export function unlike(req, res) {
-  // DELETE LIKE ON POST
+  // UPDATE TO UNLIKE POST
   const id = auth.getUserId(req);
   const username = auth.getUsername(req);
 

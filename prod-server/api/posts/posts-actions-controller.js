@@ -37,7 +37,7 @@ function indexByPostId(req, res) {
 }
 
 function like(req, res) {
-  // POST LIKE ON POST
+  // UPDATE TO LIKE POST
   var id = auth.getUserId(req);
   var username = auth.getUsername(req);
 
@@ -66,7 +66,7 @@ function like(req, res) {
 }
 
 function unlike(req, res) {
-  // DELETE LIKE ON POST
+  // UPDATE TO UNLIKE POST
   var id = auth.getUserId(req);
   var username = auth.getUsername(req);
 
