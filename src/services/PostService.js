@@ -23,3 +23,7 @@ export function deletePost(id) {
 export function updatePost(post) {
   return http().put("/post", post);
 }
+
+export function likePost(id) {
+  return http().put(`/post/${id}`);
+}
