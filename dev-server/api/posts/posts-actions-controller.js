@@ -33,6 +33,7 @@ export function like(req, res) {
     Post.findByIdAndUpdate(
       { _id: req.params.id },
       { $push: { likes: { by: username } } },
+      { timestamps: false },
       error => {
         if (error) {
           return res.status(500).json();

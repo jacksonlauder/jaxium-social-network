@@ -55,7 +55,7 @@ function like(req, res) {
       return remove.status(404).json();
     }
 
-    _postModel2.default.findByIdAndUpdate({ _id: req.params.id }, { $push: { likes: { by: username } } }, function (error) {
+    _postModel2.default.findByIdAndUpdate({ _id: req.params.id }, { $push: { likes: { by: username } } }, { timestamps: false }, function (error) {
       if (error) {
         return res.status(500).json();
       } else {
