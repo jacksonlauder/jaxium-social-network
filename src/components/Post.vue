@@ -49,7 +49,9 @@
                   color="blue-grey darken-2"
                   v-on="on"
                 >
-                  <v-icon>mdi-dots-horizontal</v-icon>
+                  <v-icon large>
+                    mdi-dots-horizontal
+                  </v-icon>
                 </v-btn>
               </template>
 
@@ -248,7 +250,7 @@
           @click.prevent="likePost(post._id)"
         >
           <v-icon
-            size="30px"
+            size="35px"
             color="blue-grey darken-2"
           >
             mdi-heart
@@ -262,7 +264,7 @@
         >
           <template v-slot:activator="{ on, attrs }">
             <span
-              class="ml-2 pr-10 blue-grey--text text--darken-2"
+              class="ml-2 pr-10 pl-3 blue-grey--text text--darken-2 text-h5"
               v-bind="attrs"
               v-on="on"
             >{{ post.likes.length }}</span>
@@ -284,7 +286,7 @@
           @click.prevent="showComments = !showComments"
         >
           <v-icon
-            size="30px"
+            size="35px"
             color="blue-grey darken-2"
           >
             mdi-forum
@@ -328,14 +330,20 @@
               hide-details="auto"
               clear-icon="mdi-close-circle"
               clearable
-              :append-outer-icon="'mdi-message-reply'"
               @click:clear="clearComment"
-              @click:append-outer="sendComment"
             >
-              <template v-slot:append-outer-icon>
-                <v-icon color="blue-grey darken-2">
-                  mdi-send
-                </v-icon>
+              <template v-slot:append-outer>
+                <v-btn
+                  icon
+                  @click.prevent="sendComment"
+                >
+                  <v-icon
+                    large
+                    color="blue-grey darken-2"
+                  >
+                    mdi-message-reply
+                  </v-icon>
+                </v-btn>
               </template>
             </v-text-field>
           </v-container>
@@ -429,7 +437,7 @@ export default {
       this.$parent.getPosts()
     },
     sendComment () {
-      this.clearComment()
+      this.message = ''
     },
     
     clearComment () {
