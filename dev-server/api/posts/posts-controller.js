@@ -4,6 +4,7 @@ import * as auth from "../../services/auth-service";
 
 export function index(req, res) {
   // FIND ALL POSTS
+  console.log(auth.getUsername(req))
   Post.find({}, (error, posts) => {
     if (error) {
       return res.status(500).json();
@@ -11,7 +12,7 @@ export function index(req, res) {
     return res.status(200).json({ posts: posts });
   })
     .populate("author", "username", "user")
-    .populate({path: "likes", populate: { path: 'username user'}})
+    .populate("likes")
     .sort({ createdAt: "desc" });
 }
 
@@ -34,7 +35,7 @@ export function indexByUserId(req, res) {
       return res.status(200).json({ posts: posts });
     })
       .populate("author", "username", "user")
-      .populate("likes.like", "username", "user")
+      .populate("likes")
       .sort({ createdAt: "desc" });
   })
 }

@@ -262,15 +262,15 @@
               class="ml-2 pr-10 blue-grey--text text--darken-2"
               v-bind="attrs"
               v-on="on"
-            >{{ items.length }}</span>
+            >{{ post.likes.length }}</span>
           </template>
 
           <v-list>
             <v-list-item
-              v-for="(item, index) in items"
+              v-for="(item, index) of post.likes"
               :key="index"
             >
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
+              <v-list-item-title>{{ item.by }}</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>

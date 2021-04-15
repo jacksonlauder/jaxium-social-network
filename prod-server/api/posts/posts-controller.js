@@ -28,12 +28,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function index(req, res) {
   // FIND ALL POSTS
+  console.log(auth.getUsername(req));
   _postModel2.default.find({}, function (error, posts) {
     if (error) {
       return res.status(500).json();
     }
     return res.status(200).json({ posts: posts });
-  }).populate("author", "username", "user").populate({ path: "likes", populate: { path: 'username user' } }).sort({ createdAt: "desc" });
+  }).populate("author", "username", "user").populate("likes").sort({ createdAt: "desc" });
 }
 
 function indexByUserId(req, res) {
@@ -53,7 +54,7 @@ function indexByUserId(req, res) {
         return res.status(500).json();
       }
       return res.status(200).json({ posts: posts });
-    }).populate("author", "username", "user").populate("likes.like", "username", "user").sort({ createdAt: "desc" });
+    }).populate("author", "username", "user").populate("likes").sort({ createdAt: "desc" });
   });
 }
 

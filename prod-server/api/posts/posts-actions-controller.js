@@ -45,6 +45,7 @@ function liked(req, res) {
 function like(req, res) {
   // POST LIKE ON POST
   var id = auth.getUserId(req);
+  var username = auth.getUsername(req);
 
   _userModel2.default.findOne({ _id: id }, function (error, user) {
     if (error) {
@@ -54,7 +55,7 @@ function like(req, res) {
       return remove.status(404).json();
     }
 
-    _postModel2.default.findByIdAndUpdate({ _id: req.params.id }, { $push: { likes: { by: user._id } } }, function (error) {
+    _postModel2.default.findByIdAndUpdate({ _id: req.params.id }, { $push: { likes: { by: username } } }, function (error) {
       if (error) {
         return res.status(500).json();
       } else {

@@ -21,7 +21,8 @@ var commentSchema = new _mongoose2.default.Schema({
 commentSchema.set('timestamps', true);
 
 var likeSchema = new _mongoose2.default.Schema({
-  by: { type: _mongoose2.default.Schema.Types.ObjectId, ref: 'user' }
+  // by: { type: mongoose.Schema.Types.ObjectId, ref: 'user' }
+  by: String
 }, { _id: false });
 likeSchema.set('timestamps', true);
 
@@ -32,7 +33,7 @@ var postSchema = new _mongoose2.default.Schema({
   // Comments
   comments: [commentSchema],
   // Likes
-  likes: [{ like: likeSchema }]
+  likes: [likeSchema]
 });
 postSchema.set('timestamps', true);
 

@@ -10,7 +10,8 @@ const commentSchema = new mongoose.Schema ({
 commentSchema.set('timestamps', true);
 
 const likeSchema = new mongoose.Schema ({
-  by: { type: mongoose.Schema.Types.ObjectId, ref: 'user' }
+  // by: { type: mongoose.Schema.Types.ObjectId, ref: 'user' }
+  by: String
 }, { _id: false })
 likeSchema.set('timestamps', true);
 
@@ -21,7 +22,7 @@ const postSchema = new mongoose.Schema ({
   // Comments
   comments: [commentSchema],
   // Likes
-  likes: [{like: likeSchema}]
+  likes: [likeSchema]
 })
 postSchema.set('timestamps', true);
 

@@ -20,6 +20,7 @@ export function liked(req, res) {
 export function like(req, res) {
   // POST LIKE ON POST
   const id = auth.getUserId(req);
+  const username = auth.getUsername(req);
 
   User.findOne({ _id: id }, (error, user) => {
     if (error) {
@@ -31,7 +32,7 @@ export function like(req, res) {
 
     Post.findByIdAndUpdate(
       { _id: req.params.id },
-      { $push: { likes: { by: user._id } } },
+      { $push: { likes: { by: username } } },
       error => {
         if (error) {
           return res.status(500).json();
