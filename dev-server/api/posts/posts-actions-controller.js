@@ -22,7 +22,7 @@ export function like(req, res) {
       return res.status(500).json();
     }
     if (!user) {
-      return remove.status(404).json();
+      return res.status(404).json();
     }
 
     var query = { _id: req.params.id },
