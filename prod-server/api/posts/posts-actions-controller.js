@@ -23,6 +23,8 @@ var _authService = require("../../services/auth-service");
 
 var auth = _interopRequireWildcard(_authService);
 
+var _stringUtil = require("../../utilities/string-util");
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -97,6 +99,11 @@ function unlike(req, res) {
 
 function postComment(req, res) {
   // POST COMMENT ON POST
+  var validation = validateIndex(req.body);
+  if (!validation.isValid) {
+    return res.status(400).json({ message: validation.message });
+  }
+
   var id = auth.getUserId(req);
   var username = auth.getUsername(req);
 
@@ -110,7 +117,12 @@ function postComment(req, res) {
 
     var query = { _id: req.params.id },
         update = {
-      $addToSet: { comments: { by: { userId: user._id, username: username } } }
+      $addToSet: {
+        comments: {
+          by: { userId: user._id, username: username },
+          commentContent: req.body.commentContent
+        }
+      }
     },
         options = { timestamps: false };
 
@@ -134,4 +146,16 @@ function updateComment(req, res) {
 
 function removeComment(req, res) {
   // REMOVE COMMENT ON POST
+}
+
+function validateIndex(body) {
+  var errors = "";
+  if (_stringUtil.StringUtil.isEmpty(body.commentContent)) {
+    errors += "Comment is required. ";
+  }
+
+  return {
+    isValid: _stringUtil.StringUtil.isEmpty(errors),
+    message: errors
+  };
 }

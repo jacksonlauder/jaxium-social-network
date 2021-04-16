@@ -1,6 +1,7 @@
 import User from "../../model/user-model";
 import Post from "../../model/post-model";
 import * as auth from "../../services/auth-service";
+import { StringUtil } from "../../utilities/string-util";
 
 export function indexByPostId(req, res) {
   // GET ALL LIKES ON POST BY ID
@@ -72,6 +73,11 @@ export function unlike(req, res) {
 
 export function postComment(req, res) {
   // POST COMMENT ON POST
+  const validation = validateIndex(req.body);
+  if (!validation.isValid) {
+    return res.status(400).json({ message: validation.message });
+  }
+
   const id = auth.getUserId(req);
   const username = auth.getUsername(req);
 
@@ -85,7 +91,12 @@ export function postComment(req, res) {
 
     var query = { _id: req.params.id },
       update = {
-        $addToSet: { comments: { by: { userId: user._id, username: username } } }
+        $addToSet: {
+          comments: { 
+            by: { userId: user._id, username: username },
+            commentContent: req.body.commentContent 
+          }
+        }
       },
       options = { timestamps: false };
 
@@ -109,4 +120,16 @@ export function updateComment(req, res) {
 
 export function removeComment(req, res) {
   // REMOVE COMMENT ON POST
+}
+
+function validateIndex(body) {
+  let errors = "";
+  if (StringUtil.isEmpty(body.commentContent)) {
+    errors += "Comment is required. ";
+  }
+
+  return {
+    isValid: StringUtil.isEmpty(errors),
+    message: errors
+  };
 }
