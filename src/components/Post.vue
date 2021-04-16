@@ -244,7 +244,6 @@
 
       <v-card-actions>
         <v-spacer />
-
         <v-btn
           icon
           @click.prevent="likePost(post._id)"
@@ -254,6 +253,18 @@
             color="blue-grey darken-2"
           >
             mdi-heart
+          </v-icon>
+        </v-btn>
+
+        <v-btn
+          icon
+          @click.prevent="unlikePost(post._id)"
+        >
+          <v-icon
+            size="35px"
+            color="blue-grey darken-2"
+          >
+            mdi-heart-off
           </v-icon>
         </v-btn>
 
@@ -283,7 +294,7 @@
         <v-btn
           icon
           class="ml-5"
-          @click.prevent="showComments = !showComments"
+          @click.prevent="showComments(post.comments)"
         >
           <v-icon
             size="35px"
@@ -296,7 +307,7 @@
       </v-card-actions>
 
       <v-expand-transition>
-        <div v-show="showComments">
+        <div v-show="post.comments.isVisible">
           <v-divider />
 
           <v-list two-line>
@@ -354,6 +365,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import * as PostService from '../services/PostService'
 import moment from 'moment'
 
@@ -375,7 +387,6 @@ export default {
         { title: 'giletcomposter' },
         { title: 'inborngroovy' },
       ],
-      showComments: false,
       commenters: [
         {
           title: 'wanderingbiscuits',
@@ -403,6 +414,7 @@ export default {
         },
       ],
       comment: '',
+      isLiked: false
     }
   },
 
@@ -447,7 +459,17 @@ export default {
     likePost: async function (id) {
       await PostService.likePost(id)
       this.$parent.getPosts()
-    }
+    },
+    
+    unlikePost: async function (id) {
+      await PostService.unlikePost(id)
+      this.$parent.getPosts()
+    },
+
+    showComments: function (comments) {
+      console.log(comments)
+      Vue.set(comments, 'isVisible', !comments.isVisible)
+    },
   }
 }
 </script>
