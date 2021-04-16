@@ -7,6 +7,7 @@ exports.indexByPostId = indexByPostId;
 exports.like = like;
 exports.unlike = unlike;
 exports.postComment = postComment;
+exports.showComment = showComment;
 exports.updateComment = updateComment;
 exports.removeComment = removeComment;
 
@@ -96,6 +97,35 @@ function unlike(req, res) {
 
 function postComment(req, res) {
   // POST COMMENT ON POST
+  var id = auth.getUserId(req);
+  var username = auth.getUsername(req);
+
+  _userModel2.default.findOne({ _id: id }, function (error, user) {
+    if (error) {
+      return res.status(500).json();
+    }
+    if (!user) {
+      return res.status(404).json();
+    }
+
+    var query = { _id: req.params.id },
+        update = {
+      $addToSet: { comments: { by: { userId: user._id, username: username } } }
+    },
+        options = { timestamps: false };
+
+    _postModel2.default.findByIdAndUpdate(query, update, options, function (error) {
+      if (error) {
+        return res.status(500).json();
+      } else {
+        return res.status(204).json();
+      }
+    });
+  });
+}
+
+function showComment(req, res) {
+  // SHOW COMMENT ON POST
 }
 
 function updateComment(req, res) {

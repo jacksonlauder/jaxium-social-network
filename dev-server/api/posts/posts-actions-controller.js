@@ -72,6 +72,35 @@ export function unlike(req, res) {
 
 export function postComment(req, res) {
   // POST COMMENT ON POST
+  const id = auth.getUserId(req);
+  const username = auth.getUsername(req);
+
+  User.findOne({ _id: id }, (error, user) => {
+    if (error) {
+      return res.status(500).json();
+    }
+    if (!user) {
+      return res.status(404).json();
+    }
+
+    var query = { _id: req.params.id },
+      update = {
+        $addToSet: { comments: { by: { userId: user._id, username: username } } }
+      },
+      options = { timestamps: false };
+
+    Post.findByIdAndUpdate(query, update, options, error => {
+      if (error) {
+        return res.status(500).json();
+      } else {
+        return res.status(204).json();
+      }
+    });
+  });
+}
+
+export function showComment(req, res) {
+  // SHOW COMMENT ON POST
 }
 
 export function updateComment(req, res) {

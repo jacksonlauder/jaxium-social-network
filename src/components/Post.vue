@@ -95,6 +95,7 @@
                       <v-card-text class="mt-4">
                         <v-textarea
                           v-model="editedPost.postContent"
+                          :rules="rules"
                           outlined
                           auto-grow
                           counter
@@ -375,6 +376,10 @@ export default {
 
   data: function () {
     return {
+      rules: [
+        value => !!value || 'Required.',
+        value => (value && value.length >= 3) || 'Min 3 characters',
+      ],
       editDialog: false,
       deleteDialog: false,
       readonly: true,

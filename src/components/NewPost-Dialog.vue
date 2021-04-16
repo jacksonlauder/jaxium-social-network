@@ -36,12 +36,13 @@
             <v-container fluid>
               <v-textarea
                 v-model="postContent"
+                :rules="rules"
                 outlined
                 auto-grow
                 label="Write something..."
                 counter
                 hide-details="auto"
-                @keydown.enter.prevent="onSubmit"
+                required
               />
 
               <v-card-actions class="d-flex flex-column mb-5">
@@ -78,6 +79,10 @@ import * as PostService from '../services/PostService'
     data: function () {
       return {
         postContent: '',
+        rules: [
+          value => !!value || 'Required.',
+          value => (value && value.length >= 3) || 'Min 3 characters',
+        ],
       }
     },
 
@@ -104,7 +109,7 @@ import * as PostService from '../services/PostService'
       },
 
       cancel: function () {
-        this.postContent = ''
+        this.$refs.newPostForm.reset()
         this.show = false
       }
     }
