@@ -2,6 +2,8 @@
 
 ![Jaxium_Title_500](./public/Jaxium_Title_500.png)
 
+A MEVN Stack Application
+
 _Deployed_ [_here_](http://ec2-54-183-142-112.us-west-1.compute.amazonaws.com:3000/)
 
 ## Table of Contents
@@ -14,6 +16,7 @@ _Deployed_ [_here_](http://ec2-54-183-142-112.us-west-1.compute.amazonaws.com:30
 
 ## Built using
 
+- __MongoDB__
 - __Vue__
 - __Vuetify__
 - __Axios__
