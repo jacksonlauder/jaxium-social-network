@@ -18,7 +18,7 @@ _Deployed_ [_here_](http://ec2-54-183-142-112.us-west-1.compute.amazonaws.com:30
 
 - __MongoDB__
 - __expressJS__
-- __Vue__
+- __Vue.js__
 - __NodeJS__
 - __Vuetify__
 - __Axios__
