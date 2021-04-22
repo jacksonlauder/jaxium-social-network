@@ -1,9 +1,10 @@
 <h1 align="left">
   Jaxium Social Network
   <br/>
+  <br/>
   <img src="./public/Jaxium_Logo_200.png" width="100">
 </h1>
-<h4 align="center">A MEVN Stack Application</h4>
+<h4 align="left">A MEVN Stack Application</h4>
 
 _Deployed_ [_here_](http://ec2-54-183-142-112.us-west-1.compute.amazonaws.com:3000/)
 
