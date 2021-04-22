@@ -6,7 +6,7 @@ _Deployed_ [_here_](http://ec2-54-183-142-112.us-west-1.compute.amazonaws.com:30
 
 ## Table of Contents
 
-- [Features](#features)
+- [Built using](#built-using)
 - [Project Setup](#project-setup)
 - [Styles](#styles)
 - [Terminology](#terminology)
