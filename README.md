@@ -1,12 +1,15 @@
-# Jaxium Social Network
-
-![Jaxium_Logo_500](./public/Jaxium_Logo_200.png)
-
-A MEVN Stack Application
+<h1 align="center">
+  <img src="./public/Jaxium_Logo_200.png" width="100">
+  <br>
+  Jaxium Social Network
+</h1>
+<h4 align="center">A MEVN Stack Application</h4>
 
 _Deployed_ [_here_](http://ec2-54-183-142-112.us-west-1.compute.amazonaws.com:3000/)
 
-![Production](https://github.com/jacksonlauder/jaxium-social-network/actions/workflows/ci-cd.yml/badge.svg?branch=master)
+[![GitHub Release](https://img.shields.io/github/release/tterb/PlayMusic.svg?style=flat)]() 
+![Production](https://github.com/jacksonlauder/jaxium-social-network/actions/workflows/ci-cd.yml/badge.svg)
+
 
 ## Table of Contents
 
