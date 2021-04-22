@@ -6,6 +6,8 @@ A MEVN Stack Application
 
 _Deployed_ [_here_](http://ec2-54-183-142-112.us-west-1.compute.amazonaws.com:3000/)
 
+![Production](https://github.com/jacksonlauder/jaxium-social-network/actions/workflows/ci-cd.yml/badge.svg?branch=master)
+
 ## Table of Contents
 
 - [Built using](#built-using)
