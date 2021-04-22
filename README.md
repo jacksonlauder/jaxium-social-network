@@ -1,6 +1,6 @@
 # Jaxium Social Network
 
-![Jaxium_Logo_500](./public/Jaxium_Logo_200.png)
+![Jaxium_Logo_500](./public/Jaxium_Logo_200.png | width=100)
 
 A MEVN Stack Application
 
