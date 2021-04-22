@@ -246,8 +246,9 @@
       <v-card-actions>
         <v-spacer />
         <v-btn
+          v-bind:liked="post.liked"
           icon
-          @click.prevent="likePost(post._id)"
+          @click.prevent="toggleLike(post._id, post.likes)"
         >
           <v-icon
             size="35px"
@@ -257,7 +258,7 @@
           </v-icon>
         </v-btn>
 
-        <v-btn
+        <!-- <v-btn
           icon
           @click.prevent="unlikePost(post._id)"
         >
@@ -268,6 +269,8 @@
             mdi-heart-off
           </v-icon>
         </v-btn>
+
+        <span>true</span> -->
 
         <v-menu
           open-on-hover
@@ -311,24 +314,33 @@
         <div v-show="post.comments.isVisible">
           <v-divider />
 
-          <v-list two-line>
-            <template v-for="(commenter, index) in commenters">
-              <v-divider
-                v-if="commenter.divider"
-                :key="index"
-                :inset="commenter.inset"
-              />
-              <v-list-item
-                v-else
-                :key="commenter.title"
-              >
-                <v-list-item-content>
-                  <v-list-item-title v-html="commenter.title" />
-                  <v-list-item-subtitle v-html="commenter.subtitle" />
-                </v-list-item-content>
-              </v-list-item>
-            </template>
-          </v-list>
+          <v-container fluid>
+            <v-list
+              v-for="(item, index) in post.comments"
+              :key="index"
+              two-line
+            >
+              <template>
+                <v-list-item
+                  :key="item.by.username"
+                  class="blue-grey lighten-5 rounded-pill"
+                >
+                  <v-list-item-avatar>
+                    <v-img
+                      class="elevation-6"
+                      alt=""
+                      src="https://cdn.vuetifyjs.com/images/lists/1.jpg"
+                    />
+                  </v-list-item-avatar>
+
+                  <v-list-item-content>
+                    <v-list-item-title v-html="item.by.username" />
+                    <v-list-item-subtitle v-html="item.commentContent" />
+                  </v-list-item-content>
+                </v-list-item>
+              </template>
+            </v-list>
+          </v-container>
 
           <v-divider />
 
@@ -386,41 +398,12 @@ export default {
       editedPost: {
         postContent: "",
       },
-      items: [
-        { title: 'bouquetcoral' },
-        { title: 'wanderingbiscuits' },
-        { title: 'giletcomposter' },
-        { title: 'inborngroovy' },
-      ],
-      commenters: [
-        {
-          title: 'wanderingbiscuits',
-          subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, incidunt!'
-        },
-        { divider: true, inset: false },
-        {
-          title: 'giletcomposter',
-          subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, incidunt!'
-        },
-        { divider: true, inset: false },
-        {
-          title: 'bouquetcoral',
-          subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, incidunt!'
-        },
-        { divider: true, inset: false },
-        {
-          title: 'inborngroovy',
-          subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, incidunt!'
-        },
-        { divider: true, inset: false },
-        {
-          title: 'attentionchapter',
-          subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, incidunt!'
-        },
-      ],
       comment: '',
-      isLiked: false
     }
+  },
+
+  mounted: function () {
+    Vue.set()
   },
 
   methods: {
@@ -461,6 +444,21 @@ export default {
       this.message = ''
     },
 
+    toggleLike: function (id, likes) {
+      console.log(likes)
+      var username = this.$store.state.username
+      console.log(username)
+
+      var obj = likes.find(o => o.by.username === username)
+      console.log(obj)
+
+      if(obj) {
+        this.unlikePost(id)
+      } else {
+        this.likePost(id)
+      }
+    },
+
     likePost: async function (id) {
       await PostService.likePost(id)
       this.$parent.getPosts()
@@ -472,7 +470,6 @@ export default {
     },
 
     showComments: function (comments) {
-      console.log(comments)
       Vue.set(comments, 'isVisible', !comments.isVisible)
     },
   }
