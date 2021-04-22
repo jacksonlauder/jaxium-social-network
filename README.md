@@ -1,8 +1,6 @@
 <h1 align="left">
   Jaxium Social Network
-  <br/>
-  <br/>
-  <img src="./public/Jaxium_Logo_200.png" width="100">
+  <img src="./public/Jaxium_Logo_200.png" width="50">
 </h1>
 <h4 align="left">A MEVN Stack Application</h4>
 
