@@ -402,9 +402,9 @@ export default {
     }
   },
 
-  mounted: function () {
-    Vue.set()
-  },
+  // mounted: function () {
+  //   Vue.set()
+  // },
 
   methods: {
     time: function (timeRaw) {
