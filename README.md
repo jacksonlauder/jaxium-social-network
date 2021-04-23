@@ -1,23 +1,28 @@
-<h1 align="left">
-  Jaxium Social Network
-  <img src="./public/Jaxium_Logo_200.png" width="50">
-</h1>
-<h4 align="left">A MEVN Stack Application</h4>
+![Jaxium Social Network Logo](./public/Jaxium_Title_500.png)
 
-_Deployed_ [_here_](http://ec2-54-183-142-112.us-west-1.compute.amazonaws.com:3000/)
+A small-scale social network built with MongoDB, expressJS, Vue.js + Vuetify, and Node.JS
+
+#
 
 ![Production](https://github.com/jacksonlauder/jaxium-social-network/actions/workflows/ci-cd.yml/badge.svg)
-[![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat)]()
+[![GitHub last commit](https://img.shields.io/github/last-commit/jacksonlauder/jaxium-social-network)
 
 ## Table of Contents
 
-- [Built using](#built-using)
+- [Live Demo](#live-demo)
+- [Features](#features)
+- [Dependencies](#dependencies)
 - [Project Setup](#project-setup)
 - [Styles](#styles)
 - [Terminology](#terminology)
 - [Flow Chart](#flowchart)
 
-## Built using
+## Live Demo
+http://18.144.62.127:3000/
+
+## Features
+
+## Dependencies
 
 - __MongoDB__
 - __expressJS__
