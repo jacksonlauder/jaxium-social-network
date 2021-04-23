@@ -5,7 +5,7 @@ A small-scale social network built with MongoDB, expressJS, Vue.js + Vuetify, an
 #
 
 ![Production](https://github.com/jacksonlauder/jaxium-social-network/actions/workflows/ci-cd.yml/badge.svg)
-[![GitHub last commit](https://img.shields.io/github/last-commit/jacksonlauder/jaxium-social-network)
+![GitHub last commit](https://img.shields.io/github/last-commit/jacksonlauder/jaxium-social-network)
 
 ## Table of Contents
 
