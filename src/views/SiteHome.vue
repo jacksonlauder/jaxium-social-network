@@ -10,7 +10,7 @@
       <v-card-title class="text-center justify-center pb-3">
         <h2>Welcome to the<br><strong>Jaxium</strong><br>Social Network!</h2>
       </v-card-title>
-      <!-- <v-card-text>Lorem ipsum dolor sit amet.</v-card-text> -->
+      <v-card-text>Lorem ipsum dolor sit amet.</v-card-text>
 
       <v-card-actions class="d-flex flex-column mt-5">
         <v-btn
