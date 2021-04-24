@@ -246,7 +246,6 @@
       <v-card-actions>
         <v-spacer />
         <v-btn
-          v-bind:liked="post.liked"
           icon
           @click.prevent="toggleLike(post._id, post.likes)"
         >
@@ -285,7 +284,7 @@
             >{{ post.likes.length }}</span>
           </template>
 
-          <v-list>
+          <v-list v-if="post.likes.length > 0">
             <v-list-item
               v-for="(item, index) of post.likes"
               :key="index"
@@ -297,7 +296,6 @@
 
         <v-btn
           icon
-          class="ml-5"
           @click.prevent="showComments(post.comments)"
         >
           <v-icon
@@ -402,10 +400,6 @@ export default {
     }
   },
 
-  // mounted: function () {
-  //   Vue.set()
-  // },
-
   methods: {
     time: function (timeRaw) {
       var timeParsed = moment(timeRaw).fromNow()
@@ -445,12 +439,8 @@ export default {
     },
 
     toggleLike: function (id, likes) {
-      console.log(likes)
       var username = this.$store.state.username
-      console.log(username)
-
       var obj = likes.find(o => o.by.username === username)
-      console.log(obj)
 
       if(obj) {
         this.unlikePost(id)
