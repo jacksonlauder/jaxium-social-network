@@ -3,13 +3,12 @@
 const _  = require('lodash');
 const express = require('express');
 const history = require('connect-history-api-fallback');
-
-const app = express()
-app.use(history());
-
 import { registerRoutes } from './routes'
 import { setEnvironment } from './config/env'
 import { connectToDB } from './config/db'
+
+const app = express()
+app.use('/', history());
 
 setEnvironment(app)
 connectToDB()
@@ -17,7 +16,7 @@ registerRoutes(app)
 
 app.get('/', (req, res) => {
   if (process.env.NODE_ENV !== 'production') {
-    return res.send('Running server in dev mode')
+    return res.send('Running server in developer mode')
   } else {
     return res.sendFile('index.html', { root: __dirname + '/../dist/' })
   }
