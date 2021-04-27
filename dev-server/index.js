@@ -1,10 +1,10 @@
 /* eslint-disable no-path-concat */
 // eslint-disable-next-line no-unused-vars
-var _  = require('lodash');
-var express = require('express');
-var history = require('connect-history-api-fallback');
+const _  = require('lodash');
+const express = require('express');
+const history = require('connect-history-api-fallback');
 
-var app = express()
+const app = express()
 app.use(history());
 
 import { registerRoutes } from './routes'
