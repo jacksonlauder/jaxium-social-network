@@ -20,11 +20,17 @@
             class="ml-5"
           >
             <v-avatar>
-              <v-img
+              <!-- <v-img
                 class="elevation-6"
                 alt=""
                 src="https://cdn.vuetifyjs.com/images/lists/1.jpg"
-              />
+              /> -->
+              <v-icon
+                color="blue-grey darken-1"
+                size="3.75em"
+              >
+                mdi-account-circle
+              </v-icon>
             </v-avatar>
           </v-col>
         
@@ -324,17 +330,67 @@
                   class="blue-grey lighten-5 rounded-pill"
                 >
                   <v-list-item-avatar>
-                    <v-img
+                    <!-- <v-img
                       class="elevation-6"
                       alt=""
                       src="https://cdn.vuetifyjs.com/images/lists/1.jpg"
-                    />
+                    /> -->
+                    <v-icon
+                      color="blue-grey darken-1"
+                      size="3em"
+                    >
+                      mdi-account-circle
+                    </v-icon>
                   </v-list-item-avatar>
 
                   <v-list-item-content>
-                    <v-list-item-title v-html="item.by.username" />
-                    <v-list-item-subtitle v-html="item.commentContent" />
+                    <v-list-item-title class="comment-title">
+                      {{ item.by.username }}
+                    </v-list-item-title>
+                    <v-list-item-subtitle
+                      class="black--text"
+                    >
+                      {{ item.commentContent }}
+                    </v-list-item-subtitle>
                   </v-list-item-content>
+
+                  <v-menu
+                    right
+                    rounded
+                    offset-x
+                  >
+                    <template v-slot:activator="{ on }">
+                      <v-btn
+                        absolute
+                        right
+                        icon
+                        color="blue-grey darken-2"
+                        v-on="on"
+                      >
+                        <v-icon large>
+                          mdi-dots-horizontal
+                        </v-icon>
+                      </v-btn>
+                    </template>
+                    <v-list>
+                      <v-list-item
+                        v-if="$store.state.username !== post.author.username"
+                        link
+                        disabled
+                      >
+                        <v-list-item-icon>
+                          <v-icon disabled>
+                            mdi-alert
+                          </v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>
+                          <v-list-item-title>
+                            Report Comment
+                          </v-list-item-title>
+                        </v-list-item-content>
+                      </v-list-item>
+                    </v-list>
+                  </v-menu>
                 </v-list-item>
               </template>
             </v-list>
@@ -430,8 +486,14 @@ export default {
       this.deleteDialog = false
       this.$parent.getPosts()
     },
-    sendComment () {
-      this.message = ''
+
+    sendComment: async function() {
+      const comment = {
+        comment: this.commentContent
+      }
+      await PostService.postComment(comment)
+      this.$parent.getPosts()
+      this.clearComment()
     },
     
     clearComment () {
@@ -469,5 +531,15 @@ export default {
 <style>
   .v-input__append-outer .v-icon {
     color: #37474f;
+  }
+  .comment-time {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.375rem;
+    letter-spacing: 0.0071428571em;
+  }
+  .comment-title {
+    font-weight: 500;
   }
 </style>

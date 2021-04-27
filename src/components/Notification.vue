@@ -21,8 +21,8 @@
           </v-list-item-avatar>
 
           <v-list-item-content>
-            <v-list-item-title v-html="item.title" />
-            <v-list-item-subtitle v-html="item.subtitle" />
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item-subtitle>{{ item.subtitle }}</v-list-item-subtitle>
           </v-list-item-content>
 
           <v-menu
@@ -39,7 +39,9 @@
                 color="blue-grey darken-2"
                 v-on="on"
               >
-                <v-icon>mdi-dots-horizontal</v-icon>
+                <v-icon large>
+                  mdi-dots-horizontal
+                </v-icon>
               </v-btn>
             </template>
             <v-list>
