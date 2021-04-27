@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import User from "../../model/user-model";
 import Post from "../../model/post-model";
 import * as auth from "../../services/auth-service";

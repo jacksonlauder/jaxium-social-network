@@ -31,3 +31,7 @@ export function likePost(id) {
 export function unlikePost(id) {
   return http().put(`/unlike/${id}`);
 }
+
+export function postComment(comment) {
+  return http().put(`/post-comment/${comment}`);
+}
