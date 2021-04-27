@@ -32,6 +32,8 @@ export function unlikePost(id) {
   return http().put(`/unlike/${id}`);
 }
 
-export function postComment(comment) {
-  return http().put(`/post-comment/${comment}`);
+export function postComment(id, commentContent) {
+  return http().put(`/post-comment/${id}`, {
+    commentContent: commentContent
+  });
 }

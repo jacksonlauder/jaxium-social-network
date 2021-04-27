@@ -12,7 +12,7 @@ export function index(req, res) {
   })
     .populate("author", "username", "user")
     .populate("likes")
-    .sort({ createdAt: "desc" });
+    .sort({ updatedAt: "desc" });
 }
 
 export function indexByUserId(req, res) {
@@ -35,7 +35,7 @@ export function indexByUserId(req, res) {
     })
       .populate("author", "username", "user")
       .populate("likes")
-      .sort({ createdAt: "desc" });
+      .sort({ updatedAt: "desc" });
   })
 }
 

@@ -399,31 +399,36 @@
           <v-divider />
 
           <v-container fluid>
-            <v-text-field
-              v-model="comment"
-              type="text"
-              solo
-              label="Add Comment..."
-              rounded
-              hide-details="auto"
-              clear-icon="mdi-close-circle"
-              clearable
-              @click:clear="clearComment"
+            <v-form
+              ref="commentForm"
+              @submit.prevent="sendComment(post._id)"
             >
-              <template v-slot:append-outer>
-                <v-btn
-                  icon
-                  @click.prevent="sendComment"
-                >
-                  <v-icon
-                    large
-                    color="blue-grey darken-2"
+              <v-text-field
+                v-model="comment"
+                type="text"
+                solo
+                label="Add Comment..."
+                rounded
+                hide-details="auto"
+                clear-icon="mdi-close-circle"
+                clearable
+                @click:clear="clearComment"
+              >
+                <template v-slot:append-outer>
+                  <v-btn
+                    icon
+                    type="submit"
                   >
-                    mdi-message-reply
-                  </v-icon>
-                </v-btn>
-              </template>
-            </v-text-field>
+                    <v-icon
+                      large
+                      color="blue-grey darken-2"
+                    >
+                      mdi-message-reply
+                    </v-icon>
+                  </v-btn>
+                </template>
+              </v-text-field>
+            </v-form>
           </v-container>
         </div>
       </v-expand-transition>
@@ -476,6 +481,7 @@ export default {
       const post = {
         post: this.editedPost
       }
+      console.log(post)
       await PostService.updatePost(post)
       this.editDialog = false
       this.$parent.getPosts()
@@ -487,17 +493,14 @@ export default {
       this.$parent.getPosts()
     },
 
-    sendComment: async function() {
-      const comment = {
-        comment: this.commentContent
-      }
-      await PostService.postComment(comment)
-      this.$parent.getPosts()
+    sendComment: async function(id) {
+      await PostService.postComment(id, this.comment)
       this.clearComment()
+      this.$parent.getPosts()
     },
     
     clearComment () {
-      this.message = ''
+      this.comment = ''
     },
 
     toggleLike: function (id, likes) {
