@@ -23,7 +23,6 @@
 
     <Post :posts="posts" />
 
-    <!-- TODO: Make this uniquely mine -->
     <v-btn
       v-show="scrollToTop"
       v-scroll="onScroll"

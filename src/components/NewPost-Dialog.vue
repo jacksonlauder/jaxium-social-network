@@ -103,7 +103,7 @@ import * as PostService from '../services/PostService'
           postContent: this.postContent
         }
         await PostService.createPost(post)
-        this.postContent = ''
+        this.$refs.newPostForm.reset()
         this.show = false
         this.$parent.getPosts()
       },
