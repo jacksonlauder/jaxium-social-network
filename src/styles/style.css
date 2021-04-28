@@ -24,14 +24,22 @@
 }
 
 .v-btn--is-elevated.v-btn--fab.new-post-btn {
-  box-shadow: 0px 5px 5px 3px #afafaf, 0px 0px 0px 10px #eceff1;
+  box-shadow: 0px 1px 5px 3px #afafaf;
 }
 
 .v-btn--fab.v-size--default.v-btn--absolute.v-btn--top.new-post-btn {
-  top: -20px;
+  top: -.5em;
 }
 
 .btm-nav {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
+
+/* .circle {
+  position: absolute;
+  height: 57px;
+  width: 80px;
+  border-radius: 0 0 70px 70px;
+  background-color: white;
+} */

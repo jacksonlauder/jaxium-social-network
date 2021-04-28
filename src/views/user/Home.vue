@@ -77,28 +77,29 @@
         </v-icon>
       </v-btn>
 
-      <v-btn
-        style="border-radius: 50%"
-        class="new-post-btn"
-        fab
-        min-width="56px"
-        width="56px"
-        min-height="56px"
-        height="56px"
-        color="amber darken-3"
-        dark
-        absolute
-        top
-        active-class="no-active"
-        @click.stop="showNewPostDialog=true"
-      >
-        <v-icon
-          size="40px"
-          color="white"
+      <div class="circle"></div>
+        <v-btn
+          style="border-radius: 50%"
+          class="new-post-btn"
+          fab
+          min-width="60px"
+          width="60px"
+          min-height="60px"
+          height="60px"
+          color="amber darken-3"
+          dark
+          absolute
+          top
+          active-class="no-active"
+          @click.stop="showNewPostDialog=true"
         >
-          mdi-plus
-        </v-icon>
-      </v-btn>
+          <v-icon
+            x-large
+            color="white"
+          >
+            mdi-feather
+          </v-icon>
+        </v-btn>
 
       <v-btn
         active-class="no-active"
