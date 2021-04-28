@@ -5,13 +5,16 @@
       fab
       top
       left
-      icon
+      color="white"
       class="top-fab-btn"
-      color="blue-grey darken-2"
+      
       elevation="3"
       @click.prevent="toHome"
     >
-      <v-icon large>
+      <v-icon
+        large
+        color="blue-grey darken-2"
+      >
         mdi-arrow-left-bold
       </v-icon>
     </v-btn>
@@ -26,14 +29,16 @@
           fab
           top
           right
-          icon
           class="top-fab-btn"
-          color="blue-grey darken-2"
+          color="white"
           elevation="3"
           v-bind="attrs"
           v-on="on"
         >
-          <v-icon large>
+          <v-icon
+            large
+            color="blue-grey darken-2"
+          >
             mdi-close-circle-outline
           </v-icon>
         </v-btn>

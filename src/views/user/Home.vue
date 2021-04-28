@@ -7,9 +7,9 @@
       fab
       top
       right
-      icon
       absolute
       class="top-fab-btn"
+      color="white"
       elevation="3"
       @click.prevent="getPosts"
     >

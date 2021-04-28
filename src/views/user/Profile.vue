@@ -7,8 +7,8 @@
       fab
       top
       left
-      icon
       absolute
+      color="white"
       class="top-fab-btn"
       elevation="3"
       @click.prevent="toHome"

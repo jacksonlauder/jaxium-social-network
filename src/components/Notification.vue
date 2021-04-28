@@ -47,16 +47,19 @@
             <v-list>
               <v-list-item
                 link
+                color="blue-grey darken-3"
               >
                 Clear Notification
               </v-list-item>
               <v-list-item
                 link
+                color="blue-grey darken-3"
               >
                 View Post
               </v-list-item>
               <v-list-item
                 link
+                color="blue-grey darken-3"
               >
                 View Profile
               </v-list-item>

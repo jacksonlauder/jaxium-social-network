@@ -5,7 +5,7 @@
       fab
       top
       left
-      icon
+      color="white"
       class="top-fab-btn"
       elevation="3"
       @click.prevent="toHome"
@@ -23,7 +23,7 @@
       fab
       top
       right
-      icon
+      color="white"
       class="top-fab-btn"
       elevation="3"
       @click.prevent="toMessageEdit"
