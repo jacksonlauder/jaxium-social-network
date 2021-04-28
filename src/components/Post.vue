@@ -71,11 +71,12 @@
                       v-if="$store.state.username === post.author.username"
                       link
                       v-bind="attrs"
+                      color="blue-grey darken-3"
                       v-on="on"
                       @click.prevent="editPostContent(post._id)"
                     >
                       <v-list-item-icon>
-                        <v-icon>
+                        <v-icon color="blue-grey darken-2">
                           mdi-square-edit-outline
                         </v-icon>
                       </v-list-item-icon>
@@ -149,9 +150,14 @@
                       v-if="$store.state.username === post.author.username"
                       link
                       v-bind="attrs"
+                      color="blue-grey darken-3"
                       v-on="on"
                     >
-                      <v-list-item-icon><v-icon>mdi-delete</v-icon></v-list-item-icon>
+                      <v-list-item-icon>
+                        <v-icon color="blue-grey darken-2">
+                          mdi-delete
+                        </v-icon>
+                      </v-list-item-icon>
                       <v-list-item-content>
                         <v-list-item-title>
                           Delete Post
@@ -203,9 +209,10 @@
                   v-if="$store.state.username !== post.author.username"
                   link
                   disabled
+                  color="blue-grey darken-3"
                 >
                   <v-list-item-icon>
-                    <v-icon disabled>
+                    <v-icon color="blue-grey darken-2">
                       mdi-alert
                     </v-icon>
                   </v-list-item-icon>
@@ -220,9 +227,10 @@
                   v-if="$store.state.username !== post.author.username"
                   link
                   disabled
+                  color="blue-grey darken-3"
                 >
                   <v-list-item-icon>
-                    <v-icon disabled>
+                    <v-icon color="blue-grey darken-2">
                       mdi-share-variant
                     </v-icon>
                   </v-list-item-icon>
@@ -284,7 +292,7 @@
         >
           <template v-slot:activator="{ on, attrs }">
             <span
-              class="ml-2 pr-10 pl-3 blue-grey--text text--darken-2 text-h5"
+              class="ml-2 pr-10 pl-3 blue-grey--text text--darken-1 text-h5"
               v-bind="attrs"
               v-on="on"
             >{{ post.likes.length }}</span>
@@ -295,26 +303,28 @@
               v-for="(item, index) of post.likes"
               :key="index"
             >
-              <v-list-item-title>{{ item.by.username }}</v-list-item-title>
+              <v-list-item-title class="blue-grey--text text--darken-3">
+                <h4>{{ item.by.username }}</h4>
+              </v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
 
         <v-btn
           text
+          :disabled="post.comments.length === 0"
           @click.prevent="showComments(post.comments)"
         >
           <v-icon
             size="35px"
             color="blue-grey darken-2"
           >
-            mdi-forum
+            mdi-comment-multiple
           </v-icon>
           <span
-            class="ml-2 pl-3 blue-grey--text text--darken-2 text-h5"
+            class="ml-2 pl-3 blue-grey--text text--darken-3 text-h5"
           >{{ post.comments.length }}</span>
         </v-btn>
-
         <v-spacer />
       </v-card-actions>
 
@@ -384,9 +394,10 @@
                       v-if="$store.state.username !== item.by.username"
                       link
                       disabled
+                      color="blue-grey darken-3"
                     >
                       <v-list-item-icon>
-                        <v-icon disabled>
+                        <v-icon color="blue-grey darken-3">
                           mdi-alert
                         </v-icon>
                       </v-list-item-icon>
@@ -408,12 +419,13 @@
                           link
                           v-bind="attrs"
                           disabled
+                          color="blue-grey darken-3"
                           v-on="on"
                           @click.prevent="editCommentContent(item._id)"
                         >
                           <v-list-item-icon>
-                            <v-icon>
-                              mdi-square-edit-outline
+                            <v-icon color="blue-grey darken-2">
+                              mdi-comment-edit
                             </v-icon>
                           </v-list-item-icon>
                           <v-list-item-content>
@@ -486,9 +498,14 @@
                           v-if="$store.state.username === item.by.username"
                           link
                           v-bind="attrs"
+                          color="blue-grey darken-3"
                           v-on="on"
                         >
-                          <v-list-item-icon><v-icon>mdi-delete</v-icon></v-list-item-icon>
+                          <v-list-item-icon>
+                            <v-icon color="blue-grey darken-2">
+                              mdi-comment-remove
+                            </v-icon>
+                          </v-list-item-icon>
                           <v-list-item-content>
                             <v-list-item-title>
                               Delete Comment
@@ -573,7 +590,7 @@
                   large
                   color="blue-grey darken-2"
                 >
-                  mdi-message-reply
+                  mdi-comment-plus
                 </v-icon>
               </v-btn>
             </template>
