@@ -22,7 +22,7 @@ const routes = [
       if (!auth.isLoggedIn()) {
         next()
       } else {
-        next('/:username')
+        next({ name: 'UserHome' })
       }
     }
   },
@@ -35,7 +35,7 @@ const routes = [
       if (!auth.isLoggedIn()) {
         next()
       } else {
-        next('/:username')
+        next({ name: 'UserHome' })
       }
     }
   },
@@ -48,13 +48,13 @@ const routes = [
       if (!auth.isLoggedIn()) {
         next()
       } else {
-        next('/:username')
+        next({ name: 'UserHome' })
       }
     }
   },
 
   {
-    path: '/:username',
+    path: '/',
     name: 'UserHome',
     component: UserHome,
     beforeEnter: (to, from, next) => {
