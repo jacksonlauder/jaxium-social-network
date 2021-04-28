@@ -18,7 +18,7 @@ A small-scale social network built with MongoDB, expressJS, Vue.js + Vuetify, an
 - [Flow Chart](#flowchart)
 
 ## Live Demo
-http://18.144.62.127:3000/
+http://jaxium.com:3000/
 
 ## Features
 
