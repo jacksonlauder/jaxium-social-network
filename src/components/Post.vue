@@ -651,6 +651,10 @@ export default {
       this.$parent.getPosts()
     },
 
+    editCommentContent: async function(id) {
+      console.log(id)
+    },
+
     deleteComment: async function(id) {
       await PostService.removeComment(id, this.addCommentPost.comment)
       this.$parent.getPosts()
