@@ -38,8 +38,8 @@ export function postComment(id, commentContent) {
   });
 }
 
-export function removeComment(id, commentContent) {
-  return http().put(`/remove-comment/${id}`, {
-    commentContent: commentContent
+export function removeComment(postID, commentID) {
+  return http().put(`/remove-comment/${postID}`, {
+    commentID
   });
 }

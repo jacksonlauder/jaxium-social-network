@@ -131,10 +131,7 @@ export function removeComment(req, res) {
     var query = { _id: req.params.id },
       update = {
         $pull: {
-          comments: { 
-            by: { userId: user._id, username: username },
-            commentContent: req.body.commentContent 
-          }
+          comments: { _id: req.body.commentID }
         }
       },
       options = { timestamps: false, upsert: false };

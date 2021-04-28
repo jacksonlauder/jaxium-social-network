@@ -409,7 +409,7 @@
                           v-bind="attrs"
                           disabled
                           v-on="on"
-                          @click.prevent="editCommentContent(post._id)"
+                          @click.prevent="editCommentContent(item._id)"
                         >
                           <v-list-item-icon>
                             <v-icon>
@@ -528,7 +528,7 @@
                             large
                             color="blue-grey darken-1"
                             dark
-                            @click.prevent="deleteComment(item._id)"
+                            @click.prevent="deleteComment(post._id, item._id)"
                           >
                             Delete
                           </v-btn>
@@ -655,8 +655,9 @@ export default {
       console.log(id)
     },
 
-    deleteComment: async function(id) {
-      await PostService.removeComment(id, this.addCommentPost.comment)
+    deleteComment: async function(postID, commentID) {
+      await PostService.removeComment(postID, commentID)
+      this.deleteCommentDialog = false
       this.$parent.getPosts()
     },
     
