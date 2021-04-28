@@ -9,7 +9,7 @@ const commentSchema = new mongoose.Schema({
     username: String
   },
   commentContent: { type: String, required: true }
-}, { _id: false })
+})
 commentSchema.set('timestamps', true);
 
 const likeSchema = new mongoose.Schema({

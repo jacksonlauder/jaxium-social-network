@@ -301,7 +301,7 @@
         </v-menu>
 
         <v-btn
-          icon
+          text
           @click.prevent="showComments(post.comments)"
         >
           <v-icon
@@ -310,7 +310,11 @@
           >
             mdi-forum
           </v-icon>
+          <span
+            class="ml-2 pl-3 blue-grey--text text--darken-2 text-h5"
+          >{{ post.comments.length }}</span>
         </v-btn>
+
         <v-spacer />
       </v-card-actions>
 
@@ -320,118 +324,262 @@
 
           <v-container fluid>
             <v-list
-              v-for="(item, index) in post.comments"
-              :key="index"
               two-line
+              height="210"
+              class="overflow-y-auto"
+              rounded
             >
-              <template>
-                <v-list-item
-                  :key="item.by.username"
-                  class="blue-grey lighten-5 rounded-pill"
-                >
-                  <v-list-item-avatar>
-                    <!-- <v-img
+              <!-- <template> -->
+              <v-list-item
+                v-for="(item, index) in post.comments"
+                :id="item._id"
+                :key="index"
+                class="blue-grey lighten-5"
+              >
+                <v-list-item-avatar>
+                  <!-- <v-img
                       class="elevation-6"
                       alt=""
                       src="https://cdn.vuetifyjs.com/images/lists/1.jpg"
                     /> -->
-                    <v-icon
-                      color="blue-grey darken-1"
-                      size="3em"
-                    >
-                      mdi-account-circle
-                    </v-icon>
-                  </v-list-item-avatar>
-
-                  <v-list-item-content>
-                    <v-list-item-title class="comment-title">
-                      {{ item.by.username }}
-                    </v-list-item-title>
-                    <v-list-item-subtitle
-                      class="black--text"
-                    >
-                      {{ item.commentContent }}
-                    </v-list-item-subtitle>
-                  </v-list-item-content>
-
-                  <v-menu
-                    right
-                    rounded
-                    offset-x
+                  <v-icon
+                    color="blue-grey darken-1"
+                    size="3em"
                   >
-                    <template v-slot:activator="{ on }">
-                      <v-btn
-                        absolute
-                        right
-                        icon
-                        color="blue-grey darken-2"
-                        v-on="on"
-                      >
-                        <v-icon large>
-                          mdi-dots-horizontal
-                        </v-icon>
-                      </v-btn>
-                    </template>
-                    <v-list>
-                      <v-list-item
-                        v-if="$store.state.username !== post.author.username"
-                        link
-                        disabled
-                      >
-                        <v-list-item-icon>
-                          <v-icon disabled>
-                            mdi-alert
-                          </v-icon>
-                        </v-list-item-icon>
-                        <v-list-item-content>
-                          <v-list-item-title>
-                            Report Comment
-                          </v-list-item-title>
-                        </v-list-item-content>
-                      </v-list-item>
-                    </v-list>
-                  </v-menu>
-                </v-list-item>
-              </template>
-            </v-list>
-          </v-container>
+                    mdi-account-circle
+                  </v-icon>
+                </v-list-item-avatar>
 
-          <v-divider />
-
-          <v-container fluid>
-            <v-form
-              ref="commentForm"
-              @submit.prevent="sendComment(post._id)"
-            >
-              <v-text-field
-                v-model="comment"
-                type="text"
-                solo
-                label="Add Comment..."
-                rounded
-                hide-details="auto"
-                clear-icon="mdi-close-circle"
-                clearable
-                @click:clear="clearComment"
-              >
-                <template v-slot:append-outer>
-                  <v-btn
-                    icon
-                    type="submit"
+                <v-list-item-content>
+                  <v-list-item-title class="comment-title">
+                    {{ item.by.username }}
+                  </v-list-item-title>
+                  <v-list-item-subtitle
+                    class="black--text"
                   >
-                    <v-icon
-                      large
+                    {{ item.commentContent }}
+                  </v-list-item-subtitle>
+                </v-list-item-content>
+
+                <v-menu
+                  right
+                  rounded
+                  offset-x
+                >
+                  <template v-slot:activator="{ on }">
+                    <v-btn
+                      absolute
+                      right
+                      icon
                       color="blue-grey darken-2"
+                      v-on="on"
                     >
-                      mdi-message-reply
-                    </v-icon>
-                  </v-btn>
-                </template>
-              </v-text-field>
-            </v-form>
+                      <v-icon large>
+                        mdi-dots-horizontal
+                      </v-icon>
+                    </v-btn>
+                  </template>
+                  <v-list>
+                    <v-list-item
+                      v-if="$store.state.username !== item.by.username"
+                      link
+                      disabled
+                    >
+                      <v-list-item-icon>
+                        <v-icon disabled>
+                          mdi-alert
+                        </v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-content>
+                        <v-list-item-title>
+                          Report Comment
+                        </v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                    
+                    <!-- TODO: -->
+                    <v-dialog
+                      v-model="editCommentDialog"
+                      width="500"
+                    >
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-list-item
+                          v-if="$store.state.username === item.by.username"
+                          link
+                          v-bind="attrs"
+                          disabled
+                          v-on="on"
+                          @click.prevent="editCommentContent(post._id)"
+                        >
+                          <v-list-item-icon>
+                            <v-icon>
+                              mdi-square-edit-outline
+                            </v-icon>
+                          </v-list-item-icon>
+                          <v-list-item-content>
+                            <v-list-item-title>
+                              Edit Comment
+                            </v-list-item-title>
+                          </v-list-item-content>
+                        </v-list-item>
+                      </template>
+
+                      <v-card>
+                        <v-card-title class="headline">
+                          Edit Comment?
+                        </v-card-title>
+
+                        <v-divider />
+
+                        <v-form 
+                          ref="editContentForm"
+                          @submit.prevent="onSubmit"
+                        >
+                          <v-card-text class="mt-4">
+                            <v-textarea
+                              v-model="editedPost.postContent"
+                              :rules="rules"
+                              outlined
+                              auto-grow
+                              counter
+                              hide-details="auto"
+                            />
+                          </v-card-text>
+
+                          <v-divider />
+
+                          <v-card-actions>
+                            <v-btn
+                              rounded
+                              outlined
+                              depressed
+                              large
+                              color="blue-grey darken-2"
+                              @click.prevent="cancel"
+                            >
+                              Cancel
+                            </v-btn>
+
+                            <v-spacer />
+
+                            <v-btn
+                              rounded
+                              depressed
+                              large
+                              color="blue-grey darken-1"
+                              dark
+                              type="submit"
+                            >
+                              Save
+                            </v-btn>
+                          </v-card-actions>
+                        </v-form>
+                      </v-card>
+                    </v-dialog>
+
+                    <v-dialog
+                      v-model="deleteCommentDialog"
+                      width="500"
+                    >
+                      <template v-slot:activator="{ on, attrs}">
+                        <v-list-item
+                          v-if="$store.state.username === item.by.username"
+                          link
+                          v-bind="attrs"
+                          v-on="on"
+                        >
+                          <v-list-item-icon><v-icon>mdi-delete</v-icon></v-list-item-icon>
+                          <v-list-item-content>
+                            <v-list-item-title>
+                              Delete Comment
+                            </v-list-item-title>
+                          </v-list-item-content>
+                        </v-list-item>
+                      </template>
+
+                      <v-card>
+                        <v-card-title class="headline">
+                          Delete Comment?
+                        </v-card-title>
+
+                        <v-divider />
+
+                        <v-card-text class="mt-4">
+                          This action may not be undone.
+                        </v-card-text>
+
+                        <v-divider />
+
+                        <v-card-actions>
+                          <v-btn
+                            rounded
+                            outlined
+                            depressed
+                            large
+                            color="blue-grey darken-2"
+                            @click="deleteCommentDialog = false"
+                          >
+                            Cancel
+                          </v-btn>
+                          <v-spacer />
+                          <v-btn
+                            rounded
+                            depressed
+                            large
+                            color="blue-grey darken-1"
+                            dark
+                            @click.prevent="deleteComment(item._id)"
+                          >
+                            Delete
+                          </v-btn>
+                        </v-card-actions>
+                      </v-card>
+                    </v-dialog>
+                  </v-list>
+                </v-menu>
+              </v-list-item>
+              <!-- </template> -->
+            </v-list>
           </v-container>
         </div>
       </v-expand-transition>
+
+      <v-divider />
+
+      <v-container fluid>
+        <v-form
+          ref="commentForm"
+          @submit.prevent="sendComment(post._id)"
+        >
+          <v-text-field
+            :id="`${post._id}-TextField`"
+            v-model="addCommentPost.comment"
+            color="blue-grey darken-2"
+            type="text"
+            solo
+            label="Add Comment..."
+            rounded
+            hide-details="auto"
+            clear-icon="mdi-close"
+            clearable
+            @click:clear="clearComment"
+          >
+            <template v-slot:append-outer>
+              <v-btn
+                icon
+                type="submit"
+              >
+                <v-icon
+                  large
+                  color="blue-grey darken-2"
+                >
+                  mdi-message-reply
+                </v-icon>
+              </v-btn>
+            </template>
+          </v-text-field>
+        </v-form>
+      </v-container>
     </v-card>
   </v-col>
 </template>
@@ -453,11 +601,15 @@ export default {
       ],
       editDialog: false,
       deleteDialog: false,
+      editCommentDialog: false,
+      deleteCommentDialog: false,
       readonly: true,
       editedPost: {
         postContent: "",
       },
-      comment: '',
+      addCommentPost: {
+        comment: '',
+      },
     }
   },
 
@@ -494,13 +646,18 @@ export default {
     },
 
     sendComment: async function(id) {
-      await PostService.postComment(id, this.comment)
+      await PostService.postComment(id, this.addCommentPost.comment)
       this.clearComment()
+      this.$parent.getPosts()
+    },
+
+    deleteComment: async function(id) {
+      await PostService.removeComment(id, this.addCommentPost.comment)
       this.$parent.getPosts()
     },
     
     clearComment () {
-      this.comment = ''
+      this.addCommentPost.comment = ''
     },
 
     toggleLike: function (id, likes) {

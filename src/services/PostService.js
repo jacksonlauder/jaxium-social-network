@@ -37,3 +37,9 @@ export function postComment(id, commentContent) {
     commentContent: commentContent
   });
 }
+
+export function removeComment(id, commentContent) {
+  return http().put(`/remove-comment/${id}`, {
+    commentContent: commentContent
+  });
+}

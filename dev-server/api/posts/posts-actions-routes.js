@@ -10,6 +10,6 @@ router.put('/unlike/:id', auth.requireLogin, controller.unlike);
 router.get('/comment/:id', auth.requireLogin, controller.showComment);
 router.put('/post-comment/:id', auth.requireLogin, controller.postComment);
 router.put('/update-comment/:id', auth.requireLogin, controller.updateComment);
-router.delete('/remove-comment/:id', auth.requireLogin, controller.removeComment);
+router.put('/remove-comment/:id', auth.requireLogin, controller.removeComment);
 
 export default router;
