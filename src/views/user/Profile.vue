@@ -58,7 +58,10 @@
       <v-row
         justify="space-around"
       >
-        <v-card-text class="text-center px-10">
+        <v-card-text
+          v-if="$store.state.userDescription !== null || $store.state.userDescription === ''"
+          class="text-center px-10"
+        >
           {{ $store.state.userDescription }}
         </v-card-text>
       </v-row>
@@ -81,7 +84,10 @@
         justify="space-around"
         class="px-10 pb-5"
       >
-        <v-card-text class="text-center px-10 pt-0">
+        <v-card-text
+          v-if="$store.state.userLocation !== null || $store.state.userLocation === ''"
+          class="text-center px-10 pt-0"
+        >
           <v-icon
             color="blue-grey darken-3"
             class="mr-1"
@@ -90,7 +96,10 @@
           </v-icon>{{ $store.state.userLocation }}
         </v-card-text>
 
-        <v-card-text class="text-center px-10 pt-0">
+        <v-card-text
+          v-if="$store.state.userEmail !== null || $store.state.userEmail === ''"
+          class="text-center px-10 pt-0"
+        >
           <v-icon
             color="blue-grey darken-3"
             class="mr-1"
@@ -99,7 +108,10 @@
           </v-icon>{{ $store.state.userEmail }}
         </v-card-text>
 
-        <v-card-text class="text-center px-10 pt-0">
+        <v-card-text
+          v-if="$store.state.userWebsite !== null || $store.state.userWebsite === ''"
+          class="text-center px-10 pt-0"
+        >
           <v-icon
             color="blue-grey darken-3"
             class="mr-1"
