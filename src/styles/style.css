@@ -30,8 +30,3 @@
 .v-btn--fab.v-size--default.v-btn--absolute.v-btn--top.new-post-btn {
   top: -.5em;
 }
-
-.btm-nav {
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-}
