@@ -3,7 +3,8 @@
     <v-card
       v-for="post of posts"
       :id="`${post._id}`"
-      :key="post._id"
+      :key="`${post._id}`"
+      :post="post"
       class="mx-auto mb-5"
       max-width="35rem"
       elevation="4"
@@ -566,11 +567,12 @@
       <v-container fluid>
         <v-form
           ref="commentForm"
-          @submit.prevent="sendComment(post._id)"
+          @submit.prevent="sendComment(post._id, post.comment)"
         >
           <v-text-field
             :id="`${post._id}-TextField`"
-            v-model="addCommentPost.comment"
+            :key="`${post._id}-TextField`"
+            v-model="post.comment"
             color="blue-grey darken-2"
             type="text"
             solo
@@ -624,9 +626,7 @@ export default {
       editedPost: {
         postContent: "",
       },
-      addCommentPost: {
-        comment: '',
-      },
+      comment: '',
     }
   },
 
@@ -650,7 +650,6 @@ export default {
       const post = {
         post: this.editedPost
       }
-      console.log(post)
       await PostService.updatePost(post)
       this.editDialog = false
       this.$parent.getPosts()
@@ -662,8 +661,8 @@ export default {
       this.$parent.getPosts()
     },
 
-    sendComment: async function(id) {
-      await PostService.postComment(id, this.addCommentPost.comment)
+    sendComment: async function(id, comment) {
+      await PostService.postComment(id, comment)
       this.clearComment()
       this.$parent.getPosts()
     },
@@ -679,7 +678,7 @@ export default {
     },
     
     clearComment () {
-      this.addCommentPost.comment = ''
+      this.comment = ''
     },
 
     toggleLike: function (id, likes) {
