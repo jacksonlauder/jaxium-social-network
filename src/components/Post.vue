@@ -322,7 +322,11 @@
       </v-card-actions>
 
       <v-expand-transition>
-        <div v-show="isVisible">
+        <v-card
+          v-show="isVisible"
+          flat
+          tile
+        >
           <v-divider />
 
           <v-container fluid>
@@ -551,7 +555,7 @@
               <!-- </template> -->
             </v-list>
           </v-container>
-        </div>
+        </v-card>
       </v-expand-transition>
 
       <v-divider />
@@ -568,6 +572,8 @@
             color="blue-grey darken-2"
             type="text"
             solo
+            outlined
+            flat
             label="Add Comment..."
             rounded
             hide-details="auto"
@@ -625,12 +631,12 @@ export default {
   },
 
   methods: {
-    time: function (timeRaw) {
+    time: function(timeRaw) {
       var timeParsed = moment(timeRaw).fromNow()
       return timeParsed
     },
 
-    editPostContent: async function (id) {
+    editPostContent: async function(id) {
       await PostService.getPostById(id).then(res => {
         this.editedPost = res.data.post
       })
@@ -640,7 +646,7 @@ export default {
       this.editDialog = false
     },
 
-    onSubmit: async function () {
+    onSubmit: async function() {
       const post = {
         post: this.editedPost
       }
@@ -649,7 +655,7 @@ export default {
       this.$parent.getPosts()
     },
 
-    deletePost: async function (id) {
+    deletePost: async function(id) {
       await PostService.deletePost(id)
       this.deleteDialog = false
       this.$parent.getPosts()
@@ -671,11 +677,11 @@ export default {
       this.$parent.getPosts()
     },
     
-    clearComment () {
+    clearComment() {
       this.comment = ''
     },
 
-    toggleLike: function (id, likes) {
+    toggleLike: function(id, likes) {
       var username = this.$store.state.username
       var obj = likes.find(o => o.by.username === username)
 
@@ -686,12 +692,12 @@ export default {
       }
     },
 
-    likePost: async function (id) {
+    likePost: async function(id) {
       await PostService.likePost(id)
       this.$parent.getPosts()
     },
     
-    unlikePost: async function (id) {
+    unlikePost: async function(id) {
       await PostService.unlikePost(id)
       this.$parent.getPosts()
     },
