@@ -127,7 +127,7 @@
       </v-row>
       
       <!-- TODO: v-if="$store.state.username === something.username" -->
-      <v-card-actions class="d-flex flex-column mb-5">
+      <v-card-actions class="d-flex flex-column">
         <v-btn
           dark
           outlined
@@ -145,14 +145,15 @@
           </v-icon>
           Edit Profile
         </v-btn>
+
         <v-btn
-          v-if="$store.state.isLoggedIn"
           depressed
           large
+          block
           color="blue-grey darken-1"
           dark
           width="100%"
-          class="mt-10"
+          class="mt-5 mx-0"
           @click.prevent="logout()"
         >
           <v-icon

@@ -195,7 +195,6 @@ import * as PostService from '../../services/PostService'
       },
 
       getPosts: async function() {
-        console.log(this.$router.path)
         await PostService.getAllPosts().then(res => {
           this.posts = res.data.posts
         })
