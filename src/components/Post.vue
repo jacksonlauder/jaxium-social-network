@@ -272,20 +272,6 @@
           </v-icon>
         </v-btn>
 
-        <!-- <v-btn
-          icon
-          @click.prevent="unlikePost(post._id)"
-        >
-          <v-icon
-            size="35px"
-            color="blue-grey darken-2"
-          >
-            mdi-heart-off
-          </v-icon>
-        </v-btn>
-
-        <span>true</span> -->
-
         <v-menu
           open-on-hover
           bottom
@@ -293,7 +279,7 @@
         >
           <template v-slot:activator="{ on, attrs }">
             <span
-              class="ml-2 pr-10 pl-3 blue-grey--text text--darken-1 text-h5"
+              class="ml-2 pr-10 pl-3 blue-grey--text text--darken-3 text-h5"
               v-bind="attrs"
               v-on="on"
             >{{ post.likes.length }}</span>
@@ -314,7 +300,7 @@
         <v-btn
           text
           :disabled="post.comments.length === 0"
-          @click.prevent="showComments(post.comments)"
+          @click.prevent="isVisible = !isVisible"
         >
           <v-icon
             size="35px"
@@ -325,19 +311,25 @@
           <span
             class="ml-2 pl-3 blue-grey--text text--darken-3 text-h5"
           >{{ post.comments.length }}</span>
+          <v-icon
+            color="blue-grey darken-2"
+            class="pl-1"
+          >
+            {{ isVisible ? 'mdi-chevron-up' : 'mdi-chevron-down' }}
+          </v-icon>
         </v-btn>
         <v-spacer />
       </v-card-actions>
 
       <v-expand-transition>
-        <div v-show="post.comments.isVisible">
+        <div v-show="isVisible">
           <v-divider />
 
           <v-container fluid>
             <v-list
               two-line
               height="210"
-              class="overflow-y-auto"
+              class="overflow-y-auto transition-fast-in-fast-out"
               rounded
             >
               <!-- <template> -->
@@ -604,7 +596,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import * as PostService from '../services/PostService'
 import moment from 'moment'
 
@@ -627,6 +618,9 @@ export default {
         postContent: "",
       },
       comment: '',
+      isVisible: false,
+      likeIcon: 'mdi-heart',
+      liked: false,
     }
   },
 
@@ -700,10 +694,6 @@ export default {
     unlikePost: async function (id) {
       await PostService.unlikePost(id)
       this.$parent.getPosts()
-    },
-
-    showComments: function (comments) {
-      Vue.set(comments, 'isVisible', !comments.isVisible)
     },
   }
 }
