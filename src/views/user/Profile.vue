@@ -59,7 +59,7 @@
         justify="space-around"
       >
         <v-card-text
-          v-if="$store.state.userDescription !== null || $store.state.userDescription !== ''"
+          v-show="$store.state.userDescription"
           class="text-center px-10"
         >
           {{ $store.state.userDescription }}
@@ -85,7 +85,7 @@
         class="px-10 pb-5"
       >
         <v-card-text
-          v-if="$store.state.userLocation !== null || $store.state.userLocation !== ''"
+          v-show="$store.state.userLocation"
           class="text-center px-10 pt-0"
         >
           <v-icon
@@ -97,7 +97,7 @@
         </v-card-text>
 
         <v-card-text
-          v-if="$store.state.userEmail !== null || $store.state.userEmail !== ''"
+          v-show="$store.state.userEmail"
           class="text-center px-10 pt-0"
         >
           <v-icon
@@ -109,7 +109,7 @@
         </v-card-text>
 
         <v-card-text
-          v-if="$store.state.userWebsite !== null || $store.state.userWebsite !== ''"
+          v-show="$store.state.userWebsite"
           class="text-center px-10 pt-0"
         >
           <v-icon
@@ -205,7 +205,7 @@ export default {
     },
 
     toHome: function() {
-      this.$router.push({ name: 'UserHome', params: { username: this.$store.state.username }})
+      this.$router.push({ name: 'UserHome' })
     },
 
     toProfileEdit: function() {
