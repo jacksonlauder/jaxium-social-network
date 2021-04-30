@@ -145,6 +145,23 @@
           </v-icon>
           Edit Profile
         </v-btn>
+        <v-btn
+          v-if="$store.state.isLoggedIn"
+          depressed
+          large
+          color="blue-grey darken-1"
+          dark
+          width="100%"
+          class="mt-10"
+          @click.prevent="logout()"
+        >
+          <v-icon
+            left
+          >
+            mdi-logout
+          </v-icon>
+          Logout
+        </v-btn>
       </v-card-actions>
     </v-card>
     <Post :posts="posts" />
@@ -156,7 +173,7 @@
 import Post from '../../components/Post'
 import * as PostService from '../../services/PostService'
 import store from '../../store'
-// import * as UserService from '../../services/UserService'
+import * as auth from '../../services/AuthService'
 
 export default {
   name: 'Profile',
@@ -180,7 +197,12 @@ export default {
     })
   },
 
-  methods: {
+  methods: {      
+    logout: function () {
+      auth.logout()
+      this.$router.push({ name: 'SiteHome' })
+    },
+
     toHome: function() {
       this.$router.push({ name: 'UserHome', params: { username: this.$store.state.username }})
     },

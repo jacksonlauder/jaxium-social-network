@@ -28,9 +28,9 @@
       <v-list nav>
         <v-list-item
           v-if="$store.state.isLoggedIn"
-          class="px-2"
+          class="justify-center"
         >
-          <v-list-item-avatar size="50">
+          <v-list-item-avatar size="50" color="mx-0">
             <v-icon
               color="blue-grey darken-1"
               size="60"
@@ -45,11 +45,12 @@
           active-class="blue-grey--text text--accent-3"
         >
           <v-list-item
+            v-if="$store.state.isLoggedIn"
             link
             @click.prevent="toProfile"
           >
             <v-list-item-content>
-              <v-list-item-title class="title blue-grey--text text--darken-3">
+              <v-list-item-title class="d-flex justify-center title blue-grey--text text--darken-3">
                 {{ $store.state.username }}
               </v-list-item-title>
             </v-list-item-content>
@@ -71,7 +72,7 @@
             </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title class="blue-grey--text text--darken-3">
-                Site Home
+                Welcome
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -87,7 +88,7 @@
             </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title class="mt-1 blue-grey--text text--darken-3">
-                Register
+                Create New Account
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -155,22 +156,6 @@
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-
-          <!-- <v-list-item
-            v-if="$store.state.isLoggedIn"
-            @click.prevent="logout()"
-          >
-            <v-list-item-icon>
-              <v-icon color="blue-grey darken-2">
-                mdi-logout
-              </v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title class="mt-1 blue-grey--text text--darken-3">
-                Logout
-              </v-list-item-title>
-            </v-list-item-content>
-          </v-list-item> -->
         </v-list-item-group>
         <v-btn
           v-if="$store.state.isLoggedIn"
