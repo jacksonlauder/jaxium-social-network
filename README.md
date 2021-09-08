@@ -18,7 +18,8 @@ A small-scale social network built with MongoDB, expressJS, Vue.js + Vuetify, an
 - [Flow Chart](#flowchart)
 
 ## Live Demo
-http://ec2-52-53-58-204.us-west-1.compute.amazonaws.com:3000/
+
+<http://ec2-52-53-58-204.us-west-1.compute.amazonaws.com:3000/>
 
 ## Features
 
@@ -35,25 +36,25 @@ http://ec2-52-53-58-204.us-west-1.compute.amazonaws.com:3000/
 
 ## Project setup
 
-```
+```bash
 npm install
 ```
 
 ### Compiles and hot-reloads for development
 
-```
+```bash
 npm run serve
 ```
 
 ### Compiles and minifies for production
 
-```
+```bash
 npm run build
 ```
 
 ### Lints and fixes files
 
-```
+```bash
 npm run lint
 ```
 
